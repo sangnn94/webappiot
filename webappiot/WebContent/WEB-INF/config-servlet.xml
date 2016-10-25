@@ -12,6 +12,6 @@
 		<property name="suffix" value=".jsp"></property>
 	</bean>
 	
-	<context:component-scan base-package="vn.edu.uit.iot.controller" />
+	<context:component-scan base-package="vn.edu.uit.iot.controllers" />
 	<mvc:annotation-driven/>
 </beans>
