@@ -13,16 +13,12 @@
 <meta name="author" content="">
 
 <title>Manage Device</title>
-
 <!-- Bootstrap Core CSS -->
 <link href="<c:url value="/resources/css/bootstrap.min.css" />"
 	rel="stylesheet">
-
 <!-- Custom CSS -->
 <link href='<c:url value="/resources/css/sb-admin.css" />'
 	rel="stylesheet">
-
-
 <!-- Custom Fonts -->
 <link
 	href='<c:url value="/resources/font-awesome/css/font-awesome.min.css" />'
@@ -43,7 +39,7 @@
 						class="icon-bar"></span> <span class="icon-bar"></span> <span
 						class="icon-bar"></span>
 				</button>
-				<a class="navbar-brand" href="/webappiot/">Administrator</a>
+				<a class="navbar-brand" href="">Administrator</a>
 			</div>
 			<!-- 	Top Menu Items -->
 			<ul class="nav navbar-right top-nav">
@@ -83,12 +79,12 @@
 			<!-- Sidebar Menu Items - These collapse to the responsive navigation menu on small screens -->
 			<div class="collapse navbar-collapse navbar-ex1-collapse">
 				<ul class="nav navbar-nav side-nav">
-					<li ><a href="/webappiot/"><i
-							class="fa fa-fw fa-dashboard"></i> Overview</a></li>
-					<li><a href="/webappiot/manage-device"><i
+					<li><a href="/webappiot/"><i class="fa fa-fw fa-dashboard"></i>
+							Overview</a></li>
+					<li class="active"><a href="/webappiot/manage-device"><i
 							class="fa fa-fw fa-edit"></i> Manage Device</a></li>
-					<li class="active"><a href="/webappiot/manage-user"><i class="fa fa-fw fa-edit"></i>
-							Manage User</a></li>
+					<li><a href="/webappiot/manage-user"><i
+							class="fa fa-fw fa-edit"></i> Manage User</a></li>
 					<li><a href="/webappiot/about"><i class="fa fa-fw fa-user"></i>
 							About</a></li>
 				</ul>
@@ -102,90 +98,68 @@
 				<!-- Page Heading -->
 				<div class="row">
 					<div class="col-lg-12">
-						<h1 class="page-header">Manage User</h1>
+						<h1 class="page-header">Add new Device</h1>
 						<ol class="breadcrumb">
 							<li><i class="fa fa-dashboard"></i> <a href="/webappiot/">WebAppIoT</a>
 							</li>
-							<li class="active"><i class="fa fa-edit"></i> Manage User</li>
-							<b><a class="navbar-right" style="margin-right: 20px"
-								href="/webappiot/manage-user/add-user">Add User</a></b>
+							<li><i class="fa fa-dashboard"></i> <a href="/webappiot/manage-device">Manage device</a>
+							</li>
+							<li class="active"><i class="fa fa-edit"></i>Add new Device</li>
 						</ol>
 					</div>
 				</div>
 				<!-- /.row -->
+				<div class="row">
+					<div class="col-lg-6">
 
-				<div id="page-wrapper">
+						<form role="form">
+							<div>
+								<label>Location</label> <select class="form-control">
+									<option>1</option>
+									<option>2</option>
+									<option>3</option>
+									<option>4</option>
+									<option>5</option>
+									<option>6</option>
+									<option>7</option>
+									<option>8</option>
+									<option>9</option>
+									<option>10</option>
+									<option>11</option>
+									<option>12</option>
+								</select>
 
-					<div class="row">
-						<div class="col-xs-12 ">
-							<h2>List Users</h2>
-							<div class="table-responsive">
-								<table class="table table-bordered table-hover table-striped" >
-									<thead>
-										<tr>
-											<th>Username</th>
-											<th>Permission</th>
-											<th>Email</th>
-											<th>Profile</th>
-										</tr>
-									</thead>
-									<tbody>
-										<tr class="active">
-											<td>/index.html</td>
-											<td>1265</td>
-											<td>Khu phố 6, P. Linh Trung Quận Thủ Đức, Tp. Hồ Chí
-												Minh</td>
-											<td><a href="">View profile</a></td>
-
-										</tr>
-										<tr class="success">
-											<td>/index.html</td>
-											<td>1265</td>
-											<td>Khu phố 6, P. Linh Trung Quận Thủ Đức, Tp. Hồ Chí
-												Minh</td>
-											<td><a href="">View profile</a></td>
-										</tr>
-										<tr class="warning">
-											<td>/index.html</td>
-											<td>1265</td>
-											<td>Khu phố 6, P. Linh Trung Quận Thủ Đức, Tp. Hồ Chí
-												Minh</td>
-											<td><a href="">View profile</a></td>
-										</tr>
-										<tr class="danger">
-											<td>/index.html</td>
-											<td>1265</td>
-											<td>Khu phố 6, P. Linh Trung Quận Thủ Đức, Tp. Hồ Chí
-												Minh</td>
-											<td><a href="">View profile</a></td>
-										</tr>
-										<tr>
-											<td>/index.html</td>
-											<td>1265</td>
-											<td>Khu phố 6, P. Linh Trung Quận Thủ Đức, Tp. Hồ Chí
-												Minh</td>
-											<td><a href="">View profile</a></td>
-										</tr>
-										<tr>
-											<td>/index.html</td>
-											<td>1265</td>
-											<td>Khu phố 6, P. Linh Trung Quận Thủ Đức, Tp. Hồ Chí
-												Minh</td>
-											<td><a href="">View profile</a></td>
-										</tr>
-										<tr>
-											<td>/index.html</td>
-											<td>1265</td>
-											<td>Khu phố 6, P. Linh Trung Quận Thủ Đức, Tp. Hồ Chí
-												Minh</td>
-											<td><a href="">View profile</a></td>
-										</tr>
-									</tbody>
-								</table>
 							</div>
-						</div>
+
+							<div class="form-group">
+								<label>Address</label> <input class="form-control"
+									placeholder="Enter user address">
+							</div>
+
+							<div class="form-group">
+								<label>type</label>
+								<div class="radio">
+									<label> <input type="radio" name="optionsRadios"
+										id="optionsRadios1" value="option1" checked>Gateway
+									</label>
+								</div>
+								<div class="radio">
+									<label> <input type="radio" name="optionsRadios"
+										id="optionsRadios2" value="option2">Node
+									</label>
+								</div>
+
+							</div>
+
+							<button type="submit" class="btn btn-default">Submit</button>
+							<button type="reset" class="btn btn-default">Cancel</button>
+
+						</form>
+
 					</div>
 				</div>
+
+
 				<!-- /.row -->
 
 			</div>
@@ -205,5 +179,4 @@
 
 
 </body>
-
 </html>
