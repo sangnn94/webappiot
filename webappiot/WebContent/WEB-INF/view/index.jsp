@@ -1,8 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html >
-<html lang="en">
+<html>
 <head>
 
 <meta charset="utf-8">
@@ -12,7 +12,7 @@
 <meta name="author" content="">
 
 
-<title>SB Admin - Bootstrap Admin Template</title>
+<title>Home - Statistics Overview</title>
 
 <!-- Bootstrap Core CSS -->
 <link href="<c:url value="/resources/css/bootstrap.min.css" />"
@@ -77,8 +77,7 @@
 					data-toggle="dropdown"><i class="fa fa-user"></i> <b
 						class="caret"></b></a>
 					<ul class="dropdown-menu">
-						<li><a href="#"><i class="fa fa-fw fa-user"></i> Profile</a>
-						</li>
+						<li><a href="#"><i class="fa fa-fw fa-user"></i> Profile</a></li>
 						<li><a href="#"><i class="fa fa-fw fa-envelope"></i>
 								Inbox</a></li>
 						<li><a href="#"><i class="fa fa-fw fa-gear"></i> Settings</a>
@@ -91,40 +90,33 @@
 			<!-- Sidebar Menu Items - These collapse to the responsive navigation menu on small screens -->
 			<div class="collapse navbar-collapse navbar-ex1-collapse">
 				<ul class="nav navbar-nav side-nav">
-					<li class="active"><a href="index.html"><i
+					<li class="active"><a href="/webappiot/"><i
 							class="fa fa-fw fa-dashboard"></i> Overview</a></li>
-					<li><a href="charts.html"><i
-							class="fa fa-fw fa-bar-chart-o"></i> Charts</a></li>
-					<li><a href="tables.html"><i class="fa fa-fw fa-table"></i>
-							Tables</a></li>
-					<li><a href="forms.html"><i class="fa fa-fw fa-edit"></i>
-							Forms</a></li>
-					<li><a href="bootstrap-elements.html"><i
-							class="fa fa-fw fa-desktop"></i> Bootstrap Elements</a></li>
-					<li><a href="bootstrap-grid.html"><i
-							class="fa fa-fw fa-wrench"></i> Bootstrap Grid</a></li>
-					<li><a href="javascript:;" data-toggle="collapse"
-						data-target="#demo"><i class="fa fa-fw fa-arrows-v"></i>
-							Dropdown <i class="fa fa-fw fa-caret-down"></i></a>
-						<ul id="demo" class="collapse">
-							<li><a href="#">Dropdown Item</a></li>
-							<li><a href="#">Dropdown Item</a></li>
-						</ul></li>
+					<li><a href="/webappiot/manage-device"><i
+							class="fa fa-fw fa-edit"></i> Manage Device</a></li>
+					<li><a href="/webappiot/manage-user"><i
+							class="fa fa-fw fa-edit"></i> Manage User</a></li>
+					<li><a href="/webappiot/about"><i class="fa fa-fw fa-user"></i>
+							About</a></li>
 				</ul>
 			</div>
-			<!-- /.navbar-collapse -->
 		</nav>
-
 		<div id="page-wrapper">
 
 			<div class="container-fluid">
-
 				<!-- Page Heading -->
 				<div class="row">
 					<div class="col-lg-12">
 						<h1 class="page-header">Statistics Overview</h1>
+						<ol class="breadcrumb">
+							<li><i class="fa fa-dashboard"></i> <a href="/webappiot/">WebAppIoT</a>
+							</li>
+							<li class="active"><i class="fa fa-edit"></i> Statistics
+								Overview</li>
+						</ol>
 					</div>
 				</div>
+
 				<!-- /.row -->
 				<!-- /.row -->
 
@@ -134,18 +126,20 @@
 							<div class="panel-heading">
 								<div class="row">
 									<div class="col-xs-3">
-										<i class="fa fa-comments fa-5x"></i>
+										<i class="fa fa-tasks fa-5x"></i>
 									</div>
 									<div class="col-xs-9 text-right">
-										<div class="huge">26</div>
-										<div>New Comments!</div>
+										<div>
+											<h3>Statistics</h3>
+										</div>
+										<div>Description</div>
 									</div>
 								</div>
 							</div>
 							<a href="#">
 								<div class="panel-footer">
-									<span class="pull-left">View Details</span> <span
-										class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+									<span class="pull-left">View</span> <span class="pull-right"><i
+										class="fa fa-arrow-circle-right"></i></span>
 									<div class="clearfix"></div>
 								</div>
 							</a>
@@ -156,18 +150,20 @@
 							<div class="panel-heading">
 								<div class="row">
 									<div class="col-xs-3">
-										<i class="fa fa-tasks fa-5x"></i>
+										<i class="fa fa-bar-chart-o fa-5x"></i>
 									</div>
 									<div class="col-xs-9 text-right">
-										<div class="huge">12</div>
-										<div>New Tasks!</div>
+										<div>
+											<h3>Chart</h3>
+										</div>
+										<div>Description</div>
 									</div>
 								</div>
 							</div>
 							<a href="#">
 								<div class="panel-footer">
-									<span class="pull-left">View Details</span> <span
-										class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+									<span class="pull-left">View</span> <span class="pull-right"><i
+										class="fa fa-arrow-circle-right"></i></span>
 									<div class="clearfix"></div>
 								</div>
 							</a>
@@ -178,18 +174,20 @@
 							<div class="panel-heading">
 								<div class="row">
 									<div class="col-xs-3">
-										<i class="fa fa-shopping-cart fa-5x"></i>
+										<i class="fa fa-map-marker fa-5x"></i>
 									</div>
 									<div class="col-xs-9 text-right">
-										<div class="huge">124</div>
-										<div>New Orders!</div>
+										<div>
+											<h3>Maps</h3>
+										</div>
+										<div>Description</div>
 									</div>
 								</div>
 							</div>
 							<a href="#">
 								<div class="panel-footer">
-									<span class="pull-left">View Details</span> <span
-										class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+									<span class="pull-left">View</span> <span class="pull-right"><i
+										class="fa fa-arrow-circle-right"></i></span>
 									<div class="clearfix"></div>
 								</div>
 							</a>
@@ -203,15 +201,17 @@
 										<i class="fa fa-support fa-5x"></i>
 									</div>
 									<div class="col-xs-9 text-right">
-										<div class="huge">13</div>
-										<div>Support Tickets!</div>
+										<div>
+											<h3>Sensor</h3>
+										</div>
+										<div>Description</div>
 									</div>
 								</div>
 							</div>
 							<a href="#">
 								<div class="panel-footer">
-									<span class="pull-left">View Details</span> <span
-										class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+									<span class="pull-left">View</span> <span class="pull-right"><i
+										class="fa fa-arrow-circle-right"></i></span>
 									<div class="clearfix"></div>
 								</div>
 							</a>
@@ -285,6 +285,7 @@
 									<a href="#">View All Transactions <i
 										class="fa fa-arrow-circle-right"></i></a>
 								</div>
+
 							</div>
 						</div>
 					</div>
@@ -301,10 +302,11 @@
 	<!-- /#wrapper -->
 
 	<!-- jQuery -->
-	<script src="js/jquery.js"></script>
+	<script src='<c:url value="/resources/js/jquery.js" />'></script>
 
 	<!-- Bootstrap Core JavaScript -->
-	<script src="js/bootstrap.min.js"></script>
+	<script src='<c:url value="/resources/js/bootstrap.min.js" />'></script>
+
 
 	<!-- Morris Charts JavaScript -->
 	<script

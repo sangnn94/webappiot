@@ -13,7 +13,7 @@ import vn.edu.uit.iot.service.NodeService;
 import vn.edu.uit.iot.service.RecordService;
 
 @Controller
-public class HomeController {
+public class SidebarController {
 	@Autowired
 	private LocationService mLocationService;
 	
@@ -38,6 +38,24 @@ public class HomeController {
 		System.out.println("node "+this.mNodeService.getAll().size());
 		System.out.println("gateway "+this.mGatewayService.getAll().size());
 		System.out.println("record "+this.mRecordService.getAll().size());
+		return mModelAndView;
+	}
+	
+	@RequestMapping(value="/manage-device" , method= RequestMethod.GET)
+	public ModelAndView manageDevice(ModelAndView mModelAndView){
+		mModelAndView = new ModelAndView("managedevice");
+		return mModelAndView;
+	}
+	
+	@RequestMapping(value="/manage-user" , method= RequestMethod.GET)
+	public ModelAndView manageUser(ModelAndView mModelAndView){
+		mModelAndView = new ModelAndView("manageuser");
+		return mModelAndView;
+	}
+	
+	@RequestMapping(value="/about" , method= RequestMethod.GET)
+	public ModelAndView about(ModelAndView mModelAndView){
+		mModelAndView = new ModelAndView("about");
 		return mModelAndView;
 	}
 
