@@ -1,11 +1,15 @@
 package vn.edu.uit.iot.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
+import vn.edu.uit.iot.model.GatewayModel;
+import vn.edu.uit.iot.model.NodeModel;
 import vn.edu.uit.iot.service.DataService;
 import vn.edu.uit.iot.service.GatewayService;
 import vn.edu.uit.iot.service.LocationService;
@@ -41,12 +45,18 @@ public class SidebarController {
 		return mModelAndView;
 	}
 	
+	//Display list device 
 	@RequestMapping(value="/manage-device" , method= RequestMethod.GET)
 	public ModelAndView manageDevice(ModelAndView mModelAndView){
 		mModelAndView = new ModelAndView("managedevice");
+		List<GatewayModel> arrGateway = mGatewayService.getAll();
+		mModelAndView.addObject("listGateway", arrGateway);
+		List<NodeModel> arrNode = mNodeService.getAll();
+		mModelAndView.addObject("listNode", arrNode);
 		return mModelAndView;
 	}
 	
+	//Display list user
 	@RequestMapping(value="/manage-user" , method= RequestMethod.GET)
 	public ModelAndView manageUser(ModelAndView mModelAndView){
 		mModelAndView = new ModelAndView("manageuser");

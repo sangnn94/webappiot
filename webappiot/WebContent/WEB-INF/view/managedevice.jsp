@@ -106,8 +106,10 @@
 						<ol class="breadcrumb">
 							<li><i class="fa fa-dashboard"></i> <a href="/webappiot/">WebAppIoT</a></li>
 							<li class="active"><i class="fa fa-edit"></i> Manage Device</li>
-							<b><a class="navbar-right" style="margin-right: 20px"
-								href="/webappiot/manage-device/add-device">Add Device</a></b>
+							<div class="navbar-right" style="margin-right: 20px">
+								<b><a style="margin-right: 20px"
+									href="/webappiot/manage-device/add-device">Add Gateway</a></b>
+							</div>
 						</ol>
 
 					</div>
@@ -117,84 +119,72 @@
 
 					<div class="row">
 						<div class="col-xs-12 ">
-							<h2>List Devices</h2>
+							<h2>List Gateway</h2>
 							<div class="table-responsive">
-								<table class="table table-bordered table-hover table-striped" >
+								<table class="table table-bordered table-hover table-striped">
 									<thead>
 										<tr>
-											<th>Device</th>
-											<th>Type</th>
+											<th>Device ID</th>
 											<th>Device Manager</th>
 											<th>Area</th>
 											<th>Address</th>
-											<th>Created Date</th>
+											<th>Child Number</th>
+											<th>View Maps</th>
+											<th>Manage</th>
 										</tr>
 									</thead>
 									<tbody>
-										<tr class="active">
-											<td>/index.html</td>
-											<td>1265</td>
-											<td>32.3%</td>
-											<td>Khu phố 6, P. Linh Trung Quận Thủ Đức, Tp. Hồ Chí Minh</td>
-											<td>Khu phố 6, P. Linh Trung Quận Thủ Đức, Tp. Hồ Chí
-												Minh</td>
-											<td>32.3%</td>
+										<c:forEach items="${listGateway}" var="gateway">
+											<tr>
+												<td>${gateway.id}</td>
+												<td>#unknow</td>
+												<td>${gateway.locationID}</td>
+												<td>${gateway.address}</td>
+												<td>${gateway.numNode}</td>
+												<td><a href="/webappiot/manage-device/">View <i
+														class="fa fa-arrow-circle-right"></i></a></td>
+												<td><a href="/webappiot/manage-device/add-device">Delete</a>
+													<b>|</b> <a href="/webappiot/manage-device/add-device">Add
+														Node</a></td>
+											</tr>
+										</c:forEach>
+									</tbody>
+								</table>
+							</div>
+						</div>
+					</div>
 
-										</tr>
-										<tr class="success">
-											<td>/about.html</td>
-											<td>261</td>
-											<td>33.3%</td>
-											<td>$234.12</td>
-											<td>Khu phố 6, P. Linh Trung Quận Thủ Đức, Tp. Hồ Chí
-												Minh</td>
-											<td>32.3%</td>
-										</tr>
-										<tr class="warning">
-											<td>/sales.html</td>
-											<td>665</td>
-											<td>21.3%</td>
-											<td>$16.34</td>
-											<td>Khu phố 6, P. Linh Trung Quận Thủ Đức, Tp. Hồ Chí
-												Minh</td>
-											<td>32.3%</td>
-										</tr>
-										<tr class="danger">
-											<td>/blog.html</td>
-											<td>9516</td>
-											<td>89.3%</td>
-											<td>$1644.43</td>
-											<td>Khu phố 6, P. Linh Trung Quận Thủ Đức, Tp. Hồ Chí
-												Minh</td>
-											<td>32.3%</td>
-										</tr>
+					<!-- Row -->
+					<div class="row">
+						<div class="col-xs-12 ">
+							<h2>List Node</h2>
+							<div class="table-responsive">
+								<table class="table table-bordered table-hover table-striped">
+									<thead>
 										<tr>
-											<td>/404.html</td>
-											<td>23</td>
-											<td>34.3%</td>
-											<td>$23.52</td>
-											<td>Khu phố 6, P. Linh Trung Quận Thủ Đức, Tp. Hồ Chí
-												Minh</td>
-											<td>32.3%</td>
+											<th>Device ID</th>
+											<th>Gateway ID</th>
+											<th>Device Manager</th>
+											<th>Area</th>
+											<th>Address</th>
+											<th>View Maps</th>
+											<th>Manage</th>
 										</tr>
-										<tr>
-											<td>/services.html</td>
-											<td>421</td>
-											<td>60.3%</td>
-											<td>$724.32</td>
-											<td>Khu phố 6, P. Linh Trung Quận Thủ Đức, Tp. Hồ Chí
-												Minh</td>
-											<td>32.3%</td>
-										</tr>
-										<tr>
-											<td>/blog/post.html</td>
-											<td>1233</td>
-											<td>93.2%</td>
-											<td>$126.34</td>
-											<td>Khu phố 6, P. Linh Trung Quận Thủ Đức, Tp. Hồ Chí
-												Minh</td>
-											<td>32.3%</td>
-										</tr>
+									</thead>
+									<tbody>
+										<c:forEach items="${listNode}" var="node">
+											<tr>
+												<td>${node.id}</td>
+												<td>${node.gatewayID}</td>
+												<td>${node.userID}</td>
+												<td>${node.locationID}</td>
+												<td>${node.address}</td>
+												<td><a href="/webappiot/manage-device/">View <i
+														class="fa fa-arrow-circle-right"></i></a></td>
+												<td><a href="/webappiot/manage-device/add-device">Edit</a>
+													<b>|</b> <a href="/webappiot/manage-device/add-device">Delete</a></td>
+											</tr>
+										</c:forEach>
 									</tbody>
 								</table>
 							</div>
