@@ -2,6 +2,7 @@ package vn.edu.uit.iot.controller;
 
 import javax.validation.Valid;
 
+import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -15,6 +16,8 @@ import vn.edu.uit.iot.service.UserService;
 
 @Controller
 public class LoginController {
+	private static Logger logger = Logger.getLogger(LoginController.class);
+
 	@Autowired
 	private UserService userService;
 
@@ -25,6 +28,7 @@ public class LoginController {
 	 */
 	@RequestMapping("/login")
 	public String showLogin() {
+		logger.info("Showing login page....");
 		return "login";
 	}
 
