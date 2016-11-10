@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -13,16 +14,12 @@
 <meta name="author" content="">
 
 <title>Manage Device</title>
-
 <!-- Bootstrap Core CSS -->
 <link href="<c:url value="/resources/css/bootstrap.min.css" />"
 	rel="stylesheet">
-
 <!-- Custom CSS -->
 <link href='<c:url value="/resources/css/sb-admin.css" />'
 	rel="stylesheet">
-
-
 <!-- Custom Fonts -->
 <link
 	href='<c:url value="/resources/font-awesome/css/font-awesome.min.css" />'
@@ -85,9 +82,9 @@
 				<ul class="nav navbar-nav side-nav">
 					<li><a href="/webappiot/"><i class="fa fa-fw fa-dashboard"></i>
 							Overview</a></li>
-					<li><a href="/webappiot/manage-device"><i
+					<li class="active"><a href="/webappiot/manage-device"><i
 							class="fa fa-fw fa-edit"></i> Manage Device</a></li>
-					<li class="active"><a href="/webappiot/manage-user"><i
+					<li><a href="/webappiot/manage-user"><i
 							class="fa fa-fw fa-edit"></i> Manage User</a></li>
 					<li><a href="/webappiot/about"><i class="fa fa-fw fa-user"></i>
 							About</a></li>
@@ -102,97 +99,51 @@
 				<!-- Page Heading -->
 				<div class="row">
 					<div class="col-lg-12">
-						<h1 class="page-header">Create new User</h1>
+						<h1 class="page-header">Add new Device</h1>
 						<ol class="breadcrumb">
 							<li><i class="fa fa-dashboard"></i> <a href="/webappiot/">WebAppIoT</a>
 							</li>
-							<li><i class="fa fa-dashboard"></i> <a
-								href="/webappiot/manage-user">Manage User</a></li>
-							<li class="active"><i class="fa fa-edit"></i> Create new
-								User</li>
+							<li><i class="fa fa-dashboard"></i> <a href="/webappiot/manage-device">Manage device</a>
+							</li>
+							<li class="active"><i class="fa fa-edit"></i>Add new Device</li>
 						</ol>
 					</div>
 				</div>
 				<!-- /.row -->
-
 				<div class="row">
 					<div class="col-lg-6">
 
 						<form role="form">
+							<div>
+								<label>Location</label> <select class="form-control">
+									<option>1</option>
+									<option>2</option>
+									<option>3</option>
+									<option>4</option>
+									<option>5</option>
+									<option>6</option>
+									<option>7</option>
+									<option>8</option>
+									<option>9</option>
+									<option>10</option>
+									<option>11</option>
+									<option>12</option>
+								</select>
 
-							<div class="form-group">
-								<label>Choose User ID</label> <input class="form-control"
-									placeholder="Enter user ID">
-								<p class="help-block">Example</p>
-							</div>
-							<div class="form-group">
-								<label>Create password</label> <input class="form-control"
-									placeholder="Enter Password">
-							</div>
-							<div class="form-group">
-								<label>Confirm password</label> <input class="form-control"
-									placeholder="Confirm Password">
-							</div>
-
-							<div class="form-group">
-								<label>User Name</label> <input class="form-control"
-									placeholder="Enter full name">
-							</div>
-							<div class="form-group"">
-								<label>Birthday</label>
-								<div style="display: block;">
-									<input class="form-control"
-										style="width: 24%; display: inline;" placeholder="Day">
-									<select class="form-control"
-										style="width: 50%; display: inline;">
-										<option>1</option>
-										<option>2</option>
-										<option>3</option>
-										<option>4</option>
-										<option>5</option>
-										<option>6</option>
-										<option>7</option>
-										<option>8</option>
-										<option>9</option>
-										<option>10</option>
-										<option>11</option>
-										<option>12</option>
-									</select> <input class="form-control"
-										style="width: 24%; display: inline;" placeholder="Year">
-								</div>
-							</div>
-							<div class="form-group">
-								<label>User Email</label> <input class="form-control"
-									placeholder="Enter user email">
 							</div>
 
 							<div class="form-group">
-								<label>User Address</label> <input class="form-control"
+								<label>Address</label> <input class="form-control"
 									placeholder="Enter user address">
 							</div>
-
-							<div class="form-group">
-								<label>Permission</label>
-								<div class="radio">
-									<label> <input type="radio" name="optionsRadios"
-										id="optionsRadios1" value="option1" checked>Admin
-									</label>
-								</div>
-								<div class="radio">
-									<label> <input type="radio" name="optionsRadios"
-										id="optionsRadios2" value="option2">User
-									</label>
-								</div>
-
-							</div>
-
 							<button type="submit" class="btn btn-default">Submit</button>
 							<button type="reset" class="btn btn-default">Cancel</button>
-
 						</form>
 
 					</div>
 				</div>
+
+
 				<!-- /.row -->
 
 			</div>
@@ -212,5 +163,4 @@
 
 
 </body>
-
 </html>

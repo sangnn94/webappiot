@@ -81,18 +81,7 @@
 					</ul></li>
 			</ul>
 			<!-- Sidebar Menu Items - These collapse to the responsive navigation menu on small screens -->
-			<div class="collapse navbar-collapse navbar-ex1-collapse">
-				<ul class="nav navbar-nav side-nav">
-					<li ><a href="/webappiot/"><i
-							class="fa fa-fw fa-dashboard"></i> Overview</a></li>
-					<li><a href="/webappiot/manage-device"><i
-							class="fa fa-fw fa-edit"></i> Manage Device</a></li>
-					<li class="active"><a href="/webappiot/manage-user"><i class="fa fa-fw fa-edit"></i>
-							Manage User</a></li>
-					<li><a href="/webappiot/about"><i class="fa fa-fw fa-user"></i>
-							About</a></li>
-				</ul>
-			</div>
+			<%@ include file="sidebar.html"%>
 		</nav>
 
 		<div id="page-wrapper">
@@ -120,7 +109,7 @@
 						<div class="col-xs-12 ">
 							<h2>List Users</h2>
 							<div class="table-responsive">
-								<table class="table table-bordered table-hover table-striped" >
+								<table class="table table-bordered table-hover table-striped">
 									<thead>
 										<tr>
 											<th>Username</th>
@@ -202,7 +191,7 @@
 
 	<!-- Bootstrap Core JavaScript -->
 	<script src='<c:url value="/resources/js/bootstrap.min.js" />'></script>
-
+	<script src='<c:url value="/resources/js/sidebar.js" />'></script>
 
 </body>
 
