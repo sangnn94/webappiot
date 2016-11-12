@@ -62,5 +62,5 @@ public class DataDAOImpl implements DataDAO{
 		ts.commit();
 		return arrData;
 	}
-
+	
 }

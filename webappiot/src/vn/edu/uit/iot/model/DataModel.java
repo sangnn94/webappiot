@@ -10,12 +10,12 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "DATA")
 public class DataModel {
-	
+
 	@Id
-	@GeneratedValue(strategy= GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name = "ID")
 	private int id;
-	
+
 	@Column(name = "NID")
 	private int nodeID;
 
@@ -26,10 +26,8 @@ public class DataModel {
 	private String date;
 
 	public DataModel() {
-		super();
+
 	}
-	
-	
 
 	public int getId() {
 		return id;
@@ -62,8 +60,10 @@ public class DataModel {
 	public void setDate(String date) {
 		this.date = date;
 	}
-	
 
-	
+	@Override
+	public String toString() {
+		return "DataModel [id=" + id + ", nodeID=" + nodeID + ", value=" + value + ", date=" + date + "]";
+	}
 
 }
