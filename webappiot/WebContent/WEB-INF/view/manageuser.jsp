@@ -93,11 +93,11 @@
 					<div class="col-lg-12">
 						<h1 class="page-header">Manage User</h1>
 						<ol class="breadcrumb">
-							<li><i class="fa fa-dashboard"></i> <a href="/webappiot/">WebAppIoT</a>
+							<li><i class="fa fa-dashboard"></i> <a href="${pageContext.request.contextPath}/">WebAppIoT</a>
 							</li>
 							<li class="active"><i class="fa fa-edit"></i> Manage User</li>
 							<b><a class="navbar-right" style="margin-right: 20px"
-								href="/webappiot/manage-user/add-user">Add User</a></b>
+								href="${pageContext.request.contextPath}/manage-user/add-user">Add User</a></b>
 						</ol>
 					</div>
 				</div>

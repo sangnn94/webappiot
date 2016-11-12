@@ -29,7 +29,7 @@ public class ManageController {
 
 	@RequestMapping(value="/manage-user/add-user" , method= RequestMethod.GET)
 	public ModelAndView addUser(ModelAndView mModelAndView, Model model){
-		mModelAndView = new ModelAndView("newuser");
+		mModelAndView = new ModelAndView("newaccount");
 		return mModelAndView;
 	}
 }

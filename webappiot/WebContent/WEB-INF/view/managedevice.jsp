@@ -93,11 +93,11 @@
 					<div class="col-lg-12">
 						<h1 class="page-header">Manage Device</h1>
 						<ol class="breadcrumb">
-							<li><i class="fa fa-dashboard"></i> <a href="/webappiot/">WebAppIoT</a></li>
+							<li><i class="fa fa-dashboard"></i> <a href="${pageContext.request.contextPath}/">WebAppIoT</a></li>
 							<li class="active"><i class="fa fa-edit"></i> Manage Device</li>
 							<div class="navbar-right" style="margin-right: 20px">
 								<b><a style="margin-right: 20px"
-									href="/webappiot/manage-device/add-device">Add Gateway</a></b>
+									href="${pageContext.request.contextPath}/manage-device/add-device">Add Gateway</a></b>
 							</div>
 						</ol>
 
@@ -132,8 +132,8 @@
 												<td>${gateway.numNode}</td>
 												<td><a href="/webappiot/manage-device/">View <i
 														class="fa fa-arrow-circle-right"></i></a></td>
-												<td><a href="/webappiot/manage-device/add-device">Delete</a>
-													<b>|</b> <a href="/webappiot/manage-device/add-device">Add
+												<td><a href="${pageContext.request.contextPath}/manage-device/add-device">Delete</a>
+													<b>|</b> <a href="${pageContext.request.contextPath}/manage-device/add-device">Add
 														Node</a></td>
 											</tr>
 										</c:forEach>
@@ -168,10 +168,10 @@
 												<td>${node.userID}</td>
 												<td>${node.locationID}</td>
 												<td>${node.address}</td>
-												<td><a href="/webappiot/manage-device/">View <i
+												<td><a href="${pageContext.request.contextPath}/manage-device/">View <i
 														class="fa fa-arrow-circle-right"></i></a></td>
-												<td><a href="/webappiot/manage-device/add-device">Edit</a>
-													<b>|</b> <a href="/webappiot/manage-device/add-device">Delete</a></td>
+												<td><a href="${pageContext.request.contextPath}/manage-device/add-device">Edit</a>
+													<b>|</b> <a href="${pageContext.request.contextPath}/manage-device/add-device">Delete</a></td>
 											</tr>
 										</c:forEach>
 									</tbody>
