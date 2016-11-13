@@ -35,7 +35,7 @@ public class SidebarController {
 	
 	
 	@RequestMapping(value="/" , method= RequestMethod.GET)
-	public ModelAndView home(ModelAndView mModelAndView){
+	public ModelAndView getHome(ModelAndView mModelAndView){
 		mModelAndView = new ModelAndView("index");
 		System.out.println("location "+this.mLocationService.getAll().size());
 		System.out.println("data "+this.mDataservice.getAll().size());
@@ -47,7 +47,7 @@ public class SidebarController {
 	
 	//Display list device 
 	@RequestMapping(value="/manage-device" , method= RequestMethod.GET)
-	public ModelAndView manageDevice(ModelAndView mModelAndView){
+	public ModelAndView getManageDevice(ModelAndView mModelAndView){
 		mModelAndView = new ModelAndView("managedevice");
 		List<GatewayModel> arrGateway = mGatewayService.getAll();
 		mModelAndView.addObject("listGateway", arrGateway);
@@ -58,14 +58,20 @@ public class SidebarController {
 	
 	//Display list user
 	@RequestMapping(value="/manage-user" , method= RequestMethod.GET)
-	public ModelAndView manageUser(ModelAndView mModelAndView){
+	public ModelAndView getManageUser(ModelAndView mModelAndView){
 		mModelAndView = new ModelAndView("manageuser");
 		return mModelAndView;
 	}
 	
 	@RequestMapping(value="/about" , method= RequestMethod.GET)
-	public ModelAndView about(ModelAndView mModelAndView){
+	public ModelAndView getAbout(ModelAndView mModelAndView){
 		mModelAndView = new ModelAndView("about");
+		return mModelAndView;
+	}
+	
+	@RequestMapping(value="/report" , method= RequestMethod.GET)
+	public ModelAndView getReport(ModelAndView mModelAndView){
+		mModelAndView = new ModelAndView("report");
 		return mModelAndView;
 	}
 

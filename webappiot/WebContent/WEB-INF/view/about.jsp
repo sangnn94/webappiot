@@ -12,7 +12,7 @@
 <meta name="description" content="">
 <meta name="author" content="">
 
-<title>Manage Device</title>
+<title>About</title>
 
 <!-- Bootstrap Core CSS -->
 <link href="<c:url value="/resources/css/bootstrap.min.css" />"
@@ -43,7 +43,7 @@
 						class="icon-bar"></span> <span class="icon-bar"></span> <span
 						class="icon-bar"></span>
 				</button>
-				<a class="navbar-brand" href="/webappiot/">Administrator</a>
+				<a class="navbar-brand" href="${pageContext.request.contextPath}/">Administrator</a>
 			</div>
 			<!-- 	Top Menu Items -->
 			<ul class="nav navbar-right top-nav">
@@ -94,7 +94,7 @@
 					<div class="col-lg-12">
 						<h1 class="page-header">About Us</h1>
 						<ol class="breadcrumb">
-							<li><i class="fa fa-dashboard"></i> <a href="/webappiot/">WebAppIoT</a>
+							<li><i class="fa fa-dashboard"></i> <a href="/${pageContext.request.contextPath}/">WebAppIoT</a>
 							</li>
 							<li class="active"><i class="fa fa-edit"></i> About</li>
 						</ol>

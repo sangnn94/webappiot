@@ -12,7 +12,7 @@
 <meta name="description" content="">
 <meta name="author" content="">
 
-<title>Manage Device</title>
+<title>Report</title>
 
 <!-- Bootstrap Core CSS -->
 <link href="<c:url value="/resources/css/bootstrap.min.css" />"
@@ -82,109 +82,28 @@
 			</ul>
 			<!-- Sidebar Menu Items - These collapse to the responsive navigation menu on small screens -->
 			<%@ include file="sidebar.html"%>
+			<!-- content -->
 		</nav>
-		<!-- content -->
-		<div id="page-wrapper">
 
+		<div id="page-wrapper">
+			<!-- /#page-wrapper -->
 			<div class="container-fluid">
 
 				<!-- Page Heading -->
 				<div class="row">
 					<div class="col-lg-12">
-						<h1 class="page-header">Manage Device</h1>
+						<h1 class="page-header">About Us</h1>
 						<ol class="breadcrumb">
-							<li><i class="fa fa-dashboard"></i> <a href="${pageContext.request.contextPath}/">WebAppIoT</a></li>
-							<li class="active"><i class="fa fa-edit"></i> Manage Device</li>
-							<div class="navbar-right" style="margin-right: 20px">
-								<b><a style="margin-right: 20px"
-									href="${pageContext.request.contextPath}/manage-device/add-device">Add Gateway</a></b>
-							</div>
+							<li><i class="fa fa-dashboard"></i> <a href="${pageContext.request.contextPath}/">WebAppIoT</a>
+							</li>
+							<li class="active"><i class="fa fa-edit"></i> About</li>
 						</ol>
-
 					</div>
 				</div>
-				<!-- /.row -->
-				<div id="page-wrapper">
 
-					<div class="row">
-						<div class="col-xs-12 ">
-							<h2>List Gateway</h2>
-							<div class="table-responsive">
-								<table class="table table-bordered table-hover table-striped">
-									<thead>
-										<tr>
-											<th>Device ID</th>
-											<th>Device Manager</th>
-											<th>Area</th>
-											<th>Address</th>
-											<th>Child Number</th>
-											<th>View Maps</th>
-											<th>Manage</th>
-										</tr>
-									</thead>
-									<tbody>
-										<c:forEach items="${listGateway}" var="gateway">
-											<tr>
-												<td>${gateway.id}</td>
-												<td>#unknow</td>
-												<td>${gateway.locationID}</td>
-												<td>${gateway.address}</td>
-												<td>${gateway.numNode}</td>
-												<td><a href="${pageContext.request.contextPath}/manage-device/">View <i
-														class="fa fa-arrow-circle-right"></i></a></td>
-												<td><a href="${pageContext.request.contextPath}/manage-device/add-device">Delete</a>
-													<b>|</b> <a href="${pageContext.request.contextPath}/manage-device/add-device">Add
-														Node</a></td>
-											</tr>
-										</c:forEach>
-									</tbody>
-								</table>
-							</div>
-						</div>
-					</div>
-
-					<!-- Row -->
-					<div class="row">
-						<div class="col-xs-12 ">
-							<h2>List Node</h2>
-							<div class="table-responsive">
-								<table class="table table-bordered table-hover table-striped">
-									<thead>
-										<tr>
-											<th>Device ID</th>
-											<th>Gateway ID</th>
-											<th>Device Manager</th>
-											<th>Area</th>
-											<th>Address</th>
-											<th>View Maps</th>
-											<th>Manage</th>
-										</tr>
-									</thead>
-									<tbody>
-										<c:forEach items="${listNode}" var="node">
-											<tr>
-												<td>${node.id}</td>
-												<td>${node.gatewayID}</td>
-												<td>${node.userID}</td>
-												<td>${node.locationID}</td>
-												<td>${node.address}</td>
-												<td><a href="${pageContext.request.contextPath}/manage-device/">View <i
-														class="fa fa-arrow-circle-right"></i></a></td>
-												<td><a href="${pageContext.request.contextPath}/manage-device/add-device">Edit</a>
-													<b>|</b> <a href="${pageContext.request.contextPath}/manage-device/add-device">Delete</a></td>
-											</tr>
-										</c:forEach>
-									</tbody>
-								</table>
-							</div>
-						</div>
-					</div>
-				</div>
 			</div>
 
 		</div>
-		<!-- /#page-wrapper -->
-
 	</div>
 	<!-- /#wrapper -->
 
@@ -193,6 +112,7 @@
 
 	<!-- Bootstrap Core JavaScript -->
 	<script src='<c:url value="/resources/js/bootstrap.min.js" />'></script>
+
 	<script src='<c:url value="/resources/js/sidebar.js" />'></script>
 </body>
 
