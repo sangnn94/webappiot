@@ -132,9 +132,8 @@
 												<td>${gateway.numNode}</td>
 												<td><a href="${pageContext.request.contextPath}/manage-device/">View <i
 														class="fa fa-arrow-circle-right"></i></a></td>
-												<td><a href="${pageContext.request.contextPath}/manage-device/add-device">Delete</a>
-													<b>|</b> <a href="${pageContext.request.contextPath}/manage-device/add-device">Add
-														Node</a></td>
+												<td><a href="${pageContext.request.contextPath}/manage-device/add-device" class="fa fa-plus-circle"></a>
+													<b>|</b> <a href="${pageContext.request.contextPath}/manage-device/add-device" class="fa fa-trash"></a></td>
 											</tr>
 										</c:forEach>
 									</tbody>
@@ -170,8 +169,8 @@
 												<td>${node.address}</td>
 												<td><a href="${pageContext.request.contextPath}/manage-device/">View <i
 														class="fa fa-arrow-circle-right"></i></a></td>
-												<td><a href="${pageContext.request.contextPath}/manage-device/add-device">Edit</a>
-													<b>|</b> <a href="${pageContext.request.contextPath}/manage-device/add-device">Delete</a></td>
+												<td><a href="${pageContext.request.contextPath}/manage-device/add-device" class="fa fa-gear"></a>
+													<b>|</b> <a href="${pageContext.request.contextPath}/manage-device/add-device" class="fa fa-trash"></a></td>
 											</tr>
 										</c:forEach>
 									</tbody>

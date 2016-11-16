@@ -100,7 +100,7 @@
 					<div class="col-lg-12">
 						<h1 class="page-header">Statistics Overview</h1>
 						<ol class="breadcrumb">
-							<li><i class="fa fa-dashboard"></i> <a href="/webappiot/">WebAppIoT</a>
+							<li><i class="fa fa-dashboard"></i> <a href="${pageContext.request.contextPath}/">WebAppIoT</a>
 							</li>
 							<li class="active"><i class="fa fa-edit"></i> Statistics
 								Overview</li>

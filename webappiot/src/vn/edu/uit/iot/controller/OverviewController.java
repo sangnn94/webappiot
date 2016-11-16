@@ -9,8 +9,6 @@ import org.springframework.web.servlet.ModelAndView;
 
 @Controller
 public class OverviewController {
-
-
 	
 	@RequestMapping(value="/overview/maps", method = RequestMethod.GET)
 	public ModelAndView getMaps(ModelAndView mModelAndView, ModelMap mModelMap){
