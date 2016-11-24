@@ -30,7 +30,7 @@
 	href='<c:url value="/resources/font-awesome/css/font-awesome.min.css" />'
 	rel="stylesheet" type="text/css">
 </head>
-<body  onload='document.f.username.focus();'>
+<body onload='document.f.username.focus();'>
 	<!-- login form -->
 
 	<div class="container">
@@ -46,7 +46,7 @@
 				<hr class="colorgraph">
 				<br> <input type="text" class="form-control" type='text'
 					name='username' value='' placeholder="Username" /> <input
-					type="password" class="form-control" name="username"
+					type="password" class="form-control" name="password"
 					placeholder="Password" />
 
 				<button class="btn btn-lg btn-primary btn-block" name="submit"
