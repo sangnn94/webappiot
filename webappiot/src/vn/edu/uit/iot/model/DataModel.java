@@ -12,12 +12,11 @@ import javax.persistence.Table;
 public class DataModel {
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name = "ID")
-	private int id;
+	private String id;
 
 	@Column(name = "NID")
-	private int nodeID;
+	private String nodeID;
 
 	@Column(name = "VALUE")
 	private String value;
@@ -29,19 +28,19 @@ public class DataModel {
 
 	}
 
-	public int getId() {
+	public String getId() {
 		return id;
 	}
 
-	public void setId(int id) {
+	public void setId(String id) {
 		this.id = id;
 	}
 
-	public int getNodeID() {
+	public String getNodeID() {
 		return nodeID;
 	}
 
-	public void setNodeID(int nodeID) {
+	public void setNodeID(String nodeID) {
 		this.nodeID = nodeID;
 	}
 

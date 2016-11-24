@@ -11,7 +11,7 @@ public class NodeModel {
 
 	@Id
 	@Column(name = "ID")
-	private int id;
+	private String id;
 
 	@Column(name = "GWID")
 	private int gatewayID;
@@ -29,7 +29,7 @@ public class NodeModel {
 		super();
 	}
 
-	public NodeModel(int id, int gatewayID, int locationID, int userID, String address) {
+	public NodeModel(String id, int gatewayID, int locationID, int userID, String address) {
 		super();
 		this.id = id;
 		this.gatewayID = gatewayID;
@@ -38,11 +38,11 @@ public class NodeModel {
 		this.address = address;
 	}
 
-	public int getId() {
+	public String getId() {
 		return id;
 	}
 
-	public void setId(int id) {
+	public void setId(String id) {
 		this.id = id;
 	}
 

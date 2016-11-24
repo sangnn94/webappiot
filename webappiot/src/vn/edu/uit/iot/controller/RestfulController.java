@@ -12,8 +12,8 @@ import vn.edu.uit.iot.model.DataModel;
 @RestController
 public class RestfulController {
 	@RequestMapping(value = "/postData", method = RequestMethod.POST)
-	public ResponseEntity<Integer> postData(@RequestBody DataModel data) {
-		System.out.println(data);
-		return new ResponseEntity<Integer>(data.getId(), HttpStatus.OK);
+	public ResponseEntity<String> postData(@RequestBody DataModel data) {
+		System.out.println(data.getId());
+		return new ResponseEntity<String>(data.getId(), HttpStatus.OK);
 	}
 }
