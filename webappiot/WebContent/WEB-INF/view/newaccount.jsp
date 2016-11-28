@@ -2,51 +2,73 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="sf" uri="http://www.springframework.org/tags/form"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html>
+<!DOCTYPE html >
+<html lang="en">
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="">
+<meta name="author" content="">
+<title>Login Page</title>
+
+<!-- Bootstrap Core CSS -->
+<link href="<c:url value="/resources/css/bootstrap.css" />"
+	rel="stylesheet">
+
+<link href="<c:url value="/resources/css/bootstrap.min.css" />"
+	rel="stylesheet">
+
+<link href="<c:url value="/resources/css/login.css" />" rel="stylesheet">
+
+<!-- Custom CSS -->
+<link href='<c:url value="/resources/css/sb-admin.css" />'
+	rel="stylesheet">
+
+<!-- Custom Fonts -->
+<link
+	href='<c:url value="/resources/font-awesome/css/font-awesome.min.css" />'
+	rel="stylesheet" type="text/css">
+<c:url var="createAccount" value="/createaccout"></c:url>
 </head>
 <body>
-	<h2>Create new account</h2>
-	<sf:form id="details" method="post"
-		action="${pageContext.request.contextPath}/createaccount"
-		modelAttribute="user">
-		<table>
-			<tr>
-				<td class="label">Username:</td>
-				<td><sf:input name="username" path="username" type="text" /><br>
-					<div class="error">
-						<sf:errors path="username"></sf:errors>
-					</div></td>
-			</tr>
-			<tr>
-				<td class="label">Email:</td>
-				<td><sf:input name="email" path="email" type="text" /> <br>
-					<div class="error">
-						<sf:errors path="email"></sf:errors>
-					</div></td>
-			</tr>
-			<tr>
-				<td class="label">Password:</td>
-				<td><sf:input id="password" name="password" path="password"
-						type="password" /> <br>
-					<div class="error">
-						<sf:errors path="password"></sf:errors>
-					</div></td>
-			</tr>
-			<tr>
-				<td class="label">Confirm Password:</td>
-				<td><input id="confirmpass" name="confirmpass" type="password" />
-					<div id="matchpass"></div></td>
-			</tr>
-			<tr>
-				<td class="label"></td>
-				<td><input value="Register" type="submit" /></td>
-			</tr>
-		</table>
-	</sf:form>
+	<div class="container">
+		<div class="wrapper">
+
+
+			<sf:errors path="user.*" ></sf:errors>
+			<sf:form id="details" method="post" action="${createAccount }"
+				modelAttribute="user" class="form-signin">
+				<h3 class="form-signin-heading">Create a new account</h3>
+
+				<hr class="colorgraph">
+
+				<sf:input name="username" path="username" type="text"
+					class="form-control" placeholder="Username" />
+					<br/>
+				<sf:input name="email" path="email" type="text" class="form-control"
+					placeholder="Email" />
+					<br/>
+				<sf:input id="password" name="password" path="password"
+					type="password" class="form-control" placeholder="Password" />
+				<input id="confirmpass" name="confirmpass" type="password"
+					class="form-control" placeholder="Confirm password" />
+
+				<button class="btn btn-lg btn-primary btn-block" name="submit"
+					value="Login" type="submit">Sign up</button>
+			</sf:form>
+
+		</div>
+
+	</div>
+	<!-- jQuery -->
+	<script src='<c:url value="/resources/js/jquery.js" />'></script>
+
+	<!-- Bootstrap Core JavaScript -->
+	<script src='<c:url value="/resources/js/bootstrap.min.js" />'></script>
+
 </body>
+
 </html>

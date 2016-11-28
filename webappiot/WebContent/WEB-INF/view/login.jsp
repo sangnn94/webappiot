@@ -24,7 +24,8 @@
 <link href='<c:url value="/resources/css/sb-admin.css" />'
 	rel="stylesheet">
 
-
+<c:url var="newAccount" value="/newaccount">
+</c:url>
 <!-- Custom Fonts -->
 <link
 	href='<c:url value="/resources/font-awesome/css/font-awesome.min.css" />'
@@ -48,9 +49,9 @@
 					name='username' value='' placeholder="Username" /> <input
 					type="password" class="form-control" name="password"
 					placeholder="Password" />
-
 				<button class="btn btn-lg btn-primary btn-block" name="submit"
 					value="Login" type="submit">Login</button>
+				<a href="${newAccount }">Create a new account</a>
 			</form>
 		</div>
 	</div>

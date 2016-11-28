@@ -29,7 +29,6 @@
 <link href='<c:url value="/resources/css/plugins/morris.css" />'
 	rel="stylesheet">
 
-
 <!-- Custom Fonts -->
 <link
 	href='<c:url value="/resources/font-awesome/css/font-awesome.min.css" />'
@@ -37,6 +36,7 @@
 
 <!-- jQuery -->
 <script src='<c:url value="/resources/js/jquery.js" />'></script>
+</head>
 <body>
 	<div id="wrapper">
 
