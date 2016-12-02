@@ -40,8 +40,12 @@ void getData(){
   mV = mV / (float) samples;
   ratioRsRo = CalcRsFromVo(mV) / Ro_clean_air_factor;
   coPpm = GetCOPpmForRatioRsRo(ratioRsRo);
-  Serial.println(coPpm);
-  zigbeeSerial.write(coPpm);                                                                                                    
+  char result[] = ""; // Buffer big enough for 7-character float
+  dtostrf(coPpm, 6, 2, result);
+  char deviceId[]= "id";
+  zigbeeSerial.write(deviceId);     
+  zigbeeSerial.write(result);                                                                                            
+  
 }
 
 float CalcRsFromVo(float Vo) {
