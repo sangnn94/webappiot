@@ -44,8 +44,10 @@
 				</c:if>
 
 				<hr class="colorgraph">
-				<br> <input type="text" class="form-control" type='text'
-					name='username' value='' placeholder="Username" /> <input
+				<br> 
+				<input type="text" class="form-control" type='text'
+					name='username' value='' placeholder="Username" /> 
+				<input
 					type="password" class="form-control" name="password"
 					placeholder="Password" />
 

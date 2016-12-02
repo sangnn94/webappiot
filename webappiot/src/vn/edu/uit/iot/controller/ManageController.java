@@ -20,9 +20,9 @@ public class ManageController {
 	
 	@RequestMapping(value="/manage-device/add-device" , method= RequestMethod.GET)
 	public ModelAndView addDevice(ModelAndView mModelAndView,Model model){
-		mModelAndView = new ModelAndView("newdevice");
-		model.addAttribute("add-gateway", new GatewayModel());
-		model.addAttribute("add-node", new NodeModel());
+		mModelAndView = new ModelAndView("newgateway");
+//		model.addAttribute("add-gateway", new GatewayModel());
+//		model.addAttribute("add-node", new NodeModel());
 		return mModelAndView;
 	}
 	
