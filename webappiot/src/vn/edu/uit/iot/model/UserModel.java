@@ -36,6 +36,9 @@ public class UserModel {
 	@Column(name = "PERMISSION")
 	private String permission;
 
+	@Column(name = "ENABLED")
+	private boolean enabled;
+
 	public UserModel() {
 		// TODO Auto-generated constructor stub
 	}
@@ -102,6 +105,14 @@ public class UserModel {
 		result = prime * result + ((permission == null) ? 0 : permission.hashCode());
 		result = prime * result + ((username == null) ? 0 : username.hashCode());
 		return result;
+	}
+
+	public boolean isEnabled() {
+		return enabled;
+	}
+
+	public void setEnabled(boolean enabled) {
+		this.enabled = enabled;
 	}
 
 	@Override

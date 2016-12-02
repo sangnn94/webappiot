@@ -1,38 +1,60 @@
 package vn.edu.uit.iot.model;
 
+import java.util.Date;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.PrePersist;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
+
+import org.springframework.format.annotation.DateTimeFormat;
 
 @Entity
 @Table(name = "DATA")
 public class DataModel {
 
 	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name = "ID")
-	private String id;
+	private int id;
 
 	@Column(name = "NID")
 	private String nodeID;
 
-	@Column(name = "VALUE")
+	@Column(name = "VALUE", length = 500)
 	private String value;
 
 	@Column(name = "DATE")
-	private String date;
+	@Temporal(TemporalType.TIMESTAMP)
+	@DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
+	private Date date;
 
 	public DataModel() {
 
 	}
 
-	public String getId() {
+	public DataModel(String nodeID, String value) {
+		this.nodeID = nodeID;
+		this.value = value;
+	}
+
+	@PrePersist
+	protected void onCreate() {
+		if (date == null) {
+			date = new Date();
+		}
+	}
+
+	public int getId() {
 		return id;
 	}
 
-	public void setId(String id) {
+	public void setId(int id) {
 		this.id = id;
 	}
 
@@ -52,11 +74,11 @@ public class DataModel {
 		this.value = value;
 	}
 
-	public String getDate() {
+	public Date getDate() {
 		return date;
 	}
 
-	public void setDate(String date) {
+	public void setDate(Date date) {
 		this.date = date;
 	}
 

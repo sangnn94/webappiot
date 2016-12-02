@@ -10,7 +10,7 @@ import javax.persistence.Table;
 public class GatewayModel {
 	@Id
 	@Column(name = "ID")
-	private int id;
+	private String id;
 
 	@Column(name = "LCID")
 	private int locationID;
@@ -22,22 +22,13 @@ public class GatewayModel {
 	private int numNode;
 
 	public GatewayModel() {
-		super();
 	}
 
-	public GatewayModel(int id, int locationID, String address, int numNode) {
-		super();
-		this.id = id;
-		this.locationID = locationID;
-		this.address = address;
-		this.numNode = numNode;
-	}
-
-	public int getId() {
+	public String getId() {
 		return id;
 	}
 
-	public void setId(int id) {
+	public void setId(String id) {
 		this.id = id;
 	}
 
