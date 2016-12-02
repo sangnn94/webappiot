@@ -1,42 +1,49 @@
 #include<SoftwareSerial.h>
-SoftwareSerial mySerial(2,3);
+SoftwareSerial gsmSerial(2,3);
+SoftwareSerial zigbeeSerial(4,5);
+String nodeData = "";
 void setup() {
-  Serial.begin(9600);
-  mySerial.begin(9600);
-  while(!mySerial){
-    ;
-  }
-  
-  mySerial.write("AT+GSN\r\n");
-  String IMEI =  mySerial.readString();
+  Serial.begin(38400);
+  gsmSerial.begin(38400);
+  zigbeeSerial.begin(38400);
+  gsmSerial.listen();
+  gsmSerial.write("AT+GSN\r\n");
+  String IMEI =  gsmSerial.readString();
   delay(3000);
-  mySerial.write("AT+SAPBR=3,1,APN,m-wap\r\n");
+  gsmSerial.write("AT+SAPBR=3,1,APN,m-wap\r\n");
   delay(3000);
-  mySerial.write("AT+SAPBR=1,1\r\n");
+  gsmSerial.write("AT+SAPBR=1,1\r\n");
   delay(3000);
-  mySerial.write("AT+HTTPINIT\r\n");
+  gsmSerial.write("AT+HTTPINIT\r\n");
   delay(3000);
-  mySerial.write("AT+HTTPPARA=URL,http://webappiot-openshift-web-app-iot.44fs.preview.openshiftapps.com/postData\r\n");
+  gsmSerial.write("AT+HTTPPARA=URL,http://webappiot-openshift-web-app-iot.44fs.preview.openshiftapps.com/postData\r\n");
   delay(3000);
 }
 
 void loop() {
   
-  /*if(mySerial.available()){
+  if(gsmSerial.available()){
     
-    Serial.write(mySerial.read());
-  
-  }*/
+    Serial.write(gsmSerial.read());
+  }
   configure();
   delay(60000);
 }
 void configure(){
-  mySerial.write("AT+HTTPPARA=CONTENT,application/json\r\n");
+  gsmSerial.write("AT+HTTPPARA=CONTENT,application/json\r\n");
   delay(3000);
-  mySerial.write("AT+HTTPDATA=2048,5000\r\n");
+  zigbeeSerial.listen();
+  if(zigbeeSerial.available()){
+   nodeData = zigbeeSerial.readString();
+   gsmSerial.listen();
+   gsmSerial.write("AT+HTTPDATA=2048,5000\r\n");
+  delay(3000); 
+  String json = "{\"id\": \"ATD+GSN0932484056\", \"nodeID\": \"2\", \"value\": \"" + nodeData+ "\", \"date\":\"date test\"}\r\n";
+  char result[2048];
+  json.toCharArray(result,2048);
+  gsmSerial.write(result);
   delay(3000);
-  mySerial.write("{\"id\": \"ATD+GSN0932484056\", \"nodeID\": \"2\", \"value\": \"12 24 48 96\", \"date\":\"date test\"}\r\n");
-  delay(3000);
-  mySerial.write("AT+HTTPACTION=1\r\n");
+  gsmSerial.write("AT+HTTPACTION=1\r\n");
+  }
 }
 
