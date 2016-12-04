@@ -25,10 +25,6 @@
 	rel="stylesheet">
 
 
-<!-- Morris Charts CSS -->
-<link href='<c:url value="/resources/css/plugins/morris.css" />'
-	rel="stylesheet">
-
 <!-- Custom Fonts -->
 <link
 	href='<c:url value="/resources/font-awesome/css/font-awesome.min.css" />'
@@ -115,12 +111,5 @@
 	<script src='<c:url value="/resources/js/bootstrap.min.js" />'></script>
 	<script src='<c:url value="/resources/js/sidebar.js" />'></script>
 
-	<!-- Morris Charts JavaScript -->
-	<script
-		src='<c:url value="/resources/js/plugins/morris/raphael.min.js" />'></script>
-	<script
-		src='<c:url value="/resources/js/plugins/morris/morris.min.js" />'></script>
-	<script
-		src='<c:url value="/resources/js/plugins/morris/morris-data.js" />'></script>
 </body>
 </html>

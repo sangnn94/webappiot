@@ -13,9 +13,7 @@
 				<li><i class="fa fa-dashboard"></i> <a
 					href="${pageContext.request.contextPath}/">WebAppIoT</a></li>
 				<li class="active"><i class="fa fa-edit"></i> Manage User</li>
-				<b><a class="navbar-right" style="margin-right: 20px"
-					href="${pageContext.request.contextPath}/manage-user/add-user">Add
-						User</a></b>
+				
 			</ol>
 		</div>
 	</div>

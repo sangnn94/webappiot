@@ -15,4 +15,12 @@ public class OverviewController {
 		mModelAndView = new ModelAndView("maps");
 		return mModelAndView;
 	}
+	
+	@RequestMapping(value="/overview/chart", method = RequestMethod.GET)
+	public ModelAndView getChart(ModelAndView mModelAndView, ModelMap mModelMap){
+		mModelAndView = new ModelAndView("chart");
+		return mModelAndView;
+	}
 }
+
+
