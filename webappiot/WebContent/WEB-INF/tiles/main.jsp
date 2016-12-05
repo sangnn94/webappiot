@@ -110,6 +110,7 @@
 	<!-- Bootstrap Core JavaScript -->
 	<script src='<c:url value="/resources/js/bootstrap.min.js" />'></script>
 	<script src='<c:url value="/resources/js/sidebar.js" />'></script>
+	<script src='<c:url value="/resources/js/canvasjs.min.js" />'></script>
 
 </body>
 </html>
