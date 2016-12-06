@@ -1,5 +1,8 @@
 package vn.edu.uit.iot.controller;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.validation.Valid;
 
 import org.apache.log4j.Logger;
@@ -17,8 +20,8 @@ import vn.edu.uit.iot.model.UserModel;
 import vn.edu.uit.iot.service.UserService;
 
 @Controller
-public class LoginController {
-	private static Logger logger = Logger.getLogger(LoginController.class);
+public class AuthenticateController {
+	private static Logger logger = Logger.getLogger(AuthenticateController.class);
 
 	@Autowired
 	private UserService userService;
@@ -60,6 +63,13 @@ public class LoginController {
 			modelAndView.setViewName("redirect:/");
 		}
 
+		return modelAndView;
+	}
+	@RequestMapping(value="/manage-user" , method= RequestMethod.GET)
+	public ModelAndView manageUser(ModelAndView modelAndView){
+		List<UserModel>users =  userService.getAll();
+		modelAndView.getModel().put("users", users);
+		modelAndView.setViewName("manageuser");
 		return modelAndView;
 	}
 	

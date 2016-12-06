@@ -54,13 +54,6 @@ public class SidebarController {
 		return mModelAndView;
 	}
 	
-	//Display list user
-	@RequestMapping(value="/manage-user" , method= RequestMethod.GET)
-	public ModelAndView getManageUser(ModelAndView mModelAndView){
-		mModelAndView = new ModelAndView("manageuser");
-		return mModelAndView;
-	}
-	
 	@RequestMapping(value="/about" , method= RequestMethod.GET)
 	public ModelAndView getAbout(ModelAndView mModelAndView){
 		mModelAndView = new ModelAndView("about");

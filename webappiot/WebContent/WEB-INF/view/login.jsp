@@ -24,7 +24,7 @@
 <link href='<c:url value="/resources/css/sb-admin.css" />'
 	rel="stylesheet">
 
-<c:url var="newAccount" value="/newaccount">
+<c:url var="registerUrl" value="/register">
 </c:url>
 <!-- Custom Fonts -->
 <link
@@ -59,7 +59,7 @@
 					<button class="btn btn-lg btn-primary btn-block" name="submit"
 						value="Login" type="submit">Login</button>
 				</div>
-				<a href="${newAccount }">Create a new account</a>
+				<a href="${registerUrl }">Create a new account</a>
 			</form>
 		</div>
 	</div>

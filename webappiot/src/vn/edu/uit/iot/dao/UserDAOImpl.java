@@ -17,8 +17,6 @@ import vn.edu.uit.iot.model.UserModel;
 @Repository
 @Component("userDAOImpl")
 public class UserDAOImpl implements UserDAO {
-	@Autowired
-	private PasswordEncoder passwordEncoder;
 
 	@Autowired
 	private SessionFactory sessionFactory;
@@ -32,16 +30,20 @@ public class UserDAOImpl implements UserDAO {
 	public void create(UserModel user) {
 		// TODO Auto-generated method stub
 		Transaction ts = session().beginTransaction();
-		user.setPassword(passwordEncoder.encode(user.getPassword()));
+		user.setPassword(user.getPassword());
 		session().save(user);
 		ts.commit();
 	}
 
 	@SuppressWarnings("unchecked")
+	@Transactional
 	@Override
 	public List<UserModel> getAll() {
 		// TODO Auto-generated method stub
-		return session().createQuery("from UserModel").list();
+		Transaction ts = session().beginTransaction();
+		List<UserModel> users = session().createQuery("from UserModel").list();
+		ts.commit();
+		return users;
 	}
 
 }

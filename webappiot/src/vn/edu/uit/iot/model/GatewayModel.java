@@ -15,7 +15,7 @@ public class GatewayModel {
 	@Column(name = "LCID")
 	private int locationID;
 
-	@Column(name = "ADDRESS", length = 200)
+	@Column(name = "ADDRESS")
 	private String address;
 
 	@Column(name = "NUMNODE")

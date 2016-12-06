@@ -2,6 +2,8 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib uri="http://tiles.apache.org/tags-tiles" prefix="tiles"%>
+<%@ taglib prefix="sec"
+	uri="http://www.springframework.org/security/tags"%>
 
 <!DOCTYPE html >
 <html>
@@ -69,6 +71,12 @@
 						<li class="divider"></li>
 						<li><a href="#">View All</a></li>
 					</ul></li> -->
+				<sec:authentication var="currentUser" property="principal" />
+
+				<li><sec:authorize access="isAuthenticated()">
+						<a> ${currentUser.username }</a>
+					</sec:authorize></li>
+
 				<li class="dropdown"><a href="#" class="dropdown-toggle"
 					data-toggle="dropdown"><i class="fa fa-user"></i> <b
 						class="caret"></b></a>

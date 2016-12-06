@@ -22,7 +22,7 @@ public class NodeModel {
 	@Column(name = "USERID")
 	private int userID;
 
-	@Column(name = "ADDRESS", length=200)
+	@Column(name = "ADDRESS")
 	private String address;
 
 	public NodeModel() {
