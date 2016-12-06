@@ -38,6 +38,7 @@
 		<div class="wrapper">
 			<form name='f' action='${pageContext.request.contextPath}/login'
 				method='POST' class="form-signin">
+				<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>	
 				<h3 class="form-signin-heading">Welcome! Please Sign In</h3>
 				<c:if test="${param.error != null }">
 					<p>Login failed. Check that your username and password are

@@ -26,24 +26,26 @@ void setup() {
 void loop() {
   // put your main code here, to run repeatedly:
   getData();
-  delay(1000);
+  delay(10000);
 }
 
 void getData(){
   mV = 0.0;
   samples = 0.0;
-  for(int i = 300; i>0; i--){
+  for(int i = 500; i>0; i--){
     mV += Get_mVfromADC(pinMQ);
     samples += 1;
-    delay(10);
+    delay(20);
   }
   mV = mV / (float) samples;
   ratioRsRo = CalcRsFromVo(mV) / Ro_clean_air_factor;
   coPpm = GetCOPpmForRatioRsRo(ratioRsRo);
   char result[] = ""; // Buffer big enough for 7-character float
-  dtostrf(coPpm, 6, 2, result);
-  char deviceId[]= "id";
-  zigbeeSerial.write(deviceId);     
+  dtostrf(coPpm, 7, 2, result);
+  //char deviceId[]= "id";
+  //zigbeeSerial.write(deviceId); 
+  Serial.print("CO: ");
+  Serial.println(coPpm);    
   zigbeeSerial.write(result);                                                                                            
   
 }

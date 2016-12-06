@@ -31,6 +31,6 @@
 		<put-attribute name="content" value="/WEB-INF/view/report.jsp"></put-attribute>
 	</definition>
 	<definition name="login" template="/WEB-INF/view/login.jsp" />
-	<definition name="newaccount" template="/WEB-INF/view/newaccount.jsp" />
+	<definition name="register" template="/WEB-INF/view/register.jsp" />
 
 </tiles-definitions>

@@ -39,9 +39,6 @@ public class SidebarController {
 	public ModelAndView getHome(ModelAndView modelAndView){
 		modelAndView.setViewName("index");
 		List<RecordModel> records = mRecordService.getAll();
-		for(RecordModel record : records){
-			System.out.println(record.getLocation().getLocationName());
-		}
 		modelAndView.getModel().put("records", records);
 		return modelAndView;
 	}

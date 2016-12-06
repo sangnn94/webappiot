@@ -7,8 +7,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.context.request.NativeWebRequest;
 import org.springframework.web.servlet.ModelAndView;
 
 import vn.edu.uit.iot.model.UserModel;
@@ -37,10 +39,9 @@ public class LoginController {
 	 * 
 	 * @return newaccout.jsp
 	 */
-	@RequestMapping("/newaccount")
-	public ModelAndView showNewAccount(ModelAndView modelAndView, UserModel user) {
-		modelAndView.getModel().put("user", user);
-		modelAndView.setViewName("newaccount");
+	@RequestMapping(value = "/register", method = RequestMethod.GET)
+	public ModelAndView showNewAccount(ModelAndView modelAndView, @ModelAttribute("user") UserModel user) {
+		modelAndView.setViewName("register");
 		return modelAndView;
 	}
 
@@ -49,13 +50,17 @@ public class LoginController {
 	 * 
 	 * @return index.jsp
 	 */
-	@RequestMapping(value = "/createaccount", method = RequestMethod.POST)
-	public String showCreateUser(@Valid UserModel user, BindingResult result) {
-		if (result.hasErrors()) {
-			return "newaccount";
+	@RequestMapping(value = "/register", method = RequestMethod.POST)
+	public ModelAndView createUser(ModelAndView modelAndView, @Valid @ModelAttribute("user") UserModel user,
+			BindingResult result) {
+		modelAndView.setViewName("register");
+		if (!result.hasErrors()) {
+			user.setPermission("ROLE_USER");
+			userService.create(user);
+			modelAndView.setViewName("redirect:/");
 		}
-		user.setPermission("ROLE_USER");
-		userService.create(user);
-		return "index";
+
+		return modelAndView;
 	}
+	
 }

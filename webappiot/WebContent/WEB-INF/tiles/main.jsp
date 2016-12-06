@@ -50,7 +50,7 @@
 			</div>
 			<!-- 	Top Menu Items -->
 			<ul class="nav navbar-right top-nav">
-				<li class="dropdown"><a href="#" class="dropdown-toggle"
+				<!-- <li class="dropdown"><a href="#" class="dropdown-toggle"
 					data-toggle="dropdown"><i class="fa fa-bell"></i> <b
 						class="caret"></b></a>
 					<ul class="dropdown-menu alert-dropdown">
@@ -68,7 +68,7 @@
 								class="label label-danger">Alert Badge</span></a></li>
 						<li class="divider"></li>
 						<li><a href="#">View All</a></li>
-					</ul></li>
+					</ul></li> -->
 				<li class="dropdown"><a href="#" class="dropdown-toggle"
 					data-toggle="dropdown"><i class="fa fa-user"></i> <b
 						class="caret"></b></a>
@@ -79,8 +79,8 @@
 						<li><a href="#"><i class="fa fa-fw fa-gear"></i> Settings</a>
 						</li>
 						<li class="divider"></li>
-						<li><a href="#"><i class="fa fa-fw fa-power-off"></i> Log
-								Out</a></li>
+						<li><a href="javascript:$('#logoutForm').submit();"><i
+								class="fa fa-fw fa-power-off"></i> Log Out</a></li>
 					</ul></li>
 			</ul>
 
@@ -106,7 +106,12 @@
 
 		</div>
 	</div>
-
+	<c:url value="/logout" var="logoutUrl"></c:url>
+	<!-- hidden logout from, method=post -->
+	<form id="logoutForm" method="post" action="${logoutUrl }">
+		<input type="hidden" name="${_csrf.parameterName }"
+			value="${_csrf.token }" />
+	</form>
 	<!-- Bootstrap Core JavaScript -->
 	<script src='<c:url value="/resources/js/bootstrap.min.js" />'></script>
 	<script src='<c:url value="/resources/js/sidebar.js" />'></script>

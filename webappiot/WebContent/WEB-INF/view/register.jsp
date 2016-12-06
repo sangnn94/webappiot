@@ -31,13 +31,13 @@
 <link
 	href='<c:url value="/resources/font-awesome/css/font-awesome.min.css" />'
 	rel="stylesheet" type="text/css">
-<c:url var="createAccount" value="/createaccout"></c:url>
+<c:url var="registerUrl" value="/register"></c:url>
 </head>
 <body>
 	<div class="container">
 		<div class="wrapper">
 			<sf:errors path="user.*"></sf:errors>
-			<sf:form id="details" method="post" action="${createAccount }"
+			<sf:form id="details" method="post" action="${registerUrl }"
 				modelAttribute="user" class="form-signin">
 				<h3 class="form-signin-heading">Create a new account</h3>
 				<div>
