@@ -15,6 +15,6 @@ public class Air {
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	private int id;
 	
-	@Column(name="NAME", length=50, nullable=false)
+	@Column(name="NAME", length=10, nullable=false)
 	private String name;
 }

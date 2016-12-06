@@ -13,6 +13,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.persistence.Transient;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
@@ -51,6 +52,7 @@ public class RecordModel {
 	private float pm10;
 	@Column(name = "PM25", nullable = false)
 	private float pm25;
+
 
 	public RecordModel() {
 	}

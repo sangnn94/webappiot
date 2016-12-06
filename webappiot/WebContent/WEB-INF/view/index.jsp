@@ -85,7 +85,7 @@
 						<table class="table table-bordered table-hover table-striped">
 							<thead>
 								<tr>
-									<th>District</th>
+									<th>Air Quality(μg/m3)</th>
 									<th>CO</th>
 									<th>SO2</th>
 									<th>O3</th>
@@ -93,19 +93,28 @@
 									<th>TSP</th>
 									<th>PM10</th>
 									<th>PM2.5</th>
+									<th>Lastest update</th>
 								</tr>
 							</thead>
 							<tbody>
 								<jstl:forEach items="${records }" var="record">
 									<tr>
 										<td>${record.location.locationName }</td>
-										<td>${record.co }</td>
-										<td>${record.so2 }</td>
-										<td>${record.o3 }</td>
-										<td>${record.pb }</td>
-										<td>${record.tsp }</td>
-										<td>${record.pm10 }</td>
-										<td>${record.pm25 }</td>
+										<jstl:choose>
+											<jstl:when test="${record.co > 30000}">
+												<td class="danger">${record.co}</td>
+											</jstl:when>
+											<jstl:otherwise>
+												<td class="success">${record.co}</td>
+											</jstl:otherwise>
+										</jstl:choose>
+										<td class="success">${record.so2 }</td>
+										<td class="success">${record.o3 }</td>
+										<td class="success">${record.pb }</td>
+										<td class="success">${record.tsp }</td>
+										<td class="success">${record.pm10 }</td>
+										<td class="success">${record.pm25 }</td>
+										<td>${record.date }</td>
 									</tr>
 								</jstl:forEach>
 
