@@ -3,6 +3,7 @@ package vn.edu.uit.iot.model;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -11,17 +12,16 @@ public class LocationModel {
 
 	@Id
 	@Column(name = "ID")
+	@OneToMany(mappedBy="LOCATION")
 	private int locationId;
-
-	@Column(name = "NAME")
+	
+	@Column(name = "NAME", length=50)
 	private String locationName;
 
 	public LocationModel() {
-		super();
 	}
 
 	public LocationModel(int locationId, String locationName) {
-		super();
 		this.locationId = locationId;
 		this.locationName = locationName;
 	}
@@ -40,6 +40,11 @@ public class LocationModel {
 
 	public void setLocationName(String locationName) {
 		this.locationName = locationName;
+	}
+
+	@Override
+	public String toString() {
+		return "LocationModel [locationId=" + locationId + ", locationName=" + locationName + "]";
 	}
 
 }

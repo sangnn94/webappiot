@@ -18,26 +18,25 @@ public class UserModel {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int id;
 
-	@Column(name = "USERNAME")
+	@Column(name = "USERNAME", length=20)
 	@NotBlank
-	@Size(min = 5, max = 45)
+	@Size(min = 5, max = 20)
 	private String username;
 
-	@Column(name = "PASSWORD")
+	@Column(name = "PASSWORD", length=60)
 	@NotBlank
-	@Size(min = 8, max = 15)
+	@Size(min = 8)
 	private String password;
 
 	@Column(name = "EMAIL")
 	@NotBlank
-	@Size(max = 100)
 	private String email;
 
-	@Column(name = "PERMISSION")
+	@Column(name = "PERMISSION", length=10)
 	private String permission;
 
 	@Column(name = "ENABLED")
-	private boolean enabled;
+	private boolean enabled = true;
 
 	public UserModel() {
 		// TODO Auto-generated constructor stub

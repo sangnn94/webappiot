@@ -10,10 +10,10 @@ import javax.persistence.Table;
 public class NodeModel {
 
 	@Id
-	@Column(name = "ID")
+	@Column(name = "ID", length = 100)
 	private String id;
 
-	@Column(name = "GWID")
+	@Column(name = "GWID", length = 100)
 	private String gatewayID;
 
 	@Column(name = "LCID")
@@ -22,7 +22,7 @@ public class NodeModel {
 	@Column(name = "USERID")
 	private int userID;
 
-	@Column(name = "ADDRESS")
+	@Column(name = "ADDRESS", length=200)
 	private String address;
 
 	public NodeModel() {

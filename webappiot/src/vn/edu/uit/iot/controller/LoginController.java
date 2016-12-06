@@ -9,6 +9,7 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.servlet.ModelAndView;
 
 import vn.edu.uit.iot.model.UserModel;
 import vn.edu.uit.iot.service.UserService;
@@ -37,9 +38,10 @@ public class LoginController {
 	 * @return newaccout.jsp
 	 */
 	@RequestMapping("/newaccount")
-	public String showNewAccount(Model model) {
-		model.addAttribute("user", new UserModel());
-		return "newaccount";
+	public ModelAndView showNewAccount(ModelAndView modelAndView, UserModel user) {
+		modelAndView.getModel().put("user", user);
+		modelAndView.setViewName("newaccount");
+		return modelAndView;
 	}
 
 	/**

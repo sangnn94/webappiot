@@ -9,13 +9,13 @@ import javax.persistence.Table;
 @Table(name = "GATEWAY")
 public class GatewayModel {
 	@Id
-	@Column(name = "ID")
+	@Column(name = "ID", length = 100)
 	private String id;
 
 	@Column(name = "LCID")
 	private int locationID;
 
-	@Column(name = "ADDRESS")
+	@Column(name = "ADDRESS", length = 200)
 	private String address;
 
 	@Column(name = "NUMNODE")
