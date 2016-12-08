@@ -161,8 +161,370 @@
 <!-- /.container-fluid -->
 <!-- script column chart -->
 <script type="text/javascript">
+	var dataColumn = [{
+			x : 90,
+			y : 1000,
+			label : "Quận Bình Thạnh"
+		}, {
+			x : 80,
+			y : 5000,
+			indexLabel : "Highest",
+			label : "Quận Thủ Đức"
+		}, {
+			x : 100,
+			y : 1000,
+			label : "Quận Tân Bình"
+		}, {
+			x : 10,
+			y : 1000,
+			label : "Quận 1"
+		}, {
+			x : 20,
+			y : 1000,
+			label : "Quận 2"
+		}, {
+			x : 30,
+			y : 1000,
+			label : "Quận 3"
+		}, {
+			x : 40,
+			y : 1000,
+			label : "Quận 5"
+		}, {
+			x : 50,
+			y : 1000,
+			label : "Quận 7"
+		}, {
+			x : 60,
+			y : 1000,
+			label : "Quận 10"
+		}, {
+			x : 70,
+			y : 1000,
+			label : "Quận 11"
+		}];
+	
+	var dataLine = [ {
+			type : "spline",
+			showInLegend : true,
+			name : "CO",
+			dataPoints : [ {
+			
+				y : 1000,
+				label : "Quận Bình Thạnh"
+			}, {
+				
+				y : 5000,
+				indexLabel : "High",
+				label : "Quận Thủ Đức"
+			}, {
+			
+				y : 1000,
+				label : "Quận Tân Bình"
+			}, {
+				
+				y : 1000,
+				label : "Quận 1"
+			}, {
+				
+				y : 1000,
+				label : "Quận 2"
+			}, {
+				
+				y : 1000,
+				label : "Quận 3"
+			}, {
+			
+				y : 1000,
+				label : "Quận 5"
+			}, {
+			
+				y : 1000,
+				label : "Quận 7"
+			}, {
+			
+				y : 1000,
+				label : "Quận 10"
+			}, {
+				
+				y : 1000,
+				label : "Quận 11"
+			} ]
+		}, {
+			type : "spline",
+			showInLegend : true,
+			name : "SO2",
+			dataPoints : [ {
+				
+				y : 1000,
+				label : "Quận Bình Thạnh"
+			}, {
+				
+				y : 1000,
+				label : "Quận Thủ Đức"
+			}, {
+			
+				y : 1000,
+				label : "Quận Tân Bình"
+			}, {
+				
+				y : 1000,
+				label : "Quận 1"
+			}, {
+				
+				y : 1000,
+				label : "Quận 2"
+			}, {
+				
+				y : 1000,
+				label : "Quận 3"
+			}, {
+			
+				y : 1000,
+				label : "Quận 5"
+			}, {
+			
+				y : 1000,
+				label : "Quận 7"
+			}, {
+			
+				y : 1000,
+				label : "Quận 10"
+			}, {
+				
+				y : 1000,
+				label : "Quận 11"
+			} ]
+		}, {
+			type : "spline",
+			showInLegend : true,
+			name : "O3",
+			dataPoints : [ {
+				
+				y : 1000,
+				label : "Quận Bình Thạnh"
+			}, {
+				
+				y : 1000,
+				label : "Quận Thủ Đức"
+			}, {
+			
+				y : 1000,
+				label : "Quận Tân Bình"
+			}, {
+				
+				y : 1000,
+				label : "Quận 1"
+			}, {
+				
+				y : 1000,
+				label : "Quận 2"
+			}, {
+				
+				y : 1000,
+				label : "Quận 3"
+			}, {
+			
+				y : 1000,
+				label : "Quận 5"
+			}, {
+			
+				y : 1000,
+				label : "Quận 7"
+			}, {
+			
+				y : 1000,
+				label : "Quận 10"
+			}, {
+				
+				y : 1000,
+				label : "Quận 11"
+			} ]
+		}, {
+			type : "spline",
+			showInLegend : true,
+			name : "Pb",
+			dataPoints : [ {
+				
+				y : 1000,
+				label : "Quận Bình Thạnh"
+			}, {
+				
+				y : 1000,
+				label : "Quận Thủ Đức"
+			}, {
+			
+				y : 1000,
+				label : "Quận Tân Bình"
+			}, {
+				
+				y : 1000,
+				label : "Quận 1"
+			}, {
+				
+				y : 1000,
+				label : "Quận 2"
+			}, {
+				
+				y : 1000,
+				label : "Quận 3"
+			}, {
+			
+				y : 1000,
+				label : "Quận 5"
+			}, {
+			
+				y : 1000,
+				label : "Quận 7"
+			}, {
+			
+				y : 1000,
+				label : "Quận 10"
+			}, {
+				
+				y : 1000,
+				label : "Quận 11"
+			} ]
+		}, {
+			type : "spline",
+			showInLegend : true,
+			name : "TSL",
+			dataPoints : [ {
+				
+				y : 1000,
+				label : "Quận Bình Thạnh"
+			}, {
+				
+				y : 1000,
+				label : "Quận Thủ Đức"
+			}, {
+			
+				y : 1000,
+				label : "Quận Tân Bình"
+			}, {
+				
+				y : 1000,
+				label : "Quận 1"
+			}, {
+				
+				y : 1000,
+				label : "Quận 2"
+			}, {
+				
+				y : 1000,
+				label : "Quận 3"
+			}, {
+				
+				y : 1000,
+				label : "Quận 5"
+			}, {
+			
+				y : 1000,
+				label : "Quận 7"
+			}, {
+			
+				y : 1000,
+				label : "Quận 10"
+			}, {
+				
+				y : 1000,
+				label : "Quận 11"
+			} ]
+		}, {
+			type : "spline",
+			showInLegend : true,
+			name : "PM2.5",
+			dataPoints : [ {
+				
+				y : 1000,
+				label : "Quận Bình Thạnh"
+			}, {
+				
+				y : 1000,
+				label : "Quận Thủ Đức"
+			}, {
+			
+				y : 1000,
+				label : "Quận Tân Bình"
+			}, {
+				
+				y : 1000,
+				label : "Quận 1"
+			}, {
+				
+				y : 1000,
+				label : "Quận 2"
+			}, {
+				
+				y : 1000,
+				label : "Quận 3"
+			}, {
+				
+				y : 1000,
+				label : "Quận 5"
+			}, {
+			
+				y : 1000,
+				label : "Quận 7"
+			}, {
+			
+				y : 1000,
+				label : "Quận 10"
+			}, {
+				
+				y : 1000,
+				label : "Quận 11"
+			} ]
+		}, {
+			type : "spline",
+			showInLegend : true,
+			name : "PM10",
+			dataPoints : [ {
+				
+				y : 1000,
+				label : "Quận Bình Thạnh"
+			}, {
+				
+				y : 1000,
+				label : "Quận Thủ Đức"
+			}, {
+			
+				y : 1000,
+				label : "Quận Tân Bình"
+			}, {
+				
+				y : 1000,
+				label : "Quận 1"
+			}, {
+				
+				y : 1000,
+				label : "Quận 2"
+			}, {
+				
+				y : 1000,
+				label : "Quận 3"
+			}, {
+				
+				y : 1000,
+				label : "Quận 5"
+			}, {
+			
+				y : 1000,
+				label : "Quận 7"
+			}, {
+			
+				y : 1000,
+				label : "Quận 10"
+			}, {
+				
+				y : 1000,
+				label : "Quận 11"
+			} ]
+		} 
+	]
+
 	window.onload = function() {
-		var chart = new CanvasJS.Chart("chartContainer", {
+		var columnChart = new CanvasJS.Chart("chartContainer", {
 			title : {
 				text : "Carbon Monoxide (CO)"
 			},
@@ -172,56 +534,10 @@
 			dataPointWidth : 60,
 			data : [ {
 				type : "column",
-				//indexLabelLineThickness: 2,
-				dataPoints : [
-
-				{
-					x : 90,
-					y : 1000,
-					label : "Quận Bình Thạnh"
-				}, {
-					x : 80,
-					y : 5000,
-					indexLabel : "Highest",
-					label : "Quận Thủ Đức"
-				}, {
-					x : 100,
-					y : 1000,
-					label : "Quận Tân Bình"
-				}, {
-					x : 10,
-					y : 1000,
-					label : "Quận 1"
-				}, {
-					x : 20,
-					y : 1000,
-					label : "Quận 2"
-				}, {
-					x : 30,
-					y : 1000,
-					label : "Quận 3"
-				}, {
-					x : 40,
-					y : 1000,
-					label : "Quận 5"
-				}, {
-					x : 50,
-					y : 1000,
-					label : "Quận 7"
-				}, {
-					x : 60,
-					y : 1000,
-					label : "Quận 10"
-				}, {
-					x : 70,
-					y : 1000,
-					label : "Quận 11"
-				}
-
-				]
+				dataPoints : dataColumn
 			} ]
 		});
-		var chart2 = new CanvasJS.Chart(
+		var lineChart = new CanvasJS.Chart(
 				"chartOverview",
 				{
 					title : {
@@ -258,329 +574,11 @@
 					legend : {
 						horizontalAlign : "center"
 					},
-					data : [ {
-						type : "spline",
-						showInLegend : true,
-						name : "CO",
-						dataPoints : [ {
-						
-							y : 1000,
-							label : "Quận Bình Thạnh"
-						}, {
-							
-							y : 5000,
-							indexLabel : "High",
-							label : "Quận Thủ Đức"
-						}, {
-						
-							y : 1000,
-							label : "Quận Tân Bình"
-						}, {
-							
-							y : 1000,
-							label : "Quận 1"
-						}, {
-							
-							y : 1000,
-							label : "Quận 2"
-						}, {
-							
-							y : 1000,
-							label : "Quận 3"
-						}, {
-						
-							y : 1000,
-							label : "Quận 5"
-						}, {
-						
-							y : 1000,
-							label : "Quận 7"
-						}, {
-						
-							y : 1000,
-							label : "Quận 10"
-						}, {
-							
-							y : 1000,
-							label : "Quận 11"
-						} ]
-					}, {
-						type : "spline",
-						showInLegend : true,
-						name : "SO2",
-						dataPoints : [ {
-							
-							y : 1000,
-							label : "Quận Bình Thạnh"
-						}, {
-							
-							y : 1000,
-							label : "Quận Thủ Đức"
-						}, {
-						
-							y : 1000,
-							label : "Quận Tân Bình"
-						}, {
-							
-							y : 1000,
-							label : "Quận 1"
-						}, {
-							
-							y : 1000,
-							label : "Quận 2"
-						}, {
-							
-							y : 1000,
-							label : "Quận 3"
-						}, {
-						
-							y : 1000,
-							label : "Quận 5"
-						}, {
-						
-							y : 1000,
-							label : "Quận 7"
-						}, {
-						
-							y : 1000,
-							label : "Quận 10"
-						}, {
-							
-							y : 1000,
-							label : "Quận 11"
-						} ]
-					}, {
-						type : "spline",
-						showInLegend : true,
-						name : "O3",
-						dataPoints : [ {
-							
-							y : 1000,
-							label : "Quận Bình Thạnh"
-						}, {
-							
-							y : 1000,
-							label : "Quận Thủ Đức"
-						}, {
-						
-							y : 1000,
-							label : "Quận Tân Bình"
-						}, {
-							
-							y : 1000,
-							label : "Quận 1"
-						}, {
-							
-							y : 1000,
-							label : "Quận 2"
-						}, {
-							
-							y : 1000,
-							label : "Quận 3"
-						}, {
-						
-							y : 1000,
-							label : "Quận 5"
-						}, {
-						
-							y : 1000,
-							label : "Quận 7"
-						}, {
-						
-							y : 1000,
-							label : "Quận 10"
-						}, {
-							
-							y : 1000,
-							label : "Quận 11"
-						} ]
-					}, {
-						type : "spline",
-						showInLegend : true,
-						name : "Pb",
-						dataPoints : [ {
-							
-							y : 1000,
-							label : "Quận Bình Thạnh"
-						}, {
-							
-							y : 1000,
-							label : "Quận Thủ Đức"
-						}, {
-						
-							y : 1000,
-							label : "Quận Tân Bình"
-						}, {
-							
-							y : 1000,
-							label : "Quận 1"
-						}, {
-							
-							y : 1000,
-							label : "Quận 2"
-						}, {
-							
-							y : 1000,
-							label : "Quận 3"
-						}, {
-						
-							y : 1000,
-							label : "Quận 5"
-						}, {
-						
-							y : 1000,
-							label : "Quận 7"
-						}, {
-						
-							y : 1000,
-							label : "Quận 10"
-						}, {
-							
-							y : 1000,
-							label : "Quận 11"
-						} ]
-					}, {
-						type : "spline",
-						showInLegend : true,
-						name : "TSL",
-						dataPoints : [ {
-							
-							y : 1000,
-							label : "Quận Bình Thạnh"
-						}, {
-							
-							y : 1000,
-							label : "Quận Thủ Đức"
-						}, {
-						
-							y : 1000,
-							label : "Quận Tân Bình"
-						}, {
-							
-							y : 1000,
-							label : "Quận 1"
-						}, {
-							
-							y : 1000,
-							label : "Quận 2"
-						}, {
-							
-							y : 1000,
-							label : "Quận 3"
-						}, {
-							
-							y : 1000,
-							label : "Quận 5"
-						}, {
-						
-							y : 1000,
-							label : "Quận 7"
-						}, {
-						
-							y : 1000,
-							label : "Quận 10"
-						}, {
-							
-							y : 1000,
-							label : "Quận 11"
-						} ]
-					}, {
-						type : "spline",
-						showInLegend : true,
-						name : "PM2.5",
-						dataPoints : [ {
-							
-							y : 1000,
-							label : "Quận Bình Thạnh"
-						}, {
-							
-							y : 1000,
-							label : "Quận Thủ Đức"
-						}, {
-						
-							y : 1000,
-							label : "Quận Tân Bình"
-						}, {
-							
-							y : 1000,
-							label : "Quận 1"
-						}, {
-							
-							y : 1000,
-							label : "Quận 2"
-						}, {
-							
-							y : 1000,
-							label : "Quận 3"
-						}, {
-							
-							y : 1000,
-							label : "Quận 5"
-						}, {
-						
-							y : 1000,
-							label : "Quận 7"
-						}, {
-						
-							y : 1000,
-							label : "Quận 10"
-						}, {
-							
-							y : 1000,
-							label : "Quận 11"
-						} ]
-					}, {
-						type : "spline",
-						showInLegend : true,
-						name : "PM10",
-						dataPoints : [ {
-							
-							y : 1000,
-							label : "Quận Bình Thạnh"
-						}, {
-							
-							y : 1000,
-							label : "Quận Thủ Đức"
-						}, {
-						
-							y : 1000,
-							label : "Quận Tân Bình"
-						}, {
-							
-							y : 1000,
-							label : "Quận 1"
-						}, {
-							
-							y : 1000,
-							label : "Quận 2"
-						}, {
-							
-							y : 1000,
-							label : "Quận 3"
-						}, {
-							
-							y : 1000,
-							label : "Quận 5"
-						}, {
-						
-							y : 1000,
-							label : "Quận 7"
-						}, {
-						
-							y : 1000,
-							label : "Quận 10"
-						}, {
-							
-							y : 1000,
-							label : "Quận 11"
-						} ]
-					} ],
-					
-
+					data : dataLine,
 				});
 
-		chart2.render();
-		chart.render();
+		columnChart.render();
+		lineChart.render();
 	}
 </script>
 

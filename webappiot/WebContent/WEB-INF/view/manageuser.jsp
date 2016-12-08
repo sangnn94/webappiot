@@ -31,7 +31,6 @@
 								<th>Username</th>
 								<th>Permission</th>
 								<th>Email</th>
-								<th>Profile</th>
 							</tr>
 						</thead>
 						<tbody>
@@ -39,44 +38,43 @@
 								<td>/index.html</td>
 								<td>1265</td>
 								<td>Khu phố 6, P. Linh Trung Quận Thủ Đức, Tp. Hồ Chí Minh</td>
-								<td><a href="">View profile</a></td>
 
 							</tr>
 							<tr class="success">
 								<td>/index.html</td>
 								<td>1265</td>
 								<td>Khu phố 6, P. Linh Trung Quận Thủ Đức, Tp. Hồ Chí Minh</td>
-								<td><a href="">View profile</a></td>
+								
 							</tr>
 							<tr class="warning">
 								<td>/index.html</td>
 								<td>1265</td>
 								<td>Khu phố 6, P. Linh Trung Quận Thủ Đức, Tp. Hồ Chí Minh</td>
-								<td><a href="">View profile</a></td>
+								
 							</tr>
 							<tr class="danger">
 								<td>/index.html</td>
 								<td>1265</td>
 								<td>Khu phố 6, P. Linh Trung Quận Thủ Đức, Tp. Hồ Chí Minh</td>
-								<td><a href="">View profile</a></td>
+								
 							</tr>
 							<tr>
 								<td>/index.html</td>
 								<td>1265</td>
 								<td>Khu phố 6, P. Linh Trung Quận Thủ Đức, Tp. Hồ Chí Minh</td>
-								<td><a href="">View profile</a></td>
+								
 							</tr>
 							<tr>
 								<td>/index.html</td>
 								<td>1265</td>
 								<td>Khu phố 6, P. Linh Trung Quận Thủ Đức, Tp. Hồ Chí Minh</td>
-								<td><a href="">View profile</a></td>
+								
 							</tr>
 							<tr>
 								<td>/index.html</td>
 								<td>1265</td>
 								<td>Khu phố 6, P. Linh Trung Quận Thủ Đức, Tp. Hồ Chí Minh</td>
-								<td><a href="">View profile</a></td>
+								
 							</tr>
 						</tbody>
 					</table>
