@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-
+<%@ taglib prefix="jstl" uri="http://java.sun.com/jsp/jstl/core"%>
 
 <div class="container-fluid">
 	<!-- Page Heading -->
@@ -20,7 +20,7 @@
 	<!-- /.row -->
 
 	<div class="row">
-		
+
 		<div class="col-lg-6 col-md-6">
 			<div class="panel panel-primary">
 				<div class="panel-heading">
@@ -70,50 +70,62 @@
 			</div>
 		</div>
 	</div>
-		<!-- /.row -->
+	<!-- /.row -->
 
-		<div class = "row">
-			<div class="col-lg-12">
-				<div class="panel panel-default">
-					<div class="panel-heading">
-						<h3 class="panel-title">
-							<i class="fa fa-table fa-fw"></i> Statistics 
-						</h3>
-					</div>
-					<div class="panel-body">
-						<div class="table-responsive">
-							<table class="table table-bordered table-hover table-striped">
-								<thead>
+	<div class="row">
+		<div class="col-lg-12">
+			<div class="panel panel-default">
+				<div class="panel-heading">
+					<h3 class="panel-title">
+						<i class="fa fa-table fa-fw"></i> Statistics
+					</h3>
+				</div>
+				<div class="panel-body">
+					<div class="table-responsive">
+						<table class="table table-bordered table-hover table-striped">
+							<thead>
+								<tr>
+									<th>Air Quality(μg/m3)</th>
+									<th>CO</th>
+									<th>SO2</th>
+									<th>O3</th>
+									<th>Pb</th>
+									<th>TSP</th>
+									<th>PM10</th>
+									<th>PM2.5</th>
+									<th>Lastest update</th>
+								</tr>
+							</thead>
+							<tbody>
+								<jstl:forEach items="${records }" var="record">
 									<tr>
-										<th>District</th>
-										<th>CO</th>
-										<th>SO2</th>
-										<th>O3</th>
-										<th>Pb</th>
-										<th>TSP</th>
-										<th>PM10</th>
-										<th>PM2.5</th>
+										<td>${record.location.locationName }</td>
+										<jstl:choose>
+											<jstl:when test="${record.co > 30000}">
+												<td class="danger">${record.co}</td>
+											</jstl:when>
+											<jstl:otherwise>
+												<td class="success">${record.co}</td>
+											</jstl:otherwise>
+										</jstl:choose>
+										<td class="success">${record.so2 }</td>
+										<td class="success">${record.o3 }</td>
+										<td class="success">${record.pb }</td>
+										<td class="success">${record.tsp }</td>
+										<td class="success">${record.pm10 }</td>
+										<td class="success">${record.pm25 }</td>
+										<td>${record.date }</td>
 									</tr>
-								</thead>
-								<tbody>
-									<tr>
-										<td>Thủ Đức</td>
-										<td>3326</td>
-										<td>0</td>
-										<td>0</td>
-										<td>0</td>
-										<td>0</td>
-										<td>0</td>
-										<td>0</td>
-									</tr>
-								</tbody>
-							</table>
-						</div>
+								</jstl:forEach>
+
+							</tbody>
+						</table>
 					</div>
 				</div>
 			</div>
 		</div>
-		<!-- /.row -->
+	</div>
+	<!-- /.row -->
 
 
 </div>

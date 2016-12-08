@@ -10,6 +10,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import vn.edu.uit.iot.model.GatewayModel;
 import vn.edu.uit.iot.model.NodeModel;
+import vn.edu.uit.iot.model.RecordModel;
 import vn.edu.uit.iot.service.DataService;
 import vn.edu.uit.iot.service.GatewayService;
 import vn.edu.uit.iot.service.LocationService;
@@ -35,14 +36,11 @@ public class SidebarController {
 	
 	
 	@RequestMapping(value="/" , method= RequestMethod.GET)
-	public ModelAndView getHome(ModelAndView mModelAndView){
-		mModelAndView = new ModelAndView("index");
-		System.out.println("location "+this.mLocationService.getAll().size());
-		System.out.println("data "+this.mDataservice.getAll().size());
-		System.out.println("node "+this.mNodeService.getAll().size());
-		System.out.println("gateway "+this.mGatewayService.getAll().size());
-		System.out.println("record "+this.mRecordService.getAll().size());
-		return mModelAndView;
+	public ModelAndView getHome(ModelAndView modelAndView){
+		modelAndView.setViewName("index");
+		List<RecordModel> records = mRecordService.getAll();
+		modelAndView.getModel().put("records", records);
+		return modelAndView;
 	}
 	
 	//Display list device 
@@ -53,13 +51,6 @@ public class SidebarController {
 		mModelAndView.addObject("listGateway", arrGateway);
 		List<NodeModel> arrNode = mNodeService.getAll();
 		mModelAndView.addObject("listNode", arrNode);
-		return mModelAndView;
-	}
-	
-	//Display list user
-	@RequestMapping(value="/manage-user" , method= RequestMethod.GET)
-	public ModelAndView getManageUser(ModelAndView mModelAndView){
-		mModelAndView = new ModelAndView("manageuser");
 		return mModelAndView;
 	}
 	

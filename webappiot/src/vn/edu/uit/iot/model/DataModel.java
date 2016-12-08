@@ -11,6 +11,7 @@ import javax.persistence.PrePersist;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.persistence.Transient;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
@@ -23,10 +24,10 @@ public class DataModel {
 	@Column(name = "ID")
 	private int id;
 
-	@Column(name = "NID")
+	@Column(name = "NID", length = 100)
 	private String nodeID;
 
-	@Column(name = "VALUE", length = 500)
+	@Transient
 	private String value;
 
 	@Column(name = "DATE")
@@ -50,6 +51,7 @@ public class DataModel {
 		}
 	}
 
+	
 	public int getId() {
 		return id;
 	}

@@ -9,7 +9,7 @@ import javax.persistence.Table;
 @Table(name = "GATEWAY")
 public class GatewayModel {
 	@Id
-	@Column(name = "ID")
+	@Column(name = "ID", length = 100)
 	private String id;
 
 	@Column(name = "LCID")

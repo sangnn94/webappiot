@@ -31,31 +31,35 @@
 <link
 	href='<c:url value="/resources/font-awesome/css/font-awesome.min.css" />'
 	rel="stylesheet" type="text/css">
-<c:url var="createAccount" value="/createaccout"></c:url>
+<c:url var="registerUrl" value="/register"></c:url>
 </head>
 <body>
 	<div class="container">
 		<div class="wrapper">
-
-
-			<sf:errors path="user.*" ></sf:errors>
-			<sf:form id="details" method="post" action="${createAccount }"
+			<sf:errors path="user.*"></sf:errors>
+			<sf:form id="details" method="post" action="${registerUrl }"
 				modelAttribute="user" class="form-signin">
 				<h3 class="form-signin-heading">Create a new account</h3>
+				<div>
+					<hr class="colorgraph">
+				</div>
+				<div class="form-group">
+					<sf:input name="username" path="username" type="text"
+						class="form-control" placeholder="Username" />
+				</div>
 
-				<hr class="colorgraph">
-
-				<sf:input name="username" path="username" type="text"
-					class="form-control" placeholder="Username" />
-					<br/>
-				<sf:input name="email" path="email" type="text" class="form-control"
-					placeholder="Email" />
-					<br/>
-				<sf:input id="password" name="password" path="password"
-					type="password" class="form-control" placeholder="Password" />
-				<input id="confirmpass" name="confirmpass" type="password"
-					class="form-control" placeholder="Confirm password" />
-
+				<div class="form-group">
+					<sf:input name="email" path="email" type="text"
+						class="form-control" placeholder="Email" />
+				</div>
+				<div class="form-group">
+					<sf:input id="password" name="password" path="password"
+						type="password" class="form-control" placeholder="Password" />
+				</div>
+				<div class="form-group">
+					<input id="confirmpass" name="confirmpass" type="password"
+						class="form-control" placeholder="Confirm password" />
+				</div>
 				<button class="btn btn-lg btn-primary btn-block" name="submit"
 					value="Login" type="submit">Sign up</button>
 			</sf:form>

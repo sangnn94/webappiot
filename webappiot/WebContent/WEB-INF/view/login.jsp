@@ -24,7 +24,7 @@
 <link href='<c:url value="/resources/css/sb-admin.css" />'
 	rel="stylesheet">
 
-<c:url var="newAccount" value="/newaccount">
+<c:url var="registerUrl" value="/register">
 </c:url>
 <!-- Custom Fonts -->
 <link
@@ -38,22 +38,28 @@
 		<div class="wrapper">
 			<form name='f' action='${pageContext.request.contextPath}/login'
 				method='POST' class="form-signin">
-				<h3 class="form-signin-heading">Welcome ! Please Sign In</h3>
+				<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>	
+				<h3 class="form-signin-heading">Welcome! Please Sign In</h3>
 				<c:if test="${param.error != null }">
 					<p>Login failed. Check that your username and password are
 						corrected.</p>
 				</c:if>
-
-				<hr class="colorgraph">
-				<br> 
-				<input type="text" class="form-control" type='text'
-					name='username' value='' placeholder="Username" /> 
-				<input
-					type="password" class="form-control" name="password"
-					placeholder="Password" />
-				<button class="btn btn-lg btn-primary btn-block" name="submit"
-					value="Login" type="submit">Login</button>
-				<a href="${newAccount }">Create a new account</a>
+				<div>
+					<hr class="colorgraph">
+				</div>
+				<div class="form-group">
+					<input type="text" class="form-control" type='text' name='username'
+						value='' placeholder="Username" />
+				</div>
+				<div class="form-group">
+					<input type="password" class="form-control" name="password"
+						placeholder="Password" />
+				</div>
+				<div class="form-group">
+					<button class="btn btn-lg btn-primary btn-block" name="submit"
+						value="Login" type="submit">Login</button>
+				</div>
+				<a href="${registerUrl }">Create a new account</a>
 			</form>
 		</div>
 	</div>
