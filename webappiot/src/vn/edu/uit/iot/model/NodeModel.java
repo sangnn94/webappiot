@@ -1,41 +1,33 @@
 package vn.edu.uit.iot.model;
 
+import java.util.List;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
 @Table(name = "NODE")
 public class NodeModel {
-
 	@Id
 	@Column(name = "ID", length = 100)
 	private String id;
 
-	@Column(name = "GWID", length = 100)
-	private String gatewayID;
-
-	@Column(name = "LCID")
-	private int locationID;
-
-	@Column(name = "USERID")
-	private int userID;
+	@ManyToOne
+	@JoinColumn(name = "GATEWAY_ID", nullable = false)
+	private GatewayModel gateway;
 
 	@Column(name = "ADDRESS")
 	private String address;
 
-	public NodeModel() {
-		super();
-	}
+	@OneToMany(mappedBy="node")
+	private List<DataModel> datas;
 
-	public NodeModel(String id, String gatewayID, int locationID, int userID, String address) {
-		super();
-		this.id = id;
-		this.gatewayID = gatewayID;
-		this.locationID = locationID;
-		this.userID = userID;
-		this.address = address;
+	public NodeModel() {
 	}
 
 	public String getId() {
@@ -46,36 +38,20 @@ public class NodeModel {
 		this.id = id;
 	}
 
-	public String getGatewayID() {
-		return gatewayID;
-	}
-
-	public void setGatewayID(String gatewayID) {
-		this.gatewayID = gatewayID;
-	}
-
-	public int getLocationID() {
-		return locationID;
-	}
-
-	public void setLocationID(int locationID) {
-		this.locationID = locationID;
-	}
-
-	public int getUserID() {
-		return userID;
-	}
-
-	public void setUserID(int userID) {
-		this.userID = userID;
-	}
-
 	public String getAddress() {
 		return address;
 	}
 
 	public void setAddress(String address) {
 		this.address = address;
+	}
+
+	public GatewayModel getGateway() {
+		return gateway;
+	}
+
+	public void setGateway(GatewayModel gateway) {
+		this.gateway = gateway;
 	}
 
 }

@@ -7,6 +7,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.PrePersist;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
@@ -24,24 +26,24 @@ public class DataModel {
 	@Column(name = "ID")
 	private int id;
 
-	@Column(name = "NID", length = 100)
-	private String nodeID;
-
-	@Transient
-	private String value;
+	@ManyToOne
+	@JoinColumn(name = "NODE_ID", nullable = false)
+	private NodeModel node;
 
 	@Column(name = "DATE")
 	@Temporal(TemporalType.TIMESTAMP)
 	@DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
 	private Date date;
-
+	
+	@Column(name="VALUE")
+	private String value;
+	
 	public DataModel() {
 
 	}
 
 	public DataModel(String nodeID, String value) {
-		this.nodeID = nodeID;
-		this.value = value;
+
 	}
 
 	@PrePersist
@@ -51,29 +53,12 @@ public class DataModel {
 		}
 	}
 
-	
 	public int getId() {
 		return id;
 	}
 
 	public void setId(int id) {
 		this.id = id;
-	}
-
-	public String getNodeID() {
-		return nodeID;
-	}
-
-	public void setNodeID(String nodeID) {
-		this.nodeID = nodeID;
-	}
-
-	public String getValue() {
-		return value;
-	}
-
-	public void setValue(String value) {
-		this.value = value;
 	}
 
 	public Date getDate() {
@@ -84,9 +69,12 @@ public class DataModel {
 		this.date = date;
 	}
 
-	@Override
-	public String toString() {
-		return "DataModel [id=" + id + ", nodeID=" + nodeID + ", value=" + value + ", date=" + date + "]";
+	public NodeModel getNode() {
+		return node;
+	}
+
+	public void setNode(NodeModel node) {
+		this.node = node;
 	}
 
 }

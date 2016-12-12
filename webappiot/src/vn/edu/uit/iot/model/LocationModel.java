@@ -12,7 +12,6 @@ public class LocationModel {
 
 	@Id
 	@Column(name = "ID")
-	@OneToMany(mappedBy="LOCATION")
 	private int locationId;
 	
 	@Column(name = "NAME", length=50)

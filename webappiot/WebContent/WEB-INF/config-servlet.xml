@@ -101,7 +101,9 @@
 			access="permitAll" />
 		<security:intercept-url pattern="/register"
 			access="permitAll" />
-		<security:intercept-url pattern="/postData"
+		<security:intercept-url pattern="/post-data"
+			access="permitAll" />
+			<security:intercept-url pattern="/post-gps"
 			access="permitAll" />
 		<security:intercept-url pattern="/about"
 			access="permitAll" />

@@ -1,10 +1,13 @@
 package vn.edu.uit.iot.model;
 
+import java.util.Set;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.Size;
 
@@ -37,7 +40,10 @@ public class UserModel {
 
 	@Column(name = "ENABLED")
 	private boolean enabled = true;
-
+	
+	@OneToMany(mappedBy="user")
+	private Set<GatewayModel> gateways;
+	
 	public UserModel() {
 		// TODO Auto-generated constructor stub
 	}
