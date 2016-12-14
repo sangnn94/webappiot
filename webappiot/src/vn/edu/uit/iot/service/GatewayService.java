@@ -16,4 +16,6 @@ public interface GatewayService {
 	public GatewayModel getData(int id);
 	
 	public List<GatewayModel> getAll();
+	
+	public void saveOrUpdate(GatewayModel gateway);
 }

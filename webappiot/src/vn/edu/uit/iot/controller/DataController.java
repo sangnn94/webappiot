@@ -13,9 +13,10 @@ import vn.edu.uit.iot.model.DataModel;
 
 @Controller
 public class DataController {
-	@RequestMapping(value = "/post-data", method = RequestMethod.POST)
+	@RequestMapping(value = "/data", method = RequestMethod.POST)
 	@ResponseBody
-	public ResponseEntity<?> postData(@RequestBody DataModel data) {
-		return new ResponseEntity<>(data.getNode().getId(), HttpStatus.OK);
+	public ResponseEntity<Void> postData(@RequestBody DataModel data) {
+		System.out.println(data);
+		return new ResponseEntity<Void>( HttpStatus.OK);
 	}
 }

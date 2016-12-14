@@ -17,6 +17,11 @@ import javax.persistence.Transient;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonInclude.Include;
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 @Entity
 @Table(name = "DATA")
 public class DataModel {
@@ -77,4 +82,17 @@ public class DataModel {
 		this.node = node;
 	}
 
+	public String getValue() {
+		return value;
+	}
+
+	public void setValue(String value) {
+		this.value = value;
+	}
+
+	@Override
+	public String toString() {
+		return "DataModel [id=" + id + ", node=" + node + ", date=" + date + ", value=" + value + "]";
+	}
+	
 }

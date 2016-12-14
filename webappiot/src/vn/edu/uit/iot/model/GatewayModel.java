@@ -10,13 +10,13 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 
 @Entity
 @Table(name = "GATEWAY")
 public class GatewayModel {
 	@Id
 	@Column(name = "ID", length = 100)
-	
 	private String id;
 
 	@Column(name = "LONGITUDE")
@@ -39,8 +39,26 @@ public class GatewayModel {
 	@OneToMany(mappedBy = "gateway", fetch=FetchType.LAZY)
 	private Set<NodeModel> nodes;
 
+	@Transient
+	private String gps;
+	
+	
 	public GatewayModel() {
 	}
+	
+	
+
+	public String getGps() {
+		return gps;
+	}
+
+
+
+	public void setGps(String gps) {
+		this.gps = gps;
+	}
+
+
 
 	public String getId() {
 		return id;
@@ -96,6 +114,12 @@ public class GatewayModel {
 
 	public void setUser(UserModel user) {
 		this.user = user;
+	}
+
+	@Override
+	public String toString() {
+		return "GatewayModel [id=" + id + ", longitude=" + longitude + ", latitude=" + latitude + ", address=" + address
+				+ ", location=" + location + ", user=" + user + ", nodes=" + nodes + "]";
 	}
 	
 }

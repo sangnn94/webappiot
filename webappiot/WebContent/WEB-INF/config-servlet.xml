@@ -68,7 +68,7 @@
 	<context:component-scan base-package="vn.edu.uit.iot.service" />
 	<context:annotation-config />
 	<mvc:annotation-driven>
-		<mvc:message-converters>
+		<mvc:message-converters register-defaults="true">
 			<bean id="jsonMessageConverter"
 				class="org.springframework.http.converter.json.MappingJackson2HttpMessageConverter" />
 		</mvc:message-converters>
@@ -101,10 +101,8 @@
 			access="permitAll" />
 		<security:intercept-url pattern="/register"
 			access="permitAll" />
-		<security:intercept-url pattern="/post-data"
-			access="permitAll" />
-			<security:intercept-url pattern="/post-gps"
-			access="permitAll" />
+		<security:intercept-url pattern="/data" access="permitAll" />
+		<security:intercept-url pattern="/gps" access="permitAll" />
 		<security:intercept-url pattern="/about"
 			access="permitAll" />
 		<security:intercept-url pattern="/report"
@@ -116,6 +114,7 @@
 			authentication-failure-url="/login?error=true" />
 
 		<security:logout logout-url="/logout" />
+		<security:csrf disabled="true" />
 	</security:http>
 	<security:global-method-security
 		secured-annotations="enabled"></security:global-method-security>
@@ -136,4 +135,5 @@
 	<bean id="tilesViewResolver"
 		class="org.springframework.web.servlet.view.tiles3.TilesViewResolver">
 	</bean>
+
 </beans>

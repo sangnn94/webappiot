@@ -31,80 +31,29 @@
 								<th>Username</th>
 								<th>Permission</th>
 								<th>Email</th>
-<<<<<<< HEAD
-=======
-								<th>Status</th>
->>>>>>> branch 'master' of https://github.com/sangnn94/webappiot.git
-							</tr>
-						</thead>
-						<tbody>
-<<<<<<< HEAD
-							<tr class="active">
-								<td>/index.html</td>
-								<td>1265</td>
-								<td>Khu phố 6, P. Linh Trung Quận Thủ Đức, Tp. Hồ Chí Minh</td>
 
-							</tr>
-							<tr class="success">
-								<td>/index.html</td>
-								<td>1265</td>
-								<td>Khu phố 6, P. Linh Trung Quận Thủ Đức, Tp. Hồ Chí Minh</td>
-								
-							</tr>
-							<tr class="warning">
-								<td>/index.html</td>
-								<td>1265</td>
-								<td>Khu phố 6, P. Linh Trung Quận Thủ Đức, Tp. Hồ Chí Minh</td>
-								
-							</tr>
-							<tr class="danger">
-								<td>/index.html</td>
-								<td>1265</td>
-								<td>Khu phố 6, P. Linh Trung Quận Thủ Đức, Tp. Hồ Chí Minh</td>
-								
-							</tr>
-							<tr>
-								<td>/index.html</td>
-								<td>1265</td>
-								<td>Khu phố 6, P. Linh Trung Quận Thủ Đức, Tp. Hồ Chí Minh</td>
-								
-							</tr>
-							<tr>
-								<td>/index.html</td>
-								<td>1265</td>
-								<td>Khu phố 6, P. Linh Trung Quận Thủ Đức, Tp. Hồ Chí Minh</td>
-								
-							</tr>
-							<tr>
-								<td>/index.html</td>
-								<td>1265</td>
-								<td>Khu phố 6, P. Linh Trung Quận Thủ Đức, Tp. Hồ Chí Minh</td>
-								
-							</tr>
-=======
-							<jstl:forEach items="${users }" var="user">
-								<jstl:if test="${user.username ne 'admin' }">
-									<jstl:choose>
-										<jstl:when test="${user.enabled }">
-											<tr class="success">
-												<td>${user.username }</td>
-												<td>${user.permission }</td>
-												<td>${user.email }</td>
-												<td><a href="#">Disable</a></td>
-											</tr>
-										</jstl:when>
-										<jstl:otherwise>
-											<tr class="danger">
-												<td>${user.username }</td>
-												<td>${user.permission }</td>
-												<td>${user.email }</td>
-												<td><a href="#">Enable</a></td>
-											</tr>
-										</jstl:otherwise>
-									</jstl:choose>
-								</jstl:if>
-							</jstl:forEach>
->>>>>>> branch 'master' of https://github.com/sangnn94/webappiot.git
+								<jstl:forEach items="${users }" var="user">
+									<jstl:if test="${user.username ne 'admin' }">
+										<jstl:choose>
+											<jstl:when test="${user.enabled }">
+												<tr class="success">
+													<td>${user.username }</td>
+													<td>${user.permission }</td>
+													<td>${user.email }</td>
+													<td><a href="#">Disable</a></td>
+												</tr>
+											</jstl:when>
+											<jstl:otherwise>
+												<tr class="danger">
+													<td>${user.username }</td>
+													<td>${user.permission }</td>
+													<td>${user.email }</td>
+													<td><a href="#">Enable</a></td>
+												</tr>
+											</jstl:otherwise>
+										</jstl:choose>
+									</jstl:if>
+								</jstl:forEach>
 						</tbody>
 					</table>
 				</div>

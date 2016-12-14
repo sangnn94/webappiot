@@ -15,4 +15,6 @@ public interface GatewayDAO {
 	public GatewayModel getGateway(int id);
 
 	public List<GatewayModel> getAll();
+
+	public void saveOrUpdate(GatewayModel gateway);
 }

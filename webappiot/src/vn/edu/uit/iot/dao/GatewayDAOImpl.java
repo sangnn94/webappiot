@@ -62,4 +62,14 @@ public class GatewayDAOImpl implements GatewayDAO {
 		return arrGateway;
 	}
 
+	@Override
+	public void saveOrUpdate(GatewayModel gateway) {
+		// TODO Auto-generated method stub
+		Session ss = this.mSession.getCurrentSession();
+		Transaction ts = ss.beginTransaction();
+		ss.saveOrUpdate(gateway);
+		ts.commit();
+	}
+	
+	
 }

@@ -25,7 +25,7 @@ public class GatewayServiceImpl implements GatewayService {
 		this.gatewayDao.delete(id);
 
 	}
-
+	
 	@Transactional
 	public void update(GatewayModel gatewayModel) {
 		this.gatewayDao.update(gatewayModel);
@@ -40,6 +40,12 @@ public class GatewayServiceImpl implements GatewayService {
 	@Transactional
 	public List<GatewayModel> getAll() {
 		return this.gatewayDao.getAll();
+	}
+
+	@Override
+	public void saveOrUpdate(GatewayModel gateway) {
+		// TODO Auto-generated method stub
+		gatewayDao.saveOrUpdate(gateway);
 	}
 
 }
