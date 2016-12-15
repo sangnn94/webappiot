@@ -36,7 +36,7 @@ public class ManageController {
 	public ModelAndView showNewGateway(ModelAndView mModelAndView, @ModelAttribute("gateway") GatewayModel gateway){
 		mModelAndView = new ModelAndView("newgateway");
 		List<LocationModel> listLocation = locationService.getAll();
-		mModelAndView.addObject("location", listLocation);
+		mModelAndView.addObject("locations", listLocation);
 		return mModelAndView;
 	}
 	

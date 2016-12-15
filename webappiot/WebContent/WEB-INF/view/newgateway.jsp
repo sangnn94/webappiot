@@ -24,11 +24,13 @@
 			
 			<sf:form method="post" action="${newGateway}" modelAttribute="gateway">
 				<div>
-					<label>Location</label> <sf:select class="form-control" path="location">
-					<c:forEach items="${location}" var= "location">
-						<option>${location.locationName }</option>
-					</c:forEach>
+					<label>Location</label> 
+					<sf:select class="form-control" path="location">
+						<c:forEach items="${locations}" var= "location">
+							<option value="${location }">${location.locationName }</option>	
+						</c:forEach>
 					</sf:select>
+					
 
 				</div>
 				<div class="form-group">
@@ -40,9 +42,9 @@
 						placeholder="Enter id"/>
 				</div>
 				<button type="submit" class="btn btn-default">Submit</button>
-				<!--<button type="reset" class="btn btn-default">Cancel</button>-->
+				<!--<button type="reset" class="btn btn-default">Cancel</button> chi co do security hoac url no moi chuyen qua login thoi con cai cho location la du lieu co sai thi no bao sai du lieu chu lam gi ma chuyen vo login dc-->
 			</sf:form>
-
+		
 		</div>
 	</div>
 
