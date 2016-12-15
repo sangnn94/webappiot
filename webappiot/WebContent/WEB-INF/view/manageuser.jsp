@@ -31,7 +31,7 @@
 								<th>Username</th>
 								<th>Permission</th>
 								<th>Email</th>
-
+								<th>Active</th>
 								<jstl:forEach items="${users }" var="user">
 									<jstl:if test="${user.username ne 'admin' }">
 										<jstl:choose>

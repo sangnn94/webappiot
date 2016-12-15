@@ -52,7 +52,7 @@ public class GatewayModel {
 		return gps;
 	}
 
-
+ 
 
 	public void setGps(String gps) {
 		this.gps = gps;

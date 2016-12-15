@@ -84,17 +84,22 @@
 		</security:authentication-provider>
 	</security:authentication-manager>
 	<security:http use-expressions="true">
+		<security:intercept-url pattern="/"
+			access="permitAll" />
 		<security:intercept-url pattern="/resources/**"
 			access="permitAll" />
 		<security:intercept-url pattern="/tiles/**"
 			access="permitAll" />
-		<security:intercept-url pattern="/" access="permitAll" />
 		<security:intercept-url pattern="/login"
 			access="permitAll" />
 		<security:intercept-url pattern="/logout"
 			access="permitAll" />
+		<security:intercept-url pattern="/manage-device"
+			access="isAuthenticated()" />
 		<security:intercept-url pattern="/manage-device/**"
-			access="permitAll" />
+			access="isAuthenticated()" />
+		<security:intercept-url pattern="/manage-user"
+			access="hasRole('ADMIN')" />
 		<security:intercept-url pattern="/manage-user/**"
 			access="hasRole('ADMIN')" />
 		<security:intercept-url pattern="/newaccount"
@@ -106,9 +111,9 @@
 		<security:intercept-url pattern="/about"
 			access="permitAll" />
 		<security:intercept-url pattern="/report"
-			access="permitAll" />
+			access="isAuthenticated()" />
 		<security:intercept-url pattern="/overview/**"
-			access="permitAll" />
+			access="isAuthenticated()" />
 		<security:intercept-url pattern="/**" access="denyAll" />
 		<security:form-login login-page="/login"
 			authentication-failure-url="/login?error=true" />
