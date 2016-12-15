@@ -11,19 +11,12 @@ import org.springframework.web.servlet.ModelAndView;
 import vn.edu.uit.iot.model.GatewayModel;
 import vn.edu.uit.iot.model.NodeModel;
 import vn.edu.uit.iot.model.RecordModel;
-import vn.edu.uit.iot.service.DataService;
 import vn.edu.uit.iot.service.GatewayService;
-import vn.edu.uit.iot.service.LocationService;
 import vn.edu.uit.iot.service.NodeService;
 import vn.edu.uit.iot.service.RecordService;
 
 @Controller
 public class SidebarController {
-	@Autowired
-	private LocationService mLocationService;
-	
-	@Autowired
-	private DataService mDataservice;
 	
 	@Autowired
 	private NodeService mNodeService;

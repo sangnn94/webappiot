@@ -30,6 +30,9 @@
 	<definition name="report" extends="main">
 		<put-attribute name="content" value="/WEB-INF/view/report.jsp"></put-attribute>
 	</definition>
+	<definition name="airstandard" extends="main">
+		<put-attribute name="content" value="/WEB-INF/view/airstandard.jsp"></put-attribute>
+	</definition>
 	<definition name="login" template="/WEB-INF/view/login.jsp" />
 	<definition name="register" template="/WEB-INF/view/register.jsp" />
 

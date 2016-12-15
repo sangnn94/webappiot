@@ -59,6 +59,7 @@
 										class="fa fa-trash"></a></td>
 								</tr>
 							</c:forEach>
+							
 						</tbody>
 					</table>
 				</div>

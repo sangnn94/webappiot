@@ -12,6 +12,7 @@
 					href="${pageContext.request.contextPath}/">WebAppIoT</a></li>
 				<li class="active"><i class="fa fa-edit"></i> Statistics
 					Overview</li>
+				<a href="${pageContext.request.contextPath}/overview/airstandard" style="float: right">Air Standard</a>
 			</ol>
 		</div>
 	</div>

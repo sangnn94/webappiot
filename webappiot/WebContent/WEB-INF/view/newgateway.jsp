@@ -1,8 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
-
+<%@ taglib prefix="sf" uri="http://www.springframework.org/tags/form"%>
+<c:url var="newGateway" value="${pageContext.request.contextPath}/manage-device/add-device"></c:url>
 <div class="container-fluid">
 
 	<!-- Page Heading -->
@@ -10,10 +10,10 @@
 		<div class="col-lg-12">
 			<h1 class="page-header">Add new Device</h1>
 			<ol class="breadcrumb">
-				<li><i class="fa fa-dashboard"></i> <a href="/webappiot/">WebAppIoT</a>
+				<li><i class="fa fa-dashboard"></i> <a href="${pageContext.request.contextPath}/">WebAppIoT</a>
 				</li>
 				<li><i class="fa fa-dashboard"></i> <a
-					href="/webappiot/manage-device">Manage device</a></li>
+					href="${pageContext.request.contextPath}/manage-device">Manage device</a></li>
 				<li class="active"><i class="fa fa-edit"></i>Add new Device</li>
 			</ol>
 		</div>
@@ -21,33 +21,27 @@
 	<!-- /.row -->
 	<div class="row">
 		<div class="col-lg-6">
-
-			<form role="form">
+			
+			<sf:form method="post" action="${newGateway}" modelAttribute="gateway">
 				<div>
-					<label>Location</label> <select class="form-control">
-						<option>1</option>
-						<option>2</option>
-						<option>3</option>
-						<option>4</option>
-						<option>5</option>
-						<option>6</option>
-						<option>7</option>
-						<option>8</option>
-						<option>9</option>
-						<option>10</option>
-						<option>11</option>
-						<option>12</option>
-					</select>
+					<label>Location</label> <sf:select class="form-control" path="location">
+					<c:forEach items="${location}" var= "location">
+						<option>${location.locationName }</option>
+					</c:forEach>
+					</sf:select>
 
 				</div>
-
 				<div class="form-group">
-					<label>Address</label> <input class="form-control"
-						placeholder="Enter user address">
+					<label>Address</label> <sf:input class="form-control" path="address"
+						placeholder="Enter user address"/>
+				</div>
+				<div class="form-group">
+					<label>Device ID</label> <sf:input class="form-control" path="id"
+						placeholder="Enter id"/>
 				</div>
 				<button type="submit" class="btn btn-default">Submit</button>
-				<button type="reset" class="btn btn-default">Cancel</button>
-			</form>
+				<!--<button type="reset" class="btn btn-default">Cancel</button>-->
+			</sf:form>
 
 		</div>
 	</div>
