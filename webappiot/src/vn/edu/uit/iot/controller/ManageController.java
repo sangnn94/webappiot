@@ -7,6 +7,7 @@ import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.propertyeditors.LocaleEditor;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.WebDataBinder;
@@ -37,7 +38,6 @@ public class ManageController {
 	protected void locationBinder(WebDataBinder binder) {
 		binder.registerCustomEditor(LocationModel.class, new LocationEditor(locationService));
 	}
-
 	@RequestMapping(value = "/manage-device/add-device", method = RequestMethod.GET)
 	public ModelAndView showNewGateway(ModelAndView mModelAndView, @ModelAttribute("gateway") GatewayModel gateway) {
 		mModelAndView.setViewName("newgateway");
@@ -50,6 +50,7 @@ public class ManageController {
 	public ModelAndView createGateway(ModelAndView mModelAndView,
 			@Valid @ModelAttribute("gateway") GatewayModel gateway) {
 		mModelAndView.setViewName("newgateway");
+		
 		System.out.println(gateway);
 		// gatewayService.insert(gateway);
 		return mModelAndView;

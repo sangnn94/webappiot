@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import vn.edu.uit.iot.model.GatewayModel;
+import vn.edu.uit.iot.model.GpsJson;
 import vn.edu.uit.iot.service.GatewayService;
 
 @Controller
@@ -20,8 +21,8 @@ public class GatewayController {
 	
 	@RequestMapping(value="/gps", method=RequestMethod.POST)
 	@ResponseBody
-	public ResponseEntity<Void> postGps(@RequestBody GatewayModel gateway){
-		System.out.println(gateway);
+	public ResponseEntity<Void> postGps(@RequestBody GpsJson gps){
+		System.out.println(gps);
 		//gatewayService.saveOrUpdate(gateway);
 		return new ResponseEntity<Void>(HttpStatus.OK);
 	}

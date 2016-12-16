@@ -26,7 +26,7 @@ void setup() {
 void loop() {
   // put your main code here, to run repeatedly:
   getData();
-  delay(10000);
+  //delay(1000);
 }
 
 void getData(){
@@ -35,7 +35,7 @@ void getData(){
   for(int i = 500; i>0; i--){
     mV += Get_mVfromADC(pinMQ);
     samples += 1;
-    delay(20);
+    delay(2);
   }
   mV = mV / (float) samples;
   ratioRsRo = CalcRsFromVo(mV) / Ro_clean_air_factor;

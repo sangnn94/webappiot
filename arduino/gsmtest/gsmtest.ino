@@ -4,7 +4,7 @@ SoftwareSerial zigbeeSerial(4,5);
 String nodeData = "000";
 void setup() {
   Serial.begin(38400);
-  zigbeeSerial.begin(38400);
+  //zigbeeSerial.begin(38400);
   gsmSerial.begin(38400);
   gsmSerial.write("AT+GSN\r\n");
   String IMEI =  gsmSerial.readString();
@@ -19,10 +19,10 @@ void setup() {
   Serial.println("init hhtp");
   gsmSerial.write("AT+HTTPINIT\r\n");
   delay(3000);
-  zigbeeSerial.listen();
+  /*zigbeeSerial.listen();
   while(!zigbeeSerial.isListening()){
     ;
-  }
+  }*/
   
 }
 
@@ -33,9 +33,9 @@ void loop() {
 
 void configure(){
     
-    if(zigbeeSerial.available()){
+   // if(zigbeeSerial.available()){
       Serial.println("set URL");
-      gsmSerial.write("AT+HTTPPARA=URL,http://webappiot-openshift-web-app-iot.44fs.preview.openshiftapps.com/postData\r\n");
+      gsmSerial.write("AT+HTTPPARA=URL,http://apps.iot.uit.edu.vn/gps\r\n");
       delay(3000);
       Serial.println("set content ");
       gsmSerial.write("AT+HTTPPARA=CONTENT,application/json\r\n");
@@ -44,17 +44,22 @@ void configure(){
       gsmSerial.write("AT+HTTPDATA=2048,5000\r\n");
       Serial.println("input data");
       delay(3000); 
-      String json = "{\"id\": \"ATD+GSN0932484056\", \"nodeID\": \"2\", \"value\": \"" + nodeData + "\", \"date\":\"date test\"}\r\n";
+     /* String json = "{\"id\": \"ATD+GSN0932484056\", \"nodeID\": \"2\", \"value\": \"" + nodeData + "\", \"date\":\"date test\"}\r\n";
       Serial.println(json);
       gsmSerial.write("{\"id\": \"ATD+GSN0932484056\", \"nodeID\": \"2\", \"value\": \"");
       while(zigbeeSerial.available()){
         gsmSerial.write(zigbeeSerial.read());
       }
-      gsmSerial.write("\", \"date\":\"date test\"}\r\n");
+      gsmSerial.write("\", \"date\":\"date test\"}\r\n");*/
+      gsmSerial.write("{\"id\": \"");
+      gsmSerial.write("AT+GSN  865067023201570  OK  +CIPGSMLOC: 0,106.696068,10.820125,2016/12/15,17:50:57  OK ");
+      gsmSerial.write("\", \"address\": \"");
+      gsmSerial.write("+CIPGSMLOC: 0,106.696068,10.820125,2016/12/15,17:50:57  OK ");
+      gsmSerial.write("\"}\r\n"); 
       delay(3000);
       Serial.println("post ");
       gsmSerial.write("AT+HTTPACTION=1\r\n");
       Serial.println("finish ");
-    }
+    //}
 }
 

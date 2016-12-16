@@ -3,9 +3,10 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>vn.edu.uit</groupId>
 	<artifactId>webappiot</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<version>1.0</version>
 	<packaging>war</packaging>
 	<build>
+		<finalName>webappiot</finalName>
 		<sourceDirectory>src</sourceDirectory>
 		<plugins>
 			<plugin>
@@ -76,72 +77,72 @@
 		<dependency>
 
 			<groupId>org.hibernate</groupId>
-	
+
 			<artifactId>hibernate-validator</artifactId>
-			
+
 			<version>4.3.0.Final</version>
-		
+
 		</dependency>
-		
+
 		<dependency>
-		
+
 			<groupId>org.hibernate</groupId>
-			
+
 			<artifactId>hibernate-commons-annotations</artifactId>
-			
+
 			<version>3.3.0.ga</version>
-		
+
 		</dependency>
-		
+
 		<dependency>
-		
+
 			<groupId>org.hibernate</groupId>
-			
+
 			<artifactId>hibernate-annotations</artifactId>
-			
+
 			<version>3.3.1.GA</version>
 
 		</dependency>
-		
+
 		<dependency>
-		
+
 			<groupId>org.hibernate</groupId>
-			
+
 			<artifactId>hibernate-core</artifactId>
-			
+
 			<version>3.3.2.GA</version>
-		
+
 		</dependency>
-		
+
 		<dependency>
-		
+
 			<groupId>taglibs</groupId>
-			
+
 			<artifactId>standard</artifactId>
-			
+
 			<version>1.1.2</version>
-		
+
 		</dependency>
-		
-		
+
+
 		<dependency>
-		
+
 			<groupId>commons-dbcp</groupId>
-			
+
 			<artifactId>commons-dbcp</artifactId>
-			
+
 			<version>20030825.184428</version>
-			
+
 		</dependency>
-		
+
 		<dependency>
-		
+
 			<groupId>commons-pool</groupId>
-			
+
 			<artifactId>commons-pool</artifactId>
-			
+
 			<version>20030825.183949</version>
-			
+
 		</dependency>
 		<dependency>
 			<groupId>org.springframework</groupId>
@@ -214,31 +215,4 @@
 			<version>2.7</version>
 		</dependency>
 	</dependencies>
-	<!-- openshift deployment profile -->
-	<profiles>
-		<profile>
-			<!-- When built in OpenShift the 'openshift' profile will be used when 
-				invoking mvn. -->
-			<!-- Use this profile for any OpenShift specific customization your app 
-				will need. -->
-			<!-- By default that is to put the resulting archive into the 'webapps' 
-				folder. -->
-			<!-- http://maven.apache.org/guides/mini/guide-building-for-different-environments.html -->
-			<id>openshift</id>
-			<build>
-				<finalName>openshift-deploy-sample</finalName>
-				<plugins>
-					<plugin>
-						<artifactId>maven-war-plugin</artifactId>
-						<version>3.0.0</version>
-						<configuration>
-							<warSourceDirectory>WebContent</warSourceDirectory>
-							<outputDirectory>deployments</outputDirectory>
-							<warName>ROOT</warName>
-						</configuration>
-					</plugin>
-				</plugins>
-			</build>
-		</profile>
-	</profiles>
 </project>
