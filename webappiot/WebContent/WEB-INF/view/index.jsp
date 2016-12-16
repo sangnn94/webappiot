@@ -98,7 +98,7 @@
 								</tr>
 							</thead>
 							<tbody>
-								<jstl:forEach items="${records }" var="record">
+								<!--<jstl:forEach items="${records }" var="record">
 									<tr>
 										<td>${record.location.locationName }</td>
 										<jstl:choose>
@@ -117,7 +117,7 @@
 										<td class="success">${record.pm25 }</td>
 										<td>${record.date }</td>
 									</tr>
-								</jstl:forEach>
+								</jstl:forEach>-->
 
 							</tbody>
 						</table>
