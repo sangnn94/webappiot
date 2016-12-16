@@ -32,4 +32,10 @@ public class UserServiceImpl implements UserService {
 		return userDao.getAll();
 	}
 
+	@Override
+	public UserModel get(String username) {
+		// TODO Auto-generated method stub
+		return userDao.findByUsername(username);
+	}
+
 }

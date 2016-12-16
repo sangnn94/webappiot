@@ -15,7 +15,6 @@ import vn.edu.uit.iot.model.UserModel;
 
 @Transactional
 @Repository
-@Component("userDAOImpl")
 public class UserDAOImpl implements UserDAO {
 
 	@Autowired
@@ -44,6 +43,12 @@ public class UserDAOImpl implements UserDAO {
 		List<UserModel> users = session().createQuery("from UserModel").list();
 		ts.commit();
 		return users;
+	}
+
+	@Override
+	public UserModel findByUsername(String username) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }

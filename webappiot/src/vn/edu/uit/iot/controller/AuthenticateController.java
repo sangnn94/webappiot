@@ -1,6 +1,5 @@
 package vn.edu.uit.iot.controller;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.validation.Valid;
@@ -8,7 +7,6 @@ import javax.validation.Valid;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -32,15 +30,16 @@ public class AuthenticateController {
 	 * @return login.jsp
 	 */
 	@RequestMapping("/login")
-	public String showLogin() {
+	public ModelAndView showLogin(ModelAndView modelAndView, @ModelAttribute(name = "user") UserModel user) {
 		logger.info("Showing login page....");
-		return "login";
+		modelAndView.setViewName("login");
+		return modelAndView;
 	}
 
 	/**
 	 * Show new account form
 	 * 
-	 * @return newaccout.jsp
+	 * @return register.jsp
 	 */
 	@RequestMapping(value = "/register", method = RequestMethod.GET)
 	public ModelAndView showNewAccount(ModelAndView modelAndView, @ModelAttribute("user") UserModel user) {
@@ -51,7 +50,7 @@ public class AuthenticateController {
 	/**
 	 * Handle create user
 	 * 
-	 * @return index.jsp
+	 * @return register.jsp
 	 */
 	@RequestMapping(value = "/register", method = RequestMethod.POST)
 	public ModelAndView createUser(ModelAndView modelAndView, @Valid @ModelAttribute("user") UserModel user,
@@ -65,12 +64,13 @@ public class AuthenticateController {
 
 		return modelAndView;
 	}
-	@RequestMapping(value="/manage-user" , method= RequestMethod.GET)
-	public ModelAndView manageUser(ModelAndView modelAndView){
-		List<UserModel>users =  userService.getAll();
+
+	@RequestMapping(value = "/manage-user", method = RequestMethod.GET)
+	public ModelAndView manageUser(ModelAndView modelAndView) {
+		List<UserModel> users = userService.getAll();
 		modelAndView.getModel().put("users", users);
 		modelAndView.setViewName("manageuser");
 		return modelAndView;
 	}
-	
+
 }

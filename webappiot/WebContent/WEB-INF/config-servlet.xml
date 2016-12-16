@@ -79,13 +79,12 @@
 			<security:jdbc-user-service
 				data-source-ref="dataSource"
 				authorities-by-username-query="select USERNAME, PERMISSION as authority from USER where USERNAME = ?"
-				users-by-username-query="select USERNAME, PASSWORD, 'true' as enabled from USER where USERNAME = ?" />
+				users-by-username-query="select USERNAME, PASSWORD, ENABLED from USER where USERNAME = ?" />
 			<security:password-encoder ref="passwordEncoder"></security:password-encoder>
 		</security:authentication-provider>
 	</security:authentication-manager>
 	<security:http use-expressions="true">
-		<security:intercept-url pattern="/"
-			access="permitAll" />
+		<security:intercept-url pattern="/" access="permitAll" />
 		<security:intercept-url pattern="/resources/**"
 			access="permitAll" />
 		<security:intercept-url pattern="/tiles/**"
@@ -116,10 +115,13 @@
 			access="isAuthenticated()" />
 		<security:intercept-url pattern="/**" access="denyAll" />
 		<security:form-login login-page="/login"
+			username-parameter="username" password-parameter="password"
 			authentication-failure-url="/login?error=true" />
-
-		<security:logout logout-url="/logout" />
 		<security:csrf disabled="true" />
+		<security:headers>
+			<security:xss-protection block="false"/>
+		</security:headers>
+		<security:logout />
 	</security:http>
 	<security:global-method-security
 		secured-annotations="enabled"></security:global-method-security>

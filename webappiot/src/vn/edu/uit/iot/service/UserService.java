@@ -9,5 +9,5 @@ import vn.edu.uit.iot.model.UserModel;
 public interface UserService {
 	void create(UserModel user);
 	List<UserModel> getAll();
-
+	UserModel get(String username);
 }

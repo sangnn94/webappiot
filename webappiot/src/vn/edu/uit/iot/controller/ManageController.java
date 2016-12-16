@@ -1,5 +1,6 @@
 package vn.edu.uit.iot.controller;
 
+import java.security.Principal;
 import java.util.List;
 
 import javax.tools.DocumentationTool.Location;
@@ -7,6 +8,7 @@ import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.propertyeditors.LocaleEditor;
+import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -24,6 +26,7 @@ import vn.edu.uit.iot.model.NodeModel;
 import vn.edu.uit.iot.model.UserModel;
 import vn.edu.uit.iot.service.GatewayService;
 import vn.edu.uit.iot.service.LocationService;
+import vn.edu.uit.iot.service.UserService;
 
 @Controller
 public class ManageController {
@@ -32,12 +35,23 @@ public class ManageController {
 	private LocationService locationService;
 
 	@Autowired
+	private UserService userService;
+
+	@Autowired
 	private GatewayService gatewayService;
+
+	private UserModel getCurrentUser() {
+		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+		String username = auth.getName();
+		return userService.get(username);
+
+	}
 
 	@InitBinder
 	protected void locationBinder(WebDataBinder binder) {
 		binder.registerCustomEditor(LocationModel.class, new LocationEditor(locationService));
 	}
+
 	@RequestMapping(value = "/manage-device/add-device", method = RequestMethod.GET)
 	public ModelAndView showNewGateway(ModelAndView mModelAndView, @ModelAttribute("gateway") GatewayModel gateway) {
 		mModelAndView.setViewName("newgateway");
@@ -48,9 +62,9 @@ public class ManageController {
 
 	@RequestMapping(value = "/manage-device/add-device", method = RequestMethod.POST)
 	public ModelAndView createGateway(ModelAndView mModelAndView,
-			@Valid @ModelAttribute("gateway") GatewayModel gateway) {
+			@Valid @ModelAttribute("gateway") GatewayModel gateway, Principal principal) {
 		mModelAndView.setViewName("newgateway");
-		
+		System.out.println(principal.getName());
 		System.out.println(gateway);
 		// gatewayService.insert(gateway);
 		return mModelAndView;
