@@ -12,5 +12,7 @@
 		<mapping class="vn.edu.uit.iot.model.NodeModel" />
 		<mapping class="vn.edu.uit.iot.model.RecordModel" />
 		<mapping class="vn.edu.uit.iot.model.UserModel" />
+		<mapping class="vn.edu.uit.iot.model.AirModel"/>
+		<mapping class="vn.edu.uit.iot.model.ValueModel"/>
 	</session-factory>
 </hibernate-configuration>

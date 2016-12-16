@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Random;
 
 import com.google.gson.Gson;
 
@@ -18,43 +19,47 @@ public class HandleData {
 		for(int i = 0; i<listRecord.size(); i++){
 			airData =  new AirData();
 			airData.setLocation(listRecord.get(i).getLocation().getLocationName());
-			if(air == Const.CO){
-				airData.setValue(listRecord.get(i).getCo());
-				if(listRecord.get(i).getCo() > 30000)
-					airData.setEvaluation("HIGH");
+			switch(air){
+			case Const.CO:
+					airData.setValue(listRecord.get(i).getValue());
+					if(listRecord.get(i).getValue() > 30000)
+						airData.setEvaluation("HIGH");
+					break;
+			case Const.SO2:
+					airData.setValue(listRecord.get(i).getValue());
+					if(listRecord.get(i).getValue() > 350)
+						airData.setEvaluation("HIGH");
+					break;
+			case Const.O3:
+					airData.setValue(listRecord.get(i).getValue());
+					if(listRecord.get(i).getValue() > 200)
+						airData.setEvaluation("HIGH");
+					break;
+			case Const.Pb:
+					airData.setValue(listRecord.get(i).getValue());
+					if(listRecord.get(i).getValue() > 1.5)
+						airData.setEvaluation("HIGH");
+					break;
+			case Const.TSP:
+					airData.setValue(listRecord.get(i).getValue());
+					if(listRecord.get(i).getValue() > 200)
+						airData.setEvaluation("HIGH");
+					break;
+			case Const.PM10:
+					airData.setValue(listRecord.get(i).getValue());
+					if(listRecord.get(i).getValue() > 150)
+						airData.setEvaluation("HIGH");
+					break;
+			case Const.PM25:
+					airData.setValue(listRecord.get(i).getValue());
+					if(listRecord.get(i).getValue() > 50)
+						airData.setEvaluation("HIGH");
+					break;
 			}
-			if(air == Const.SO2){
-				airData.setValue(listRecord.get(i).getSo2());
-				if(listRecord.get(i).getSo2() > 350)
-					airData.setEvaluation("HIGH");
-			}
-			if(air == Const.O3){
-				airData.setValue(listRecord.get(i).getO3());
-				if(listRecord.get(i).getO3() > 200)
-					airData.setEvaluation("HIGH");
-			}
-			if(air == Const.Pb){
-				airData.setValue(listRecord.get(i).getPb());
-				if(listRecord.get(i).getPb() > 1.5)
-					airData.setEvaluation("HIGH");
-			}
-			if(air == Const.TSP){
-				airData.setValue(listRecord.get(i).getTsp());
-				if(listRecord.get(i).getTsp() > 200)
-					airData.setEvaluation("HIGH");
-			}
-			if(air == Const.PM10){
-				airData.setValue(listRecord.get(i).getPm10());
-				if(listRecord.get(i).getPm10() > 150)
-					airData.setEvaluation("HIGH");
-			}
-			if(air == Const.PM25){
-				airData.setValue(listRecord.get(i).getPm25());
-				if(listRecord.get(i).getPm25() > 50)
-					airData.setEvaluation("HIGH");
-			}
+			
 			listAirData.add(airData);
 		}
+		
 		return listAirData;
 	}
 	
@@ -72,6 +77,10 @@ public class HandleData {
 			listMap.add(map);
 		}
 		return new Gson().toJson(listMap);
+	}
+	
+	public static int randomData(int max, int min){
+		return new Random().nextInt((max-min)+1) + min;
 	}
 	
 	
