@@ -33,8 +33,15 @@
 	<definition name="airstandard" extends="main">
 		<put-attribute name="content" value="/WEB-INF/view/airstandard.jsp"></put-attribute>
 	</definition>
-	
-	<definition name="login" template="/WEB-INF/view/login.jsp" />
-	<definition name="register" template="/WEB-INF/view/register.jsp" />
+	<definition name="authenticate" template="/WEB-INF/tiles/authenticate.jsp">
+		<put-attribute name="title" value="WebAppIoT"></put-attribute>
+	</definition>
+	<definition name="login" extends="authenticate">
+		<put-attribute name="content" value="/WEB-INF/view/login.jsp"></put-attribute>
+	</definition>
+	<definition name="register" extends="authenticate">
+		<put-attribute name="content" value="/WEB-INF/view/register.jsp"></put-attribute>
+	</definition>
+	<definition name="exception" template="/WEB-INF/view/exception.jsp" />
 
 </tiles-definitions>

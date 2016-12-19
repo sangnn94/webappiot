@@ -40,9 +40,6 @@
 			<sf:form name='f' action='${pageContext.request.contextPath}/login'
 				modelAttribute="user" method='POST' class="form-signin">
 				<h3 class="form-signin-heading">Welcome! Please Sign In</h3>
-				<c:if test="${param.error != null }">
-					<p>Incorrect username and password</p>
-				</c:if>
 				<div>
 					<hr class="colorgraph">
 				</div>

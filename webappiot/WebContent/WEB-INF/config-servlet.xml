@@ -9,6 +9,11 @@
 		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd
 		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.3.xsd">
 
+	<!-- message place -->
+	<bean id="messageSource"
+		class="org.springframework.context.support.ResourceBundleMessageSource">
+		<property name="basename" value="vn.edu.uit.iot.messages.messages"></property>
+	</bean>
 	<!-- configure hibernate -->
 	<bean
 		class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
@@ -16,14 +21,13 @@
 			<value>/WEB-INF/jdbc.properties</value>
 		</property>
 	</bean>
-
-	<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource">
+	<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource"
+		destroy-method="close">
 		<property name="driverClassName" value="${jdbc.driverClassName}" />
 		<property name="url" value="${jdbc.databaseurl}" />
 		<property name="username" value="${jdbc.username}" />
 		<property name="password" value="${jdbc.password}" />
 	</bean>
-
 	<bean id="sessionFactory"
 		class="org.springframework.orm.hibernate3.LocalSessionFactoryBean">
 		<property name="dataSource">
@@ -54,18 +58,13 @@
 
 	</bean>
 	<tx:annotation-driven />
-	<!-- configure view resolver -->
-
-	<!-- <bean id="viewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver"> 
-		<property name="prefix" value="/WEB-INF/view/"> </property> <property name="suffix" 
-		value=".jsp"></property> </bean> -->
-
-	<!-- configure resources -->
 
 	<mvc:resources location="WEB-INF/resources/" mapping="/resources/**"></mvc:resources>
 	<context:component-scan base-package="vn.edu.uit.iot.controller" />
 	<context:component-scan base-package="vn.edu.uit.iot.dao" />
 	<context:component-scan base-package="vn.edu.uit.iot.service" />
+	<context:component-scan base-package="vn.edu.uit.iot.authentication" />
+	<context:component-scan base-package="vn.edu.uit.iot.exception" />
 	<context:annotation-config />
 	<mvc:annotation-driven>
 		<mvc:message-converters register-defaults="true">
@@ -84,7 +83,6 @@
 		</security:authentication-provider>
 	</security:authentication-manager>
 	<security:http use-expressions="true">
-		<security:intercept-url pattern="/" access="permitAll" />
 		<security:intercept-url pattern="/resources/**"
 			access="permitAll" />
 		<security:intercept-url pattern="/tiles/**"
@@ -93,10 +91,12 @@
 			access="permitAll" />
 		<security:intercept-url pattern="/logout"
 			access="permitAll" />
-		<security:intercept-url pattern="/manage-device"
-			access="permitAll" />
+		<security:intercept-url pattern="/about"
+			access="isAuthenticated()" />
+		<security:intercept-url pattern="/"
+			access="isAuthenticated()" />
 		<security:intercept-url pattern="/manage-device/**"
-			access="permitAll" />
+			access="isAuthenticated()" />
 		<security:intercept-url pattern="/manage-user"
 			access="hasRole('ADMIN')" />
 		<security:intercept-url pattern="/manage-user/**"
@@ -105,21 +105,20 @@
 			access="permitAll" />
 		<security:intercept-url pattern="/register"
 			access="permitAll" />
+		<security:intercept-url pattern="/exception"
+			access="permitAll" />
 		<security:intercept-url pattern="/data" access="permitAll" />
 		<security:intercept-url pattern="/gps" access="permitAll" />
-		<security:intercept-url pattern="/about"
-			access="permitAll" />
 		<security:intercept-url pattern="/report"
-			access="permitAll" />
+			access="isAuthenticated()" />
 		<security:intercept-url pattern="/overview/**"
-			access="permitAll" />
+			access="isAuthenticated()" />
 		<security:intercept-url pattern="/**" access="denyAll" />
 		<security:form-login login-page="/login"
-			username-parameter="username" password-parameter="password"
-			authentication-failure-url="/login?error=true" />
+			username-parameter="username" password-parameter="password" />
 		<security:csrf disabled="true" />
 		<security:headers>
-			<security:xss-protection block="false"/>
+			<security:xss-protection block="false" />
 		</security:headers>
 		<security:logout />
 	</security:http>

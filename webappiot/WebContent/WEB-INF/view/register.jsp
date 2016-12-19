@@ -52,12 +52,13 @@
 						class="form-control" placeholder="Email" />
 				</div>
 				<div class="form-group">
-					<sf:input id="password" name="password" path="password"
-						type="password" class="form-control" placeholder="Password" />
+					<sf:input name="password" path="password" type="password"
+						class="form-control" placeholder="Password" />
 				</div>
 				<div class="form-group">
-					<input id="confirmpass" name="confirmpass" type="password"
-						class="form-control" placeholder="Confirm password" />
+					<sf:input name="matchingPassword" path="matchingPassword"
+						type="password" class="form-control"
+						placeholder="Confirm password" />
 				</div>
 				<button class="btn btn-lg btn-primary btn-block" name="submit"
 					value="Login" type="submit">Sign up</button>
