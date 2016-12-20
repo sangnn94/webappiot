@@ -18,12 +18,23 @@ import vn.edu.uit.iot.service.GatewayService;
 public class GatewayController {
 	@Autowired
 	private GatewayService gatewayService;
-	
-	@RequestMapping(value="/gps", method=RequestMethod.POST)
+
+	@RequestMapping(value = "/gps", method = RequestMethod.POST)
 	@ResponseBody
-	public ResponseEntity<Void> postGps(@RequestBody GpsJson gps){
-		System.out.println(gps);
-		//gatewayService.saveOrUpdate(gateway);
+	public ResponseEntity<Void> postGps(@RequestBody GpsJson gps) {
+		String id = gps.getId();
+		GatewayModel gateway = gatewayService.get(id);
+		if(gateway == null){
+			// not found in database
+			return new ResponseEntity<Void>(HttpStatus.UNAUTHORIZED);
+		}
+		String[] rawGps = gps.getGps().split(",");
+		Float longitude = Float.parseFloat(rawGps[1]);
+		Float latitude = Float.parseFloat(rawGps[2]);
+		System.out.println(id + " " + longitude + " " + latitude);
+		gateway.setLongitude(longitude);
+		gateway.setLatitude(latitude);
+		gatewayService.update(gateway);
 		return new ResponseEntity<Void>(HttpStatus.OK);
 	}
 }

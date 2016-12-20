@@ -36,6 +36,7 @@
 <script src='<c:url value="/resources/js/jquery.js" />'></script>
 <c:url var="registerUrl" value="/register"></c:url>
 <c:url var="loginUrl" value="/login"></c:url>
+<c:url var="rootUrl" value="/"></c:url>
 </head>
 <body>
 
@@ -50,7 +51,7 @@
 						class="icon-bar"></span> <span class="icon-bar"></span> <span
 						class="icon-bar"></span>
 				</button>
-				<a class="navbar-brand" href="#">WebAppIoT</a>
+				<a class="navbar-brand" href="${rootUrl }">WebAppIoT</a>
 			</div>
 			<div id="navbar" class="navbar-collapse collapse">
 				<ul class="nav navbar-nav navbar-right">

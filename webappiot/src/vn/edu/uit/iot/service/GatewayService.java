@@ -9,11 +9,11 @@ public interface GatewayService {
 
 	public void insert(GatewayModel gatewayModel);
 	
-	public void delete(int id);
+	public void delete(String id);
 	
 	public void update(GatewayModel gatewayModel);
 	
-	public GatewayModel getData(int id);
+	public GatewayModel get(String id);
 	
 	public List<GatewayModel> getAll();
 	

@@ -57,11 +57,10 @@ public class AuthenticateController {
 	@RequestMapping(value = "/register", method = RequestMethod.POST)
 	public ModelAndView createUser(ModelAndView modelAndView, @Valid @ModelAttribute("user") UserModel user,
 			BindingResult result) {
-		modelAndView.setViewName("/register");
+		modelAndView.setViewName("register");
 		if (!result.hasErrors()) {
-			user.setPermission("ROLE_USER");
 			userService.create(user);
-			modelAndView.setViewName("redirect:/");
+			modelAndView.setViewName("redirect:/login");
 		}
 		return modelAndView;
 	}

@@ -26,10 +26,10 @@ public class GatewayDAOImpl implements GatewayDAO {
 	}
 
 	@Override
-	public void delete(int id) {
+	public void delete(String id) {
 		Session ss = this.mSession.getCurrentSession();
 		Transaction ts = ss.beginTransaction();
-		ss.delete(this.getGateway(id));
+		ss.delete(this.get(id));
 		ts.commit();
 
 	}
@@ -44,7 +44,7 @@ public class GatewayDAOImpl implements GatewayDAO {
 	}
 
 	@Override
-	public GatewayModel getGateway(int id) {
+	public GatewayModel get(String id) {
 		Session ss = this.mSession.getCurrentSession();
 		Transaction ts = ss.beginTransaction();
 		GatewayModel gateway = (GatewayModel) ss.get(GatewayModel.class, id);

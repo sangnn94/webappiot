@@ -10,11 +10,11 @@ public interface NodeService {
 	
 	public void insert(NodeModel nodeModel);
 	
-	public void delete(int id);
+	public void delete(String id);
 	
 	public void update(NodeModel nodeModel);
 	
-	public NodeModel getData(int id);
+	public NodeModel get(String id);
 	
 	public List<NodeModel> getAll();
 

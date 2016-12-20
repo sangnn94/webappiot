@@ -42,6 +42,8 @@
 	<definition name="register" extends="authenticate">
 		<put-attribute name="content" value="/WEB-INF/view/register.jsp"></put-attribute>
 	</definition>
-	<definition name="exception" template="/WEB-INF/view/exception.jsp" />
+	<definition name="exception" extends="authenticate">
+		<put-attribute name="content" value="/WEB-INF/view/exception.jsp"></put-attribute>
+	</definition>
 
 </tiles-definitions>

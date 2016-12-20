@@ -1,24 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<!DOCTYPE html >
-<html>
-<head>
+<div class="row">
+	<div
+		class="col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2 text-center">
+		<a href="${pageContext.request.contextPath }/">"${message }"</a>
 
-<meta charset="utf-8">
-</head>
-<body>
-	<c:out value="${message }" />
-
-	<!--
-		Exception: 	<c:out value="${exception }"></c:out>
-		Failed url:
-		<c:out value="${url }]"></c:out>
-		Error message:
-		<c:out value="${exception.message }"></c:out>
-		<c:forEach var="line" items="${exception.stackTrace }">
-			<c:out value="${line }"/>
-		</c:forEach>  
-		-->
-</body>
-</html>
+	</div>
+</div>

@@ -3,6 +3,7 @@ package vn.edu.uit.iot.model;
 import java.util.Date;
 import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -17,6 +18,7 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.persistence.Transient;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
@@ -41,16 +43,17 @@ public class DataModel {
 	@Temporal(TemporalType.TIMESTAMP)
 	@DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
 	private Date date;
-	
-	@OneToMany(mappedBy="value")
+
+	@OneToMany(mappedBy = "value", cascade = CascadeType.ALL)
 	private Set<ValueModel> value;
-	
+
 	public DataModel() {
 
 	}
 
-	public DataModel(String nodeID, String value) {
-
+	public DataModel(NodeModel node) {
+		this.node = node;
+		this.date = new Date();
 	}
 
 	@PrePersist
@@ -84,8 +87,6 @@ public class DataModel {
 		this.node = node;
 	}
 
-
-
 	public Set<ValueModel> getValue() {
 		return value;
 	}
@@ -98,5 +99,5 @@ public class DataModel {
 	public String toString() {
 		return "DataModel [id=" + id + ", node=" + node + ", date=" + date + ", value=" + value + "]";
 	}
-	
+
 }

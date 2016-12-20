@@ -12,6 +12,7 @@ import javax.persistence.Table;
 import javax.persistence.Transient;
 import javax.validation.constraints.Size;
 
+import org.hibernate.validator.constraints.Email;
 import org.hibernate.validator.constraints.NotBlank;
 
 import vn.edu.uit.iot.validator.PasswordMatches;
@@ -26,12 +27,13 @@ public class UserModel {
 	private int id;
 
 	@Column(name = "USERNAME", length = 20, unique = true)
-	@NotBlank(message="{username.notblank}")
+	@NotBlank
 	@Size(min = 5, max = 20)
 	private String username;
 
 	@Column(name = "EMAIL", unique = true)
 	@NotBlank
+	@Email
 	private String email;
 
 	@Column(name = "PASSWORD", length = 60)
@@ -121,7 +123,7 @@ public class UserModel {
 	@Override
 	public String toString() {
 		return "UserModel [id=" + id + ", username=" + username + ", email=" + email + ", permission=" + permission
-				+ "]";
+				+ ", enabled=" + enabled + "]";
 	}
 
 	@Override

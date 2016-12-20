@@ -24,6 +24,7 @@ public class UserServiceImpl implements UserService {
 
 	@Override
 	public void create(UserModel user) {
+		user.setPermission("ROLE_USER");
 		user.setPassword(passwordEncoder.encode(user.getPassword()));
 		userDao.create(user);
 	}
