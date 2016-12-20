@@ -23,44 +23,52 @@ public class HandleData {
 				airData.setValue(listRecord.get(i).getValue());
 				if (listRecord.get(i).getValue() > 30000)
 					airData.setEvaluation("HIGH");
+				listAirData.add(airData);
 			}
 			if (air == Const.SO2 && listRecord.get(i).getAirId().getId() == Const.SO2) {
 				airData.setValue(listRecord.get(i).getValue());
 				if (listRecord.get(i).getValue() > 350)
 					airData.setEvaluation("HIGH");
+				listAirData.add(airData);
 			}
 			if (air == Const.O3 && listRecord.get(i).getAirId().getId() == Const.O3) {
 				airData.setValue(listRecord.get(i).getValue());
 				if (listRecord.get(i).getValue() > 200)
 					airData.setEvaluation("HIGH");
+				listAirData.add(airData);
 			}
 			if (air == Const.Pb && listRecord.get(i).getAirId().getId() == Const.Pb) {
 				airData.setValue(listRecord.get(i).getValue());
 				if (listRecord.get(i).getValue() > 1.5)
 					airData.setEvaluation("HIGH");
+				listAirData.add(airData);
 			}
 			if (air == Const.TSP && listRecord.get(i).getAirId().getId() == Const.TSP) {
 				airData.setValue(listRecord.get(i).getValue());
 				if (listRecord.get(i).getValue() > 200)
 					airData.setEvaluation("HIGH");
+				listAirData.add(airData);
 			}
 			if (air == Const.PM10 && listRecord.get(i).getAirId().getId() == Const.PM10) {
 				airData.setValue(listRecord.get(i).getValue());
 				if (listRecord.get(i).getValue() > 150)
 					airData.setEvaluation("HIGH");
+				listAirData.add(airData);
 			}
 			if (air == Const.PM25 && listRecord.get(i).getAirId().getId() == Const.PM25) {
 				airData.setValue(listRecord.get(i).getValue());
 				if (listRecord.get(i).getValue() > 50)
 					airData.setEvaluation("HIGH");
+				listAirData.add(airData);
 			}
 			if (air == Const.NO2 && listRecord.get(i).getAirId().getId() == Const.NO2) {
 				airData.setValue(listRecord.get(i).getValue());
 				if (listRecord.get(i).getValue() > 200)
 					airData.setEvaluation("HIGH");
+				listAirData.add(airData);
 			}
 
-			listAirData.add(airData);
+			
 		}
 
 		return listAirData;
@@ -79,11 +87,14 @@ public class HandleData {
 			map.put("y", listAirData.get(i).getValue());
 			listMap.add(map);
 		}
+		
 		return new Gson().toJson(listMap);
 	}
 	
-	public static int randomData(int max, int min){
-		return new Random().nextInt((max-min)+1) + min;
+	public static int randomData(int min, int max){
+		Random r = new Random();
+		int result = r.nextInt((max-min)+1)+min;
+		return result;
 	}
 	
 	
