@@ -2,6 +2,12 @@
 SoftwareSerial zigbeeSerial(4,5);
 SoftwareSerial gsmSerial(2,3);
 String nodeData = "000";
+char gatewayGps[100];
+char gatewayId[100];
+char data;
+char zigbeeData[100];
+int numByte = 0;
+
 
 void setup() {
   Serial.begin(38400);
@@ -9,14 +15,23 @@ void setup() {
   gsmSerial.begin(38400);
   gsmSerial.write("AT+GSN\r\n");
   delay(3000);
-  int a = gsmSerial.available();
-  char gatewayId[a];
-  char inChar;
-  for(int i = 0; i < a; i++){
-    inChar =  gsmSerial.read();
-    gatewayId[i] = inChar;
-    gatewayId[i+1] = '\0';
+  
+  while(!gsmSerial.available()){
+    ;
   }
+  char inChar;
+  int i = 0;
+  while(gsmSerial.available()){
+    inChar =  gsmSerial.read();
+    if(inChar=='\r' || inChar=='\n'){
+      continue;
+    }
+    
+    gatewayId[i] = inChar;
+    i++;
+    gatewayId[i] = '\0';
+  }
+ 
   
   Serial.println("set up network");
   gsmSerial.write("AT+SAPBR=3,1,APN,m-wap\r\n");
@@ -30,31 +45,27 @@ void setup() {
   while(!gsmSerial.available()){
     ;
   }
+  clearGsmSerialBuffer();
   
-  char gatewayGps[1000];
+  
   char inChar2;
-  int i = 0;
-    
-  while(gsmSerial.available()){
-    inChar2 =  gsmSerial.read();
-    gatewayGps[i] = inChar2;
-    i++;
-    gatewayGps[i] = '\0';
-   } 
-  i = 0;
-   
+  int j = 0;
   while(!gsmSerial.available()){
     ;
   }
   while(gsmSerial.available()){
     inChar2 =  gsmSerial.read();
-    gatewayGps[i] = inChar2;
-    i++;
-    gatewayGps[i] = '\0';
+    if(inChar2=='\r' || inChar2=='\n'){
+      continue;
+    }
+    gatewayGps[j] = inChar2;
+    j++;
+    gatewayGps[j] = '\0';
 
   }
-  Serial.write(gatewayId);
-  Serial.write(gatewayGps);
+  j=0;
+  Serial.println(gatewayId);
+  Serial.println(gatewayGps);
   Serial.println("init http");
   gsmSerial.write("AT+HTTPINIT\r\n");
   delay(3000);
@@ -69,19 +80,29 @@ void setup() {
   delay(3000);
   Serial.println("input data");
   gsmSerial.write("{\"id\": \"");
-  gsmSerial.write("jjjjj");
-  gsmSerial.write("\", \"address\": \"");
-  gsmSerial.write("cccc");
+  gsmSerial.write(gatewayId);
+  gsmSerial.write("\", \"gps\": \"");
+  gsmSerial.write(gatewayGps);
   gsmSerial.write("\"}\r\n"); 
-  delay(3000);//reset deo, tu vpn toi reset di re cc nhanh di ngu la sao?? deo biet luon :|chay lai lan nua c
+  delay(3000);
   Serial.println("post gps locaton");
   gsmSerial.write("AT+HTTPACTION=1\r\n");
-  /*zigbeeSerial.listen();
+  zigbeeSerial.listen();
   while(!zigbeeSerial.isListening()){
     ;
-  }*/
+  }
 
 }
+
+void loop() {
+  configure();
+  if(gsmSerial.available()){ 
+  //Serial.write(gsmSerial.read());
+  }
+  delay(5000);
+}
+
+
 void clearBuffer(){
   clearGsmSerialBuffer();
   clearZigbeeSerialBuffer();
@@ -89,8 +110,7 @@ void clearBuffer(){
 void clearGsmSerialBuffer(){
    while(gsmSerial.available()){
      gsmSerial.read();
-     // cho nay read de cut bot phan AT+SAPBR=1,1 + OK ,... 
-  }
+    }
 }
 
 void clearZigbeeSerialBuffer(){
@@ -98,39 +118,46 @@ void clearZigbeeSerialBuffer(){
     zigbeeSerial.read();
   }
 }
-void loop() {
-  //configure();
-  if(gsmSerial.available()){ 
-    
-   Serial.write(gsmSerial.read());
-    
-  }// ko co cai nay sao coi
- 
-}
 
 void configure(){
-    if(zigbeeSerial.available()){
-      Serial.println("set URL");
-      gsmSerial.write("AT+HTTPPARA=URL,http://webappiot-openshift-web-app-iot.44fs.preview.openshiftapps.com/gps\r\n");
-      delay(3000);
-      Serial.println("set content ");
-      gsmSerial.write("AT+HTTPPARA=CONTENT,application/json\r\n");
-      delay(3000);
-      Serial.println("set data ");
-      gsmSerial.write("AT+HTTPDATA=2048,5000\r\n");
-      Serial.println("input data");
-      delay(3000); 
-      nodeData = zigbeeSerial.readString();
-      Serial.println("CO = " + nodeData + " ppm");
-      gsmSerial.write("{\"id\": \"ATD+GSN0932484056\", \"nodeID\": \"2\", \"value\": \"");
-      while(zigbeeSerial.available()){
-        gsmSerial.write(zigbeeSerial.read());
-      }
-      gsmSerial.write("\", \"date\":\"date test\"}\r\n");
-      delay(3000);
-      Serial.println("post ");
-      gsmSerial.write("AT+HTTPACTION=1\r\n");
-      Serial.println("finish ");
+     clearZigbeeSerialBuffer();
+     while(!zigbeeSerial.available()){
+        ;
+     }
+    
+    while(zigbeeSerial.available()){
+        data =  zigbeeSerial.read();
+        if(data==' '){
+          continue;
+        }
+        zigbeeData[numByte] = data;
+        numByte++;
+        zigbeeData[numByte] = '\0';
+        delay(1);
     }
+    numByte = 0;
+    Serial.println(zigbeeData); 
+    Serial.println("set URL");
+    gsmSerial.write("AT+HTTPPARA=URL,http://apps.iot.uit.edu.vn/data\r\n");
+    delay(3000);
+    Serial.println("set content ");
+    gsmSerial.write("AT+HTTPPARA=CONTENT,application/json\r\n");
+    delay(3000);
+    Serial.println("set data ");
+    gsmSerial.write("AT+HTTPDATA=2048,5000\r\n");
+    Serial.println("input data");
+    delay(3000); 
+    /*nodeData = zigbeeSerial.readString();
+    Serial.println("CO = " + nodeData + " ppm");
+    gsmSerial.write("{\"id\": \"ATD+GSN0932484056\", \"nodeID\": \"2\", \"value\": \"");
+    while(zigbeeSerial.available()){
+      gsmSerial.write(zigbeeSerial.read());
+    }
+    gsmSerial.write("\", \"date\":\"date test\"}\r\n");*/
+    gsmSerial.write(zigbeeData);
+    delay(3000);
+    Serial.println("post ");
+    gsmSerial.write("AT+HTTPACTION=1\r\n");
+    Serial.println("finish ");
 }
 

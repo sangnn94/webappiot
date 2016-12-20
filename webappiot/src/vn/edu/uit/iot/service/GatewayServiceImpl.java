@@ -21,7 +21,7 @@ public class GatewayServiceImpl implements GatewayService {
 	}
 
 	@Transactional
-	public void delete(int id) {
+	public void delete(String id) {
 		this.gatewayDao.delete(id);
 
 	}
@@ -33,8 +33,8 @@ public class GatewayServiceImpl implements GatewayService {
 	}
 
 	@Transactional
-	public GatewayModel getData(int id) {
-		return this.gatewayDao.getGateway(id);
+	public GatewayModel get(String id) {
+		return this.gatewayDao.get(id);
 	}
 
 	@Transactional

@@ -16,17 +16,26 @@ public class ValueModel {
 	@Column(name = "ID")
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int id;
-	
+
 	@ManyToOne
-	@JoinColumn(name = "DATA_ID", nullable=false)
-	private DataModel dataId;
-	
+	@JoinColumn(name = "DATA_ID", nullable = false)
+	private DataModel data;
+
 	@ManyToOne
-	@JoinColumn(name = "AIR_ID", nullable=false)
-	private AirModel airId;
-	
+	@JoinColumn(name = "AIR_ID", nullable = false)
+	private AirModel air;
+
 	@Column(name = "VALUE")
 	private float value;
+
+	public ValueModel() {
+		// TODO Auto-generated constructor stub
+	}
+
+	public ValueModel(AirModel air, float value) {
+		this.air = air;
+		this.value = value;
+	}
 
 	public int getId() {
 		return id;
@@ -36,22 +45,20 @@ public class ValueModel {
 		this.id = id;
 	}
 
-	
-
-	public DataModel getDataId() {
-		return dataId;
+	public DataModel getData() {
+		return data;
 	}
 
-	public void setDataId(DataModel dataId) {
-		this.dataId = dataId;
+	public void setData(DataModel data) {
+		this.data = data;
 	}
 
-	public AirModel getAirId() {
-		return airId;
+	public AirModel getAir() {
+		return air;
 	}
 
-	public void setAirId(AirModel airId) {
-		this.airId = airId;
+	public void setAir(AirModel air) {
+		this.air = air;
 	}
 
 	public float getValue() {
@@ -61,6 +68,5 @@ public class ValueModel {
 	public void setValue(float value) {
 		this.value = value;
 	}
-	
-	
+
 }

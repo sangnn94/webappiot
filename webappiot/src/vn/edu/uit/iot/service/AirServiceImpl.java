@@ -1,5 +1,6 @@
 package vn.edu.uit.iot.service;
 
+
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -38,9 +39,10 @@ public class AirServiceImpl implements AirService {
 	}
 
 	@Override
-	public List<AirModel> getAll() {
-		
+	public List<AirModel>  getAll(){
 		return this.airDao.getAll();
 	}
+		
+
 
 }

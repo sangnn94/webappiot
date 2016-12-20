@@ -9,41 +9,50 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 import javax.validation.constraints.Size;
 
+import org.hibernate.validator.constraints.Email;
 import org.hibernate.validator.constraints.NotBlank;
+
+import vn.edu.uit.iot.validator.PasswordMatches;
 
 @Entity
 @Table(name = "USER")
+@PasswordMatches
 public class UserModel {
 	@Id
 	@Column(name = "ID")
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int id;
 
-	@Column(name = "USERNAME", length=20)
+	@Column(name = "USERNAME", length = 20, unique = true)
 	@NotBlank
 	@Size(min = 5, max = 20)
 	private String username;
 
-	@Column(name = "PASSWORD", length=60)
+	@Column(name = "EMAIL", unique = true)
+	@NotBlank
+	@Email
+	private String email;
+
+	@Column(name = "PASSWORD", length = 60)
 	@NotBlank
 	@Size(min = 8)
 	private String password;
 
-	@Column(name = "EMAIL")
-	@NotBlank
-	private String email;
+	@Transient
+	private String matchingPassword;
 
-	@Column(name = "PERMISSION", length=10)
+	@Column(name = "PERMISSION", length = 10)
 	private String permission;
 
 	@Column(name = "ENABLED")
 	private boolean enabled = true;
-	
-	@OneToMany(mappedBy="user")
+
+	@OneToMany(mappedBy = "user")
 	private Set<GatewayModel> gateways;
-	
+
 	public UserModel() {
 		// TODO Auto-generated constructor stub
 	}
@@ -79,6 +88,22 @@ public class UserModel {
 		this.password = password;
 	}
 
+	public String getMatchingPassword() {
+		return matchingPassword;
+	}
+
+	public void setMatchingPassword(String matchingPassword) {
+		this.matchingPassword = matchingPassword;
+	}
+
+	public Set<GatewayModel> getGateways() {
+		return gateways;
+	}
+
+	public void setGateways(Set<GatewayModel> gateways) {
+		this.gateways = gateways;
+	}
+
 	public String getPermission() {
 		return permission;
 	}
@@ -98,7 +123,7 @@ public class UserModel {
 	@Override
 	public String toString() {
 		return "UserModel [id=" + id + ", username=" + username + ", email=" + email + ", permission=" + permission
-				+ "]";
+				+ ", enabled=" + enabled + "]";
 	}
 
 	@Override

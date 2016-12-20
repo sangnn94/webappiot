@@ -11,43 +11,43 @@ import org.springframework.stereotype.Repository;
 import vn.edu.uit.iot.model.NodeModel;
 
 @Repository
-public class NodeDAOImpl implements NodeDAO{
+public class NodeDAOImpl implements NodeDAO {
 
 	@Autowired
 	private SessionFactory mSession;
-	
+
 	@Override
 	public void insert(NodeModel nodeModel) {
 		Session ss = this.mSession.getCurrentSession();
-		Transaction ts =  ss.beginTransaction();
+		Transaction ts = ss.beginTransaction();
 		ss.update(nodeModel);
 		ts.commit();
-		
+
 	}
 
 	@Override
-	public void delete(int id) {
+	public void delete(String id) {
 		Session ss = this.mSession.getCurrentSession();
-		Transaction ts =  ss.beginTransaction();
-		ss.delete(this.getNode(id));
+		Transaction ts = ss.beginTransaction();
+		ss.delete(this.get(id));
 		ts.commit();
-		
+
 	}
 
 	@Override
 	public void update(NodeModel nodeModel) {
 		Session ss = this.mSession.getCurrentSession();
-		Transaction ts =  ss.beginTransaction();
+		Transaction ts = ss.beginTransaction();
 		ss.update(nodeModel);
 		ts.commit();
-		
+
 	}
 
 	@Override
-	public NodeModel getNode(int id) {
+	public NodeModel get(String id) {
 		Session ss = this.mSession.getCurrentSession();
-		Transaction ts =  ss.beginTransaction();
-		NodeModel node =(NodeModel) ss.get(NodeModel.class, id);
+		Transaction ts = ss.beginTransaction();
+		NodeModel node = (NodeModel) ss.get(NodeModel.class, id);
 		ts.commit();
 		return node;
 	}
@@ -56,7 +56,7 @@ public class NodeDAOImpl implements NodeDAO{
 	@Override
 	public List<NodeModel> getAll() {
 		Session ss = this.mSession.getCurrentSession();
-		Transaction ts =  ss.beginTransaction();
+		Transaction ts = ss.beginTransaction();
 		List<NodeModel> arrNode = ss.createQuery("from NodeModel").list();
 		ts.commit();
 		return arrNode;

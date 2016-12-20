@@ -1,16 +1,24 @@
 #include <SoftwareSerial.h>
-SoftwareSerial zigbeeSerial(2,3);
-byte pinMQ = A0;
-boolean alarmCO = false;
-// Adjust vRef to be the true supply voltage in mV.
-float vRef = 5000.0;
-float RL = 10.0;  //  load resistor value in k ohms
-float ratioRsRo = 10.0;  //  default value 10 k ohms.  Revised during calibration.
-const float Ro_clean_air_factor = 10.0;
+  SoftwareSerial zigbeeSerial(2,3);
+  byte pinMQ = A0;
+  boolean alarmCO = false;
+  // Adjust vRef to be the true supply voltage in mV.
+  float vRef = 5000.0;
+  float RL = 10.0;  //  load resistor value in k ohms
+  float ratioRsRo = 10.0;  //  default value 10 k ohms.  Revised during calibration.
+  const float Ro_clean_air_factor = 10.0;
+  
+  float mV = 0.0;
+  unsigned long samples = 0;
+  float coPpm = 0.0;
 
-float mV = 0.0;
-unsigned long samples = 0;
-float coPpm = 0.0;
+//  json  "{ \"id\": \"123456\", \"datas\": [{   \"id\": \"1\",    \"value\": \"1.2\"  }]}"
+  char beginJson[] = "{\"id\":\"123456\",\"datas\":[{\"id\":\"";
+  char endJson[] =  "\"}]}";
+  char valueJson[] = "\",\"value\": \"";
+  char airId[] = "1";
+  char valueCO[8] ; // Buffer big enough for 7-character float
+  
 void setup() {
   // put your setup code here, to run once:
   Serial.begin(38400);
@@ -21,12 +29,13 @@ void setup() {
    while (!zigbeeSerial) {
     ; 
   }
+  
 }
 
 void loop() {
   // put your main code here, to run repeatedly:
   getData();
-  //delay(1000);
+  //delay(10000);
 }
 
 void getData(){
@@ -35,18 +44,25 @@ void getData(){
   for(int i = 500; i>0; i--){
     mV += Get_mVfromADC(pinMQ);
     samples += 1;
-    delay(2);
+    delay(20);
   }
   mV = mV / (float) samples;
   ratioRsRo = CalcRsFromVo(mV) / Ro_clean_air_factor;
   coPpm = GetCOPpmForRatioRsRo(ratioRsRo);
-  char result[] = ""; // Buffer big enough for 7-character float
-  dtostrf(coPpm, 7, 2, result);
-  //char deviceId[]= "id";
-  //zigbeeSerial.write(deviceId); 
-  Serial.print("CO: ");
-  Serial.println(coPpm);    
-  zigbeeSerial.write(result);                                                                                            
+  Serial.print("1111: ");
+  
+  dtostrf(coPpm, 8, 3, valueCO);
+  Serial.print("2222: ");
+  // json =  beginJson + airId + valueJson + valueCO + endJson
+  char json[85]="";
+  strcat(json,beginJson);
+  strcat(json,airId);
+  strcat(json,valueJson);
+  strcat(json,valueCO);
+  strcat(json,endJson);
+  Serial.println("CO: ");
+  Serial.println(json);    
+  zigbeeSerial.write(json);                                                                                            
   
 }
 

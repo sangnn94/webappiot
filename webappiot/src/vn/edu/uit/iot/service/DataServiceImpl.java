@@ -35,7 +35,7 @@ public class DataServiceImpl implements DataService {
 
 	@Transactional
 	public DataModel getData(int id) {
-		return this.dataDao.getData(id);
+		return this.dataDao.get(id);
 	}
 
 	@Transactional

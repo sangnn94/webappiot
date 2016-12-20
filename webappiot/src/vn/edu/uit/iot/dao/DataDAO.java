@@ -12,7 +12,7 @@ public interface DataDAO {
 
 	public void update(DataModel dataModel);
 
-	public DataModel getData(int id);
+	public DataModel get(int id);
 
 	public List<DataModel> getAll();
 

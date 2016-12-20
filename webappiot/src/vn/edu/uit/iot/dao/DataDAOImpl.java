@@ -29,7 +29,7 @@ public class DataDAOImpl implements DataDAO{
 	public void delete(int id) {
 		Session ss = this.mSession.getCurrentSession();
 		Transaction ts =  ss.beginTransaction();
-		ss.delete(this.getData(id));
+		ss.delete(this.get(id));
 		ts.commit();
 		
 		
@@ -45,7 +45,7 @@ public class DataDAOImpl implements DataDAO{
 	}
 
 	@Override
-	public DataModel getData(int id) {
+	public DataModel get(int id) {
 		Session ss = this.mSession.getCurrentSession();
 		Transaction ts =  ss.beginTransaction();
 		DataModel data = (DataModel) ss.get(DataModel.class, id);

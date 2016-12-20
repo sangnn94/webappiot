@@ -10,7 +10,7 @@ import org.springframework.stereotype.Service;
 import vn.edu.uit.iot.dao.UserDAO;
 import vn.edu.uit.iot.model.UserModel;
 
-@Service("usersServiceImpl")
+@Service
 public class UserServiceImpl implements UserService {
 	@Autowired
 	private UserDAO userDao;
@@ -18,9 +18,13 @@ public class UserServiceImpl implements UserService {
 	@Autowired
 	private PasswordEncoder passwordEncoder;
 
+	public UserModel get(String username) {
+		return userDao.findByUsername(username);
+	}
+
 	@Override
 	public void create(UserModel user) {
-		// TODO Auto-generated method stub
+		user.setPermission("ROLE_USER");
 		user.setPassword(passwordEncoder.encode(user.getPassword()));
 		userDao.create(user);
 	}
@@ -28,7 +32,6 @@ public class UserServiceImpl implements UserService {
 	@Secured("ROLE_ADMIN")
 	@Override
 	public List<UserModel> getAll() {
-		// TODO Auto-generated method stub
 		return userDao.getAll();
 	}
 

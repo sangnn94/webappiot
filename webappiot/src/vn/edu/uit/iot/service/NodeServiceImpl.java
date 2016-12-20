@@ -22,7 +22,7 @@ public class NodeServiceImpl implements NodeService {
 	}
 
 	@Transactional
-	public void delete(int id) {
+	public void delete(String id) {
 		this.nodeDao.delete(id);
 
 	}
@@ -34,8 +34,8 @@ public class NodeServiceImpl implements NodeService {
 	}
 
 	@Transactional
-	public NodeModel getData(int id) {
-		return this.nodeDao.getNode(id);
+	public NodeModel get(String id) {
+		return this.nodeDao.get(id);
 	}
 
 	@Transactional
