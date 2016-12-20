@@ -44,10 +44,10 @@
 							<c:forEach items="${listGateway}" var="gateway">
 								<tr>
 									<td>${gateway.id}</td>
-									<td>#unknow</td>
-									<td>${gateway.locationID}</td>
+									<td>${gateway.user.username }</td>
+									<td>${gateway.location.locationName}</td>
 									<td>${gateway.address}</td>
-									<td>${gateway.numNode}</td>
+									<td>?</td>
 									<td><a
 										href="${pageContext.request.contextPath}/manage-device/">View
 											<i class="fa fa-arrow-circle-right"></i>
@@ -87,9 +87,9 @@
 							<c:forEach items="${listNode}" var="node">
 								<tr>
 									<td>${node.id}</td>
-									<td>${node.gatewayID}</td>
-									<td>${node.userID}</td>
-									<td>${node.locationID}</td>
+									<td>${node.gateway.id}</td>
+									<td>${node.gateway.user.username}</td>
+									<td>${node.gateway.location.locationName}</td>
 									<td>${node.address}</td>
 									<td><a
 										href="${pageContext.request.contextPath}/manage-device/">View

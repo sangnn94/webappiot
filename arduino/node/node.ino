@@ -13,7 +13,7 @@
   float coPpm = 0.0;
 
 //  json  "{ \"id\": \"123456\", \"datas\": [{   \"id\": \"1\",    \"value\": \"1.2\"  }]}"
-  char beginJson[] = "{\"id\":\"123456\",\"datas\":[{\"id\":\"";
+  char beginJson[] = "{\"id\":\"NODE1\",\"datas\":[{\"id\":\"";
   char endJson[] =  "\"}]}";
   char valueJson[] = "\",\"value\": \"";
   char airId[] = "1";
