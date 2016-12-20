@@ -40,13 +40,13 @@ public class RecordModel {
 	private Date date;
 
 	@Column(name = "EVALUATION", length = 100)
-	private String evaluation;
+	private String evaluation ;
 	
 	@Column(name = "VALUE")
 	private float value;
 	
 	@Column(name = "TIME")
-	private float timeStandard;
+	private int timeStandard;
 
 
 
@@ -109,11 +109,11 @@ public class RecordModel {
 		this.value = value;
 	}
 
-	public float getTimeStandard() {
+	public int getTimeStandard() {
 		return timeStandard;
 	}
 
-	public void setTimeStandard(float timeStandard) {
+	public void setTimeStandard(int timeStandard) {
 		this.timeStandard = timeStandard;
 	}
 

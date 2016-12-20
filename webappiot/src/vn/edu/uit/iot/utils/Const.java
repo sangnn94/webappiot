@@ -13,7 +13,7 @@ public class Const {
 	public static final int TIME_STANDARD_ONE_HOUR = 1;
 	public static final int TIME_STANDARD_ONE_DAY = 24;
 	public static final int TIME_STANDARD_ONE_YEAR = 365;
-	public static final int TIME_STANDARD_EYGHT_HOUR = 8;
+	public static final int TIME_STANDARD_EIGHT_HOUR = 8;
 	
 
 	public static class AirStrandard {
