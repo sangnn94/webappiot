@@ -13,53 +13,56 @@ import vn.edu.uit.iot.model.RecordModel;
 public class HandleData {
 
 
-	private static List<AirData> getList(int air, List<RecordModel> listRecord){
+	private static List<AirData> getList(int air, List<RecordModel> listRecord) {
 		List<AirData> listAirData = new ArrayList<>();
 		AirData airData;
-		for(int i = 0; i<listRecord.size(); i++){
-			airData =  new AirData();
+		for (int i = 0; i < listRecord.size(); i++) {
+			airData = new AirData();
 			airData.setLocation(listRecord.get(i).getLocation().getLocationName());
-			switch(air){
-			case Const.CO:
-					airData.setValue(listRecord.get(i).getValue());
-					if(listRecord.get(i).getValue() > 30000)
-						airData.setEvaluation("HIGH");
-					break;
-			case Const.SO2:
-					airData.setValue(listRecord.get(i).getValue());
-					if(listRecord.get(i).getValue() > 350)
-						airData.setEvaluation("HIGH");
-					break;
-			case Const.O3:
-					airData.setValue(listRecord.get(i).getValue());
-					if(listRecord.get(i).getValue() > 200)
-						airData.setEvaluation("HIGH");
-					break;
-			case Const.Pb:
-					airData.setValue(listRecord.get(i).getValue());
-					if(listRecord.get(i).getValue() > 1.5)
-						airData.setEvaluation("HIGH");
-					break;
-			case Const.TSP:
-					airData.setValue(listRecord.get(i).getValue());
-					if(listRecord.get(i).getValue() > 200)
-						airData.setEvaluation("HIGH");
-					break;
-			case Const.PM10:
-					airData.setValue(listRecord.get(i).getValue());
-					if(listRecord.get(i).getValue() > 150)
-						airData.setEvaluation("HIGH");
-					break;
-			case Const.PM25:
-					airData.setValue(listRecord.get(i).getValue());
-					if(listRecord.get(i).getValue() > 50)
-						airData.setEvaluation("HIGH");
-					break;
+			if (air == Const.CO && listRecord.get(i).getAirId().getId() == Const.CO) {
+				airData.setValue(listRecord.get(i).getValue());
+				if (listRecord.get(i).getValue() > 30000)
+					airData.setEvaluation("HIGH");
 			}
-			
+			if (air == Const.SO2 && listRecord.get(i).getAirId().getId() == Const.SO2) {
+				airData.setValue(listRecord.get(i).getValue());
+				if (listRecord.get(i).getValue() > 350)
+					airData.setEvaluation("HIGH");
+			}
+			if (air == Const.O3 && listRecord.get(i).getAirId().getId() == Const.O3) {
+				airData.setValue(listRecord.get(i).getValue());
+				if (listRecord.get(i).getValue() > 200)
+					airData.setEvaluation("HIGH");
+			}
+			if (air == Const.Pb && listRecord.get(i).getAirId().getId() == Const.Pb) {
+				airData.setValue(listRecord.get(i).getValue());
+				if (listRecord.get(i).getValue() > 1.5)
+					airData.setEvaluation("HIGH");
+			}
+			if (air == Const.TSP && listRecord.get(i).getAirId().getId() == Const.TSP) {
+				airData.setValue(listRecord.get(i).getValue());
+				if (listRecord.get(i).getValue() > 200)
+					airData.setEvaluation("HIGH");
+			}
+			if (air == Const.PM10 && listRecord.get(i).getAirId().getId() == Const.PM10) {
+				airData.setValue(listRecord.get(i).getValue());
+				if (listRecord.get(i).getValue() > 150)
+					airData.setEvaluation("HIGH");
+			}
+			if (air == Const.PM25 && listRecord.get(i).getAirId().getId() == Const.PM25) {
+				airData.setValue(listRecord.get(i).getValue());
+				if (listRecord.get(i).getValue() > 50)
+					airData.setEvaluation("HIGH");
+			}
+			if (air == Const.NO2 && listRecord.get(i).getAirId().getId() == Const.NO2) {
+				airData.setValue(listRecord.get(i).getValue());
+				if (listRecord.get(i).getValue() > 200)
+					airData.setEvaluation("HIGH");
+			}
+
 			listAirData.add(airData);
 		}
-		
+
 		return listAirData;
 	}
 	

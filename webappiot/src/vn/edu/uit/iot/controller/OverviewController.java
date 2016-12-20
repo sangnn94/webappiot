@@ -1,5 +1,6 @@
 package vn.edu.uit.iot.controller;
 
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,8 +10,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
+import vn.edu.uit.iot.model.AirModel;
+import vn.edu.uit.iot.model.LocationModel;
 import vn.edu.uit.iot.model.RecordModel;
+import vn.edu.uit.iot.service.AirService;
 import vn.edu.uit.iot.service.GatewayService;
+import vn.edu.uit.iot.service.LocationService;
 import vn.edu.uit.iot.service.RecordService;
 import vn.edu.uit.iot.utils.Const;
 import vn.edu.uit.iot.utils.HandleData;
@@ -23,6 +28,12 @@ public class OverviewController {
 	
 	@Autowired
 	private GatewayService mGatewayService;
+	
+	@Autowired
+	private LocationService mLocationService;
+	
+	@Autowired
+	private AirService mAirService;
 	
 	@RequestMapping(value="/overview/maps", method = RequestMethod.GET)
 	public ModelAndView getMaps(ModelAndView mModelAndView, ModelMap mModelMap){
@@ -56,6 +67,59 @@ public class OverviewController {
 	@RequestMapping(value="/overview/airstandard", method = RequestMethod.GET)
 	public ModelAndView getAirStandard(ModelAndView mModelAndView, ModelMap mModelMap){
 		mModelAndView = new ModelAndView("airstandard");
+		return mModelAndView;
+	}
+	
+	@RequestMapping(value="/random-data", method=RequestMethod.POST )
+	public ModelAndView radomData(ModelAndView mModelAndView){
+		mModelAndView.setViewName("index");
+		List<LocationModel> listLocation = mLocationService.getAll();
+		List<AirModel> listAir = mAirService.getAll();
+		
+		int temp =0;
+		if(listAir.size()>listLocation.size())
+			temp = listLocation.size();
+		else 
+			temp = listAir.size();
+
+		for(int i = 0; i<temp;i++){
+			for(int j=0;j<temp;j++){
+				RecordModel record = new RecordModel();
+				record.setLocation(listLocation.get(i));
+				record.setDate(new Date());
+				record.setAirId(listAir.get(j));
+				switch(listAir.get(j).getId()){
+				case Const.CO:
+					record.setValue(HandleData.randomData(10000, 40000));
+					break;
+				case Const.SO2:
+					record.setValue(HandleData.randomData(100, 500));
+					break;
+				case Const.NO2:
+					record.setValue(HandleData.randomData(50, 300));
+					break;
+				case Const.O3:
+					record.setValue(HandleData.randomData(100, 300));
+					break;
+				case Const.Pb:
+					record.setValue(HandleData.randomData(1, 4));
+					break;
+				case Const.PM10:
+					record.setValue(HandleData.randomData(50, 200));
+					break;
+				case Const.PM25:
+					record.setValue(HandleData.randomData(10, 100));
+					break;
+				case Const.TSP:
+					record.setValue(HandleData.randomData(100, 400));
+					break;
+				}
+				record.setValue(HandleData.randomData(0, 1));
+				record.setTimeStandard(Const.TIME_STANDARD_ONE_HOUR);
+				mRecordService.insert(record);
+			}
+			
+		}
 		return mModelAndView;
 	}
 }

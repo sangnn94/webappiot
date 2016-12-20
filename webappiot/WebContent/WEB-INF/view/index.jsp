@@ -1,18 +1,24 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="jstl" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="sf" uri="http://www.springframework.org/tags/form"%>
 
 <div class="container-fluid">
 	<!-- Page Heading -->
 	<div class="row">
 		<div class="col-lg-12">
+			<sf:form method="post" action="${pageContext.request.contextPath}/random-data" style="float: right" >
+					<button type="submit" class="btn btn-default">Random Data</button>
+			</sf:form>
 			<h1 class="page-header">Statistics Overview</h1>
+			
 			<ol class="breadcrumb">
 				<li><i class="fa fa-dashboard"></i> <a
 					href="${pageContext.request.contextPath}/">WebAppIoT</a></li>
 				<li class="active"><i class="fa fa-edit"></i> Statistics
 					Overview</li>
 				<a href="${pageContext.request.contextPath}/overview/airstandard" style="float: right">Air Standard</a>
+				
 			</ol>
 		</div>
 	</div>
@@ -98,27 +104,7 @@
 								</tr>
 							</thead>
 							<tbody>
-								<!--<jstl:forEach items="${records }" var="record">
-									<tr>
-										<td>${record.location.locationName }</td>
-										<jstl:choose>
-											<jstl:when test="${record.co > 30000}">
-												<td class="danger">${record.co}</td>
-											</jstl:when>
-											<jstl:otherwise>
-												<td class="success">${record.co}</td>
-											</jstl:otherwise>
-										</jstl:choose>
-										<td class="success">${record.so2 }</td>
-										<td class="success">${record.o3 }</td>
-										<td class="success">${record.pb }</td>
-										<td class="success">${record.tsp }</td>
-										<td class="success">${record.pm10 }</td>
-										<td class="success">${record.pm25 }</td>
-										<td>${record.date }</td>
-									</tr>
-								</jstl:forEach>-->
-
+								
 							</tbody>
 						</table>
 					</div>
