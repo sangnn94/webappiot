@@ -25,7 +25,8 @@
 <!-- Custom CSS -->
 <link href='<c:url value="/resources/css/sb-admin.css" />'
 	rel="stylesheet">
-
+<link href='<c:url value="/resources/css/main.css" />'
+	rel="stylesheet">
 
 <!-- Custom Fonts -->
 <link
@@ -37,7 +38,6 @@
 </head>
 <body>
 	<div id="wrapper">
-
 		<!-- Navigation -->
 		<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
 			<!-- Brand and toggle get grouped for better mobile display -->
@@ -108,7 +108,6 @@
 		</nav>
 		<div id="page-wrapper">
 			<tiles:insertAttribute name="content" />
-
 		</div>
 	</div>
 	<c:url value="/logout" var="logoutUrl"></c:url>

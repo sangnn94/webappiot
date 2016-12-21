@@ -16,6 +16,7 @@ import org.hibernate.validator.constraints.Email;
 import org.hibernate.validator.constraints.NotBlank;
 
 import vn.edu.uit.iot.validator.PasswordMatches;
+import vn.edu.uit.iot.validator.UsernameExist;
 
 @Entity
 @Table(name = "USER")
@@ -29,6 +30,7 @@ public class UserModel {
 	@Column(name = "USERNAME", length = 20, unique = true)
 	@NotBlank
 	@Size(min = 5, max = 20)
+	@UsernameExist
 	private String username;
 
 	@Column(name = "EMAIL", unique = true)
