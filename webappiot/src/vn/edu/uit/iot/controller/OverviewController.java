@@ -82,7 +82,7 @@ public class OverviewController {
 					RecordModel record = new RecordModel();
 					record.setLocation(listLocation.get(i));
 					record.setDate(new Date());
-					record.setAirId(listAir.get(j));
+					record.setAir(listAir.get(j));
 					switch (listAir.get(j).getId()) {
 					case Const.CO:
 						record.setValue(HandleData.randomData(10000, 40000));

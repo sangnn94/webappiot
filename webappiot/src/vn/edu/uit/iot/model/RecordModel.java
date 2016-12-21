@@ -32,7 +32,7 @@ public class RecordModel {
 	
 	@ManyToOne
 	@JoinColumn(name = "AIR_ID", nullable=false)
-	private AirModel airId;
+	private AirModel air;
 	
 	@Column(name = "DATE")
 	@Temporal(TemporalType.TIMESTAMP)
@@ -93,12 +93,12 @@ public class RecordModel {
 		this.evaluation = evaluation;
 	}
 
-	public AirModel getAirId() {
-		return airId;
+	public AirModel getAir() {
+		return air;
 	}
 
-	public void setAirId(AirModel airId) {
-		this.airId = airId;
+	public void setAir(AirModel airId) {
+		this.air = airId;
 	}
 
 	public float getValue() {

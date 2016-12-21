@@ -5,7 +5,6 @@ import java.util.Date;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -14,10 +13,6 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.RestController;
-
-import com.fasterxml.jackson.annotation.JsonView;
-
 import vn.edu.uit.iot.model.AirModel;
 import vn.edu.uit.iot.model.DataJson;
 import vn.edu.uit.iot.model.DataModel;
@@ -32,7 +27,6 @@ import vn.edu.uit.iot.service.LocationService;
 import vn.edu.uit.iot.service.NodeService;
 import vn.edu.uit.iot.service.RecordService;
 import vn.edu.uit.iot.utils.Const;
-import vn.edu.uit.iot.utils.Const.Times;
 import vn.edu.uit.iot.utils.SingletonCurrentTimes;
 import vn.edu.uit.iot.utils.TimeCompare;
 
@@ -154,7 +148,9 @@ public class DataController {
 	private void inserNewRecord(List<DataModel> listData,Date date, LocationModel location, int time){
 		float valueCO = 0,valueSo2 = 0,valueO3 = 0,valuePb = 0,valueNo2 = 0,valueTsp = 0,valuePm10 = 0,valuePm25 = 0;
 		for(int i=0 ; i<listData.size(); i++){
-			for(ValueModel value : listData.get(i).getValue()){
+			Set<ValueModel> values = listData.get(i).getValue();
+			
+			for(ValueModel value : values){
 				if(value.getAir().getId()==Const.CO)
 					valueCO += (value.getValue()/listData.size());
 				if(value.getAir().getId()==Const.SO2)
@@ -177,7 +173,7 @@ public class DataController {
 		if(valueCO!=0){
 			RecordModel record = new RecordModel();
 			record.setDate(date);
-			record.setAirId(airService.getData(Const.CO));
+			record.setAir(airService.getData(Const.CO));
 			record.setValue(valueCO);
 			record.setLocation(location);
 			record.setTimeStandard(time);
@@ -201,13 +197,14 @@ public class DataController {
 				record.setEvaluation("");
 				break;
 			}
+			recordService.insert(record);
 			
 		}
 		
 		if(valueSo2!=0){
 			RecordModel record = new RecordModel();
 			record.setDate(date);
-			record.setAirId(airService.getData(Const.CO));
+			record.setAir(airService.getData(Const.SO2));
 			record.setValue(valueSo2);
 			record.setLocation(location);
 			record.setTimeStandard(time);
@@ -231,13 +228,14 @@ public class DataController {
 				record.setEvaluation("");
 				break;
 			}
+			recordService.insert(record);
 			
 		}
 		
 		if(valueO3!=0){
 			RecordModel record = new RecordModel();
 			record.setDate(date);
-			record.setAirId(airService.getData(Const.CO));
+			record.setAir(airService.getData(Const.O3));
 			record.setValue(valueCO);
 			record.setLocation(location);
 			record.setTimeStandard(time);
@@ -266,7 +264,7 @@ public class DataController {
 		if(valuePb!=0){
 			RecordModel record = new RecordModel();
 			record.setDate(date);
-			record.setAirId(airService.getData(Const.CO));
+			record.setAir(airService.getData(Const.Pb));
 			record.setValue(valueCO);
 			record.setLocation(location);
 			record.setTimeStandard(time);
@@ -296,7 +294,7 @@ public class DataController {
 		if(valueNo2!=0){
 			RecordModel record = new RecordModel();
 			record.setDate(date);
-			record.setAirId(airService.getData(Const.CO));
+			record.setAir(airService.getData(Const.NO2));
 			record.setValue(valueNo2);
 			record.setLocation(location);
 			record.setTimeStandard(time);
@@ -328,7 +326,7 @@ public class DataController {
 		if(valueTsp!=0){
 			RecordModel record = new RecordModel();
 			record.setDate(date);
-			record.setAirId(airService.getData(Const.CO));
+			record.setAir(airService.getData(Const.TSP));
 			record.setValue(valueTsp);
 			record.setLocation(location);
 			record.setTimeStandard(time);
@@ -361,7 +359,7 @@ public class DataController {
 		if(valuePm10!=0){
 			RecordModel record = new RecordModel();
 			record.setDate(date);
-			record.setAirId(airService.getData(Const.CO));
+			record.setAir(airService.getData(Const.PM10));
 			record.setValue(valuePm10);
 			record.setLocation(location);
 			record.setTimeStandard(time);
@@ -390,7 +388,7 @@ public class DataController {
 		if(valuePm25!=0){
 			RecordModel record = new RecordModel();
 			record.setDate(date);
-			record.setAirId(airService.getData(Const.CO));
+			record.setAir(airService.getData(Const.PM25));
 			record.setValue(valuePm25);
 			record.setLocation(location);
 			record.setTimeStandard(time);
