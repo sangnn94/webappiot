@@ -12,12 +12,14 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import vn.edu.uit.iot.authentication.AuthenticationFacadeInterface;
 import vn.edu.uit.iot.editor.LocationEditor;
@@ -61,18 +63,24 @@ public class ManageController {
 	public ModelAndView showNewGateway(ModelAndView mModelAndView, @ModelAttribute("gateway") GatewayModel gateway) {
 		mModelAndView.setViewName("newgateway");
 		List<LocationModel> listLocation = locationService.getAll();
-		mModelAndView.addObject("locations", listLocation);
+		mModelAndView.getModel().put("locations", listLocation);
 		return mModelAndView;
 	}
 
 	@RequestMapping(value = "/manage-device/add-device", method = RequestMethod.POST)
 	public ModelAndView createGateway(ModelAndView mModelAndView,
-			@Valid @ModelAttribute("gateway") GatewayModel gateway) {
-		mModelAndView.setViewName("newgateway");
-		System.out.println(getCurrentUser().getEmail());
-		System.out.println(getCurrentUser());
-		System.out.println(gateway);
-		//gatewayService.insert(gateway);
+			@Valid @ModelAttribute("gateway") GatewayModel gateway, BindingResult result,
+			RedirectAttributes redirectAttribute) {
+		if (result.hasErrors()) {
+			mModelAndView.setViewName("redirect:/manage-device/add-device");
+			redirectAttribute.addFlashAttribute("org.springframework.validation.BindingResult.gateway", result);
+			redirectAttribute.addFlashAttribute("gateway", gateway);
+		} else {
+			UserModel user = getCurrentUser();
+			gateway.setUser(user);
+			gatewayService.insert(gateway);
+			mModelAndView.setViewName("managedevice");
+		}
 		return mModelAndView;
 	}
 

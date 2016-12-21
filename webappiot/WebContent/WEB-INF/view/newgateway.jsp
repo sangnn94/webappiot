@@ -2,8 +2,7 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="sf" uri="http://www.springframework.org/tags/form"%>
-<c:url var="newGateway"
-	value="/manage-device/add-device"></c:url>
+<c:url var="newGateway" value="/manage-device/add-device"></c:url>
 <div class="container-fluid">
 
 	<!-- Page Heading -->
@@ -34,13 +33,15 @@
 					</sf:select>
 				</div>
 				<div class="form-group">
+					<label>Device ID</label>
+					<sf:input class="form-control" path="id" placeholder="Enter id" />
+					<sf:errors path="id"></sf:errors>
+				</div>
+				<div class="form-group">
 					<label>Address</label>
 					<sf:input class="form-control" path="address"
 						placeholder="Enter user address" />
-				</div>
-				<div class="form-group">
-					<label>Device ID</label>
-					<sf:input class="form-control" path="id" placeholder="Enter id" />
+					<sf:errors path="address"></sf:errors>
 				</div>
 				<button type="submit" class="btn btn-default">Submit</button>
 				<!--<button type="reset" class="btn btn-default">Cancel</button> chi co do security hoac url no moi chuyen qua login thoi con cai cho location la du lieu co sai thi no bao sai du lieu chu lam gi ma chuyen vo login dc-->

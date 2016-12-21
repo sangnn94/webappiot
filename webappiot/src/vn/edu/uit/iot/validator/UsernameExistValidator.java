@@ -8,7 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import vn.edu.uit.iot.dao.UserDAO;
 import vn.edu.uit.iot.model.UserModel;
 
-public class UsernameExistValidator implements ConstraintValidator<UsernameExist, Object> {
+public class UsernameExistValidator implements ConstraintValidator<UsernameExist, String> {
 	@Autowired
 	private UserDAO userDao;
 
@@ -19,9 +19,8 @@ public class UsernameExistValidator implements ConstraintValidator<UsernameExist
 	}
 
 	@Override
-	public boolean isValid(Object value, ConstraintValidatorContext context) {
+	public boolean isValid(String username, ConstraintValidatorContext context) {
 		// TODO Auto-generated method stub
-		String username = (String) value;
 		UserModel user = userDao.findByUsername(username);
 		if (user == null)
 			return true;

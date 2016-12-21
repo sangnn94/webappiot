@@ -52,7 +52,7 @@ public class Const {
 	
 	public static class Times{
 		//time millisecond
-		public static final long ONE_HOUR = 30000;
+		public static final long ONE_HOUR = 15000;
 		public static final long EIGHT_HOUR = 28800000;
 		public static final long ONE_DAY = 86400000;
 		

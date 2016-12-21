@@ -6,6 +6,7 @@ import java.util.Set;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -44,7 +45,7 @@ public class DataModel {
 	@DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
 	private Date date;
 
-	@OneToMany(mappedBy = "value", cascade = CascadeType.ALL)
+	@OneToMany(mappedBy = "data", cascade = CascadeType.ALL, fetch=FetchType.EAGER)
 	private Set<ValueModel> value;
 
 	public DataModel() {

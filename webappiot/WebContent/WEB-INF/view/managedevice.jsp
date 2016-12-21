@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-
+ <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 
 <div class="container-fluid">
 	<!-- Page Heading -->
@@ -41,13 +41,13 @@
 							</tr>
 						</thead>
 						<tbody>
-							<c:forEach items="${listGateway}" var="gateway">
+							<c:forEach items="${gateways}" var="gateway">
 								<tr>
 									<td>${gateway.id}</td>
 									<td>${gateway.user.username }</td>
 									<td>${gateway.location.locationName}</td>
 									<td>${gateway.address}</td>
-									<td>?</td>
+									<td>${fn:length(gateway.nodes)}</td>
 									<td><a
 										href="${pageContext.request.contextPath}/manage-device/">View
 											<i class="fa fa-arrow-circle-right"></i>
@@ -59,7 +59,7 @@
 										class="fa fa-trash"></a></td>
 								</tr>
 							</c:forEach>
-							
+
 						</tbody>
 					</table>
 				</div>
@@ -84,23 +84,25 @@
 							</tr>
 						</thead>
 						<tbody>
-							<c:forEach items="${listNode}" var="node">
-								<tr>
-									<td>${node.id}</td>
-									<td>${node.gateway.id}</td>
-									<td>${node.gateway.user.username}</td>
-									<td>${node.gateway.location.locationName}</td>
-									<td>${node.address}</td>
-									<td><a
-										href="${pageContext.request.contextPath}/manage-device/">View
-											<i class="fa fa-arrow-circle-right"></i>
-									</a></td>
-									<td><a
-										href="${pageContext.request.contextPath}/manage-device/add-device"
-										class="fa fa-gear"></a> <b>|</b> <a
-										href="${pageContext.request.contextPath}/manage-device/add-device"
-										class="fa fa-trash"></a></td>
-								</tr>
+							<c:forEach items="${gateways}" var="gateway">
+								<c:forEach items="${gateway.nodes }" var="node" >
+									<tr>
+										<td>${node.id}</td>
+										<td>${node.gateway.id}</td>
+										<td>${node.gateway.user.username}</td>
+										<td>${node.gateway.location.locationName}</td>
+										<td>${node.address}</td>
+										<td><a
+											href="${pageContext.request.contextPath}/manage-device/">View
+												<i class="fa fa-arrow-circle-right"></i>
+										</a></td>
+										<td><a
+											href="${pageContext.request.contextPath}/manage-device/add-device"
+											class="fa fa-gear"></a> <b>|</b> <a
+											href="${pageContext.request.contextPath}/manage-device/add-device"
+											class="fa fa-trash"></a></td>
+									</tr>
+								</c:forEach>
 							</c:forEach>
 						</tbody>
 					</table>

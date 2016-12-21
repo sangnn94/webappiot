@@ -12,11 +12,17 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Transient;
 
+import org.hibernate.validator.constraints.NotBlank;
+
+import vn.edu.uit.iot.validator.GatewayIdExist;
+
 @Entity
 @Table(name = "GATEWAY")
 public class GatewayModel {
 	@Id
 	@Column(name = "ID", length = 100)
+	@NotBlank
+	@GatewayIdExist
 	private String id;
 
 	@Column(name = "LONGITUDE")
@@ -24,7 +30,8 @@ public class GatewayModel {
 
 	@Column(name = "LATITUDE")
 	private float latitude;
-
+	
+	@NotBlank
 	@Column(name = "ADDRESS")
 	private String address;
 
@@ -36,28 +43,12 @@ public class GatewayModel {
 	@JoinColumn(name = "USER_ID", nullable = false)
 	private UserModel user;
 
-	@OneToMany(mappedBy = "gateway", fetch=FetchType.LAZY)
+	@OneToMany(mappedBy = "gateway", fetch=FetchType.EAGER)
 	private Set<NodeModel> nodes;
 
-	@Transient
-	private String gps;
-	
 	
 	public GatewayModel() {
 	}
-	
-	
-
-	public String getGps() {
-		return gps;
-	}
-
- 
-
-	public void setGps(String gps) {
-		this.gps = gps;
-	}
-
 
 
 	public String getId() {
