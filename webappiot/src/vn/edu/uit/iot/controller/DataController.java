@@ -83,7 +83,6 @@ public class DataController {
 					listDataSelect.add(listData.get(i));
 				}
 			}
-			
 			List<LocationModel> listLocation = locationService.getAll();
 			for(int l=0; l<listLocation.size(); l++){
 				List<DataModel> listDataLocation = getListDataLoation(listDataSelect, listLocation.get(l).getLocationId());

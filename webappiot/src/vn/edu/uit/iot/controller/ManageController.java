@@ -76,6 +76,7 @@ public class ManageController {
 			redirectAttribute.addFlashAttribute("org.springframework.validation.BindingResult.gateway", result);
 			redirectAttribute.addFlashAttribute("gateway", gateway);
 		} else {
+			System.out.println(gateway.getAddress());
 			UserModel user = getCurrentUser();
 			gateway.setUser(user);
 			gatewayService.insert(gateway);

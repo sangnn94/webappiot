@@ -45,5 +45,8 @@
 	<definition name="exception" extends="authenticate">
 		<put-attribute name="content" value="/WEB-INF/view/exception.jsp"></put-attribute>
 	</definition>
+	<definition name="accessdenied" extends="authenticate">
+		<put-attribute name="content" value="/WEB-INF/view/accessdenied.jsp"></put-attribute>
+	</definition>
 
 </tiles-definitions>

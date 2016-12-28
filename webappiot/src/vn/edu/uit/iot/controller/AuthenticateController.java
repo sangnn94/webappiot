@@ -26,18 +26,19 @@ public class AuthenticateController {
 
 	@Autowired
 	private UserService userService;
-	
-	/*
+
+	/**
 	 * Show login page
 	 * 
 	 * @return login.jsp
 	 */
-	@RequestMapping(value="/login")
-	public ModelAndView showLogin(ModelAndView modelAndView, @ModelAttribute(name = "user") UserModel user) {
+	@RequestMapping(value = "/login")
+	public ModelAndView showLogin(ModelAndView modelAndView) {
 		logger.info("Showing login page....");
 		modelAndView.setViewName("login");
 		return modelAndView;
 	}
+
 	/**
 	 * Show new account form
 	 * 
@@ -72,5 +73,13 @@ public class AuthenticateController {
 		modelAndView.setViewName("manageuser");
 		return modelAndView;
 	}
-
+	/**
+	 * 403 access denied custom page
+	 */
+	@RequestMapping(value="/access-denied", method=RequestMethod.GET)
+	public ModelAndView accessDenied(ModelAndView modelAndView){
+		modelAndView.setViewName("accessdenied");
+		return modelAndView;
+		
+	}
 }

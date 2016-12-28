@@ -2,6 +2,9 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="sf" uri="http://www.springframework.org/tags/form"%>
+<%
+	request.setCharacterEncoding("UTF-8");
+%>
 <c:url var="newGateway" value="/manage-device/add-device"></c:url>
 <div class="container-fluid">
 

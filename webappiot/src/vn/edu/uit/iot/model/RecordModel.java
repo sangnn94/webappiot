@@ -48,9 +48,6 @@ public class RecordModel {
 	@Column(name = "TIME")
 	private int timeStandard;
 
-
-
-
 	public RecordModel() {
 	}
 

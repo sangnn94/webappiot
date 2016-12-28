@@ -16,13 +16,13 @@ public class LocationModel {
 	@Id
 	@Column(name = "ID")
 	private int locationId;
-	
-	@Column(name = "NAME", length=50)
+
+	@Column(name = "NAME", length = 50)
 	private String locationName;
-	
-	@OneToMany(mappedBy="location")
+
+	@OneToMany(mappedBy = "location")
 	private Set<GatewayModel> gateways;
-	
+
 	public LocationModel() {
 	}
 
@@ -33,6 +33,14 @@ public class LocationModel {
 
 	public int getLocationId() {
 		return locationId;
+	}
+
+	public Set<GatewayModel> getGateways() {
+		return gateways;
+	}
+
+	public void setGateways(Set<GatewayModel> gateways) {
+		this.gateways = gateways;
 	}
 
 	public void setLocationId(int locationId) {

@@ -83,13 +83,13 @@
 		</security:authentication-provider>
 	</security:authentication-manager>
 	<security:http use-expressions="true">
-		<security:intercept-url pattern="/"
+		<security:intercept-url pattern="/access-denied"
 			access="permitAll" />
-			<security:intercept-url pattern="/random-data"
+		<security:intercept-url pattern="/favicon.ico"
+			access="permitAll" />
+		<security:intercept-url pattern="/random-data"
 			access="permitAll" />
 		<security:intercept-url pattern="/resources/**"
-			access="permitAll" />
-		<security:intercept-url pattern="/tiles/**"
 			access="permitAll" />
 		<security:intercept-url pattern="/login"
 			access="permitAll" />
@@ -107,21 +107,20 @@
 			access="isAuthenticated()" />
 		<security:intercept-url pattern="/manage-device/**"
 			access="isAuthenticated()" />
-		<security:intercept-url pattern="/manage-user/**"
-			access="hasRole('ADMIN')" />
 		<security:intercept-url pattern="/report/**"
 			access="isAuthenticated()" />
 		<security:intercept-url pattern="/overview/**"
 			access="isAuthenticated()" />
 		<security:intercept-url pattern="/about"
 			access="isAuthenticated()" />
+		<security:intercept-url pattern="/manage-user/**"
+			access="hasRole('ADMIN')" />
 		<security:intercept-url pattern="/**" access="denyAll" />
 		<security:form-login login-page="/login"
 			username-parameter="username" password-parameter="password" />
 		<security:csrf disabled="true" />
-		<security:headers>
-			<security:xss-protection block="false" />
-		</security:headers>
+		<security:access-denied-handler
+			error-page="/access-denied" />
 		<security:logout />
 	</security:http>
 	<security:global-method-security

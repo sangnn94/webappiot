@@ -3,7 +3,6 @@ package vn.edu.uit.iot.controller;
 import javax.servlet.http.HttpServletRequest;
 
 import org.hibernate.exception.ConstraintViolationException;
-import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.servlet.ModelAndView;

@@ -7,18 +7,21 @@
 	<!-- Page Heading -->
 	<div class="row">
 		<div class="col-lg-12">
-			<sf:form method="post" action="${pageContext.request.contextPath}/random-data" style="float: right" >
-					<button type="submit" class="btn btn-default">Random Data</button>
+			<sf:form method="post"
+				action="${pageContext.request.contextPath}/random-data"
+				style="float: right">
+				<button type="submit" class="btn btn-default">Random Data</button>
 			</sf:form>
 			<h1 class="page-header">Statistics Overview</h1>
-			
+
 			<ol class="breadcrumb">
 				<li><i class="fa fa-dashboard"></i> <a
 					href="${pageContext.request.contextPath}/">WebAppIoT</a></li>
 				<li class="active"><i class="fa fa-edit"></i> Statistics
 					Overview</li>
-				<a href="${pageContext.request.contextPath}/overview/airstandard" style="float: right">Air Standard</a>
-				
+				<a href="${pageContext.request.contextPath}/overview/airstandard"
+					style="float: right">Air Standard</a>
+
 			</ol>
 		</div>
 	</div>
@@ -93,18 +96,28 @@
 							<thead>
 								<tr>
 									<th>Air Quality(μg/m3)</th>
-									<th>CO</th>
+
 									<th>SO2</th>
+									<th>CO</th>
+									<th>NO2</th>
 									<th>O3</th>
-									<th>Pb</th>
 									<th>TSP</th>
 									<th>PM10</th>
 									<th>PM2.5</th>
+									<th>Pb</th>
 									<th>Lastest update</th>
 								</tr>
 							</thead>
 							<tbody>
-								
+								<tr>
+									<td>${record.location.locationName }</td>
+								</tr>
+								<jstl:forEach items="${records }" var="record">
+									<tr>
+										<td>${record.value }</td>
+										<td>${record }
+									</tr>
+								</jstl:forEach>
 							</tbody>
 						</table>
 					</div>

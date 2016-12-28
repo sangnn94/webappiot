@@ -31,6 +31,8 @@
 <link
 	href='<c:url value="/resources/font-awesome/css/font-awesome.min.css" />'
 	rel="stylesheet" type="text/css">
+<!-- Login CSS -->
+<link href="<c:url value="/resources/css/login.css" />" rel="stylesheet">
 
 <!-- jQuery -->
 <script src='<c:url value="/resources/js/jquery.js" />'></script>
@@ -38,7 +40,7 @@
 <c:url var="loginUrl" value="/login"></c:url>
 <c:url var="rootUrl" value="/"></c:url>
 </head>
-<body>
+<body onload='document.f.username.focus();'>
 
 	<!-- Fixed navbar -->
 	<nav class="navbar navbar-inverse navbar-fixed-top">

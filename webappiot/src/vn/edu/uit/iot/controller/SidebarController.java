@@ -4,6 +4,7 @@ import java.util.Date;
 import java.util.List;
 import java.util.Set;
 
+import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
@@ -29,7 +30,8 @@ import vn.edu.uit.iot.utils.HandleData;
 
 @Controller
 public class SidebarController {
-	
+	private static Logger logger = Logger.getLogger(AuthenticateController.class);
+
 	@Autowired
 	private NodeService mNodeService;
 	
@@ -54,6 +56,7 @@ public class SidebarController {
 	
 	@RequestMapping(value="/" , method= RequestMethod.GET)
 	public ModelAndView getHome(ModelAndView modelAndView){
+		logger.info("Showing index page....");
 		modelAndView.setViewName("index");		
 		List<RecordModel> records = mRecordService.getAll();
 		modelAndView.getModel().put("records", records);

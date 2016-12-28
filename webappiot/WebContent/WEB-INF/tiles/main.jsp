@@ -8,8 +8,7 @@
 <!DOCTYPE html >
 <html>
 <head>
-
-<meta charset="utf-8">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="description" content="">
@@ -25,8 +24,7 @@
 <!-- Custom CSS -->
 <link href='<c:url value="/resources/css/sb-admin.css" />'
 	rel="stylesheet">
-<link href='<c:url value="/resources/css/main.css" />'
-	rel="stylesheet">
+<link href='<c:url value="/resources/css/main.css" />' rel="stylesheet">
 
 <!-- Custom Fonts -->
 <link
@@ -37,6 +35,9 @@
 <script src='<c:url value="/resources/js/jquery.js" />'></script>
 </head>
 <body>
+	<%
+		request.setCharacterEncoding("UTF-8");
+	%>
 	<div id="wrapper">
 		<!-- Navigation -->
 		<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
@@ -52,41 +53,22 @@
 			</div>
 			<!-- 	Top Menu Items -->
 			<ul class="nav navbar-right top-nav">
-				<!-- <li class="dropdown"><a href="#" class="dropdown-toggle"
-					data-toggle="dropdown"><i class="fa fa-bell"></i> <b
-						class="caret"></b></a>
-					<ul class="dropdown-menu alert-dropdown">
-						<li><a href="#">Alert Name <span
-								class="label label-default">Alert Badge</span></a></li>
-						<li><a href="#">Alert Name <span
-								class="label label-primary">Alert Badge</span></a></li>
-						<li><a href="#">Alert Name <span
-								class="label label-success">Alert Badge</span></a></li>
-						<li><a href="#">Alert Name <span class="label label-info">Alert
-									Badge</span></a></li>
-						<li><a href="#">Alert Name <span
-								class="label label-warning">Alert Badge</span></a></li>
-						<li><a href="#">Alert Name <span
-								class="label label-danger">Alert Badge</span></a></li>
-						<li class="divider"></li>
-						<li><a href="#">View All</a></li>
-					</ul></li> -->
 				<sec:authentication var="currentUser" property="principal" />
-
-				<sec:authorize access="isAuthenticated()"><li class="dropdown"><a href="#" class="dropdown-toggle"
-					data-toggle="dropdown"> <i class="fa fa-user"></i> ${currentUser.username }<b
-						class="caret"></b></a>
-					<ul class="dropdown-menu">
-						<li><a href="#"><i class="fa fa-fw fa-user"></i> Profile</a></li>
-						<li><a href="#"><i class="fa fa-fw fa-envelope"></i>
-								Inbox</a></li>
-						<li><a href="#"><i class="fa fa-fw fa-gear"></i> Settings</a>
-						</li>
-						<li class="divider"></li>
-						<li><a href="javascript:$('#logoutForm').submit();"><i
-								class="fa fa-fw fa-power-off"></i> Log Out</a></li>
-					</ul></li>
-					</sec:authorize>
+				<sec:authorize access="isAuthenticated()">
+					<li class="dropdown"><a href="#" class="dropdown-toggle"
+						data-toggle="dropdown"> <i class="fa fa-user"></i>
+							${currentUser.username }<b class="caret"></b></a>
+						<ul class="dropdown-menu">
+							<li><a href="#"><i class="fa fa-fw fa-user"></i> Profile</a></li>
+							<li><a href="#"><i class="fa fa-fw fa-envelope"></i>
+									Inbox</a></li>
+							<li><a href="#"><i class="fa fa-fw fa-gear"></i>
+									Settings</a></li>
+							<li class="divider"></li>
+							<li><a href="javascript:$('#logoutForm').submit();"><i
+									class="fa fa-fw fa-power-off"></i> Log Out</a></li>
+						</ul></li>
+				</sec:authorize>
 			</ul>
 
 			<!-- Sidebar Menu Items - These collapse to the responsive navigation menu on small screens -->
