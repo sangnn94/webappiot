@@ -109,13 +109,10 @@
 								</tr>
 							</thead>
 							<tbody>
-								<tr>
-									<td>${record.location.locationName }</td>
-								</tr>
 								<jstl:forEach items="${records }" var="record">
 									<tr>
-										<td>${record.value }</td>
-										<td>${record }
+										<td>${record.location.locationName }</td>
+										<td>${record.air.name }:${record.value }</td>
 									</tr>
 								</jstl:forEach>
 							</tbody>

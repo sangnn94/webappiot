@@ -66,6 +66,7 @@ public class DataController {
 			valueModels.add(valueModel); // add to set of value
 		}
 		dataModel.setValue(valueModels); // add set to data record
+		System.out.println(dataModel);
 		dataService.insert(dataModel);
 		updateRecord();
 		return new ResponseEntity<Void>(HttpStatus.OK);

@@ -15,5 +15,7 @@ public interface RecordService {
 	public RecordModel getData(int id);
 	
 	public List<RecordModel> getAll();
+
+	public List<RecordModel> getLastest();
 	
 }

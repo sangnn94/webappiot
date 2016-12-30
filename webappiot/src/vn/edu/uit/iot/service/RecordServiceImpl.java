@@ -43,4 +43,10 @@ public class RecordServiceImpl implements RecordService {
 		return this.recordDao.getAll();
 	}
 
+	@Override
+	public List<RecordModel> getLastest() {
+		// TODO Auto-generated method stub
+		return recordDao.getLastest();
+	}
+
 }

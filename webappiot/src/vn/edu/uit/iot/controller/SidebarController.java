@@ -58,7 +58,7 @@ public class SidebarController {
 	public ModelAndView getHome(ModelAndView modelAndView){
 		logger.info("Showing index page....");
 		modelAndView.setViewName("index");		
-		List<RecordModel> records = mRecordService.getAll();
+		List<RecordModel> records = mRecordService.getLastest();
 		modelAndView.getModel().put("records", records);
 		return modelAndView;
 	}

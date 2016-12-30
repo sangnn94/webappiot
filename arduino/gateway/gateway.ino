@@ -46,8 +46,6 @@ void setup() {
     ;
   }
   clearGsmSerialBuffer();
-  
-  
   char inChar2;
   int j = 0;
   while(!gsmSerial.available()){

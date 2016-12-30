@@ -15,4 +15,6 @@ public interface RecordDAO {
 	public RecordModel getRecord(int id);
 
 	public List<RecordModel> getAll();
+	
+	public List<RecordModel> getLastest();
 }
