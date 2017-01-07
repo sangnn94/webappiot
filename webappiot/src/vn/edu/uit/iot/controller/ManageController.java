@@ -1,15 +1,13 @@
 package vn.edu.uit.iot.controller;
 
-import java.security.Principal;
+
 import java.util.List;
 
-import javax.tools.DocumentationTool.Location;
+
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.propertyeditors.LocaleEditor;
 import org.springframework.security.core.Authentication;
-import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -25,12 +23,10 @@ import vn.edu.uit.iot.authentication.AuthenticationFacadeInterface;
 import vn.edu.uit.iot.editor.LocationEditor;
 import vn.edu.uit.iot.model.GatewayModel;
 import vn.edu.uit.iot.model.LocationModel;
-import vn.edu.uit.iot.model.NodeModel;
 import vn.edu.uit.iot.model.UserModel;
 import vn.edu.uit.iot.service.GatewayService;
 import vn.edu.uit.iot.service.LocationService;
 import vn.edu.uit.iot.service.UserService;
-import vn.edu.uit.iot.service.UserServiceImpl;
 
 @Controller
 public class ManageController {

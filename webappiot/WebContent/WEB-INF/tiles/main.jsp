@@ -4,6 +4,7 @@
 <%@ taglib uri="http://tiles.apache.org/tags-tiles" prefix="tiles"%>
 <%@ taglib prefix="sec"
 	uri="http://www.springframework.org/security/tags"%>
+<%@ taglib prefix="sf" uri="http://www.springframework.org/tags/form"%>
 
 <!DOCTYPE html >
 <html>
@@ -53,6 +54,12 @@
 			</div>
 			<!-- 	Top Menu Items -->
 			<ul class="nav navbar-right top-nav">
+				<li>
+					<sf:form   method="post"
+						action="${pageContext.request.contextPath}/random-data">
+						<button style="float: center; margin: 10px" type="submit" class="btn btn-primary">Random Data</button>
+						</sf:form>
+				</li>
 				<sec:authentication var="currentUser" property="principal" />
 				<sec:authorize access="isAuthenticated()">
 					<li class="dropdown"><a href="#" class="dropdown-toggle"
@@ -67,7 +74,9 @@
 							<li class="divider"></li>
 							<li><a href="javascript:$('#logoutForm').submit();"><i
 									class="fa fa-fw fa-power-off"></i> Log Out</a></li>
-						</ul></li>
+							
+						</ul>
+					</li>
 				</sec:authorize>
 			</ul>
 
@@ -82,8 +91,8 @@
 							class="fa fa-fw fa fa fa fa-cogs"></i> Manage User</a></li>
 					<li><a href="${pageContext.request.contextPath}/report"><i
 							class="fa fa-fw fa fa-list-alt"></i> Report</a></li>
-					<li><a href="${pageContext.request.contextPath}/about"><i
-							class="fa fa-fw fa-user"></i> About</a></li>
+					
+					
 				</ul>
 			</div>
 			<!-- content -->

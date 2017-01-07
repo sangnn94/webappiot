@@ -7,11 +7,7 @@
 	<!-- Page Heading -->
 	<div class="row">
 		<div class="col-lg-12">
-			<sf:form method="post"
-				action="${pageContext.request.contextPath}/random-data"
-				style="float: right">
-				<button type="submit" class="btn btn-default">Random Data</button>
-			</sf:form>
+			
 			<h1 class="page-header">Statistics Overview</h1>
 
 			<ol class="breadcrumb">

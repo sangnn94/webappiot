@@ -22,49 +22,81 @@ public class HandleData {
 			if (air == Const.CO && listRecord.get(i).getAir().getId() == Const.CO) {
 				airData.setValue(listRecord.get(i).getValue());
 				if (listRecord.get(i).getValue() > 30000)
-					airData.setEvaluation("HIGH");
+					airData.setEvaluation("Danger");
+				else if(listRecord.get(i).getValue() < 30000 && listRecord.get(i).getValue() > 27000)
+					airData.setEvaluation("Warning");
+				else
+					airData.setEvaluation("Normal");
 				listAirData.add(airData);
 			}
 			if (air == Const.SO2 && listRecord.get(i).getAir().getId() == Const.SO2) {
 				airData.setValue(listRecord.get(i).getValue());
 				if (listRecord.get(i).getValue() > 350)
-					airData.setEvaluation("HIGH");
+					airData.setEvaluation("Danger");
+				else if(listRecord.get(i).getValue() < 350 && listRecord.get(i).getValue() > 315)
+					airData.setEvaluation("Warning");
+				else
+					airData.setEvaluation("Normal");
 				listAirData.add(airData);
 			}
 			if (air == Const.O3 && listRecord.get(i).getAir().getId() == Const.O3) {
 				airData.setValue(listRecord.get(i).getValue());
 				if (listRecord.get(i).getValue() > 200)
-					airData.setEvaluation("HIGH");
+					airData.setEvaluation("Danger");
+				else if(listRecord.get(i).getValue() < 200 && listRecord.get(i).getValue() < 180)
+					airData.setEvaluation("Warning");
+				else
+					airData.setEvaluation("Normal");
 				listAirData.add(airData);
 			}
 			if (air == Const.Pb && listRecord.get(i).getAir().getId() == Const.Pb) {
 				airData.setValue(listRecord.get(i).getValue());
 				if (listRecord.get(i).getValue() > 1.5)
-					airData.setEvaluation("HIGH");
+					airData.setEvaluation("Danger");
+				else if(listRecord.get(i).getValue() < 1.5 && listRecord.get(i).getValue() > 1.35)
+					airData.setEvaluation("Warning");
+				else
+					airData.setEvaluation("Normal");
 				listAirData.add(airData);
 			}
 			if (air == Const.TSP && listRecord.get(i).getAir().getId() == Const.TSP) {
 				airData.setValue(listRecord.get(i).getValue());
 				if (listRecord.get(i).getValue() > 200)
-					airData.setEvaluation("HIGH");
+					airData.setEvaluation("Danger");
+				else if(listRecord.get(i).getValue() < 200 && listRecord.get(i).getValue() < 180)
+					airData.setEvaluation("Warning");
+				else
+					airData.setEvaluation("Normal");
 				listAirData.add(airData);
 			}
 			if (air == Const.PM10 && listRecord.get(i).getAir().getId() == Const.PM10) {
 				airData.setValue(listRecord.get(i).getValue());
 				if (listRecord.get(i).getValue() > 150)
-					airData.setEvaluation("HIGH");
+					airData.setEvaluation("Danger");
+				else if(listRecord.get(i).getValue() < 150 && listRecord.get(i).getValue() < 135)
+					airData.setEvaluation("Warning");
+				else
+					airData.setEvaluation("Normal");
 				listAirData.add(airData);
 			}
 			if (air == Const.PM25 && listRecord.get(i).getAir().getId() == Const.PM25) {
 				airData.setValue(listRecord.get(i).getValue());
 				if (listRecord.get(i).getValue() > 50)
-					airData.setEvaluation("HIGH");
+					airData.setEvaluation("Danger");
+				else if(listRecord.get(i).getValue() < 50 && listRecord.get(i).getValue() < 45)
+					airData.setEvaluation("Warning");
+				else
+					airData.setEvaluation("Normal");
 				listAirData.add(airData);
 			}
 			if (air == Const.NO2 && listRecord.get(i).getAir().getId() == Const.NO2) {
 				airData.setValue(listRecord.get(i).getValue());
 				if (listRecord.get(i).getValue() > 200)
-					airData.setEvaluation("HIGH");
+					airData.setEvaluation("Danger");
+				else if(listRecord.get(i).getValue() < 200 && listRecord.get(i).getValue() < 180)
+					airData.setEvaluation("Warning");
+				else
+					airData.setEvaluation("Normal");
 				listAirData.add(airData);
 			}
 
@@ -82,8 +114,13 @@ public class HandleData {
 			map = new HashMap<Object, Object>();
 			map.put("label",
 					listAirData.get(i).getLocation());
-			map.put("indexLabel", listAirData.get(i).getEvaluation());
-			//map.put("x", (i * 100 )/ listAirData.size() );
+			//map.put("indexLabel", listAirData.get(i).getEvaluation());
+			if(listAirData.get(i).getEvaluation().equals("Danger"))
+				map.put("color", "red");
+			if(listAirData.get(i).getEvaluation().equals("Warning"))
+				map.put("color", "orange");
+			if(listAirData.get(i).getEvaluation().equals("Normal"))
+				map.put("color", "green");
 			map.put("y", listAirData.get(i).getValue());
 			listMap.add(map);
 		}

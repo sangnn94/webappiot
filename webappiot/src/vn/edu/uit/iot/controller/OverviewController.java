@@ -1,5 +1,6 @@
 package vn.edu.uit.iot.controller;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -11,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import vn.edu.uit.iot.model.AirModel;
+import vn.edu.uit.iot.model.GatewayModel;
 import vn.edu.uit.iot.model.LocationModel;
 import vn.edu.uit.iot.model.RecordModel;
 import vn.edu.uit.iot.service.AirService;
@@ -35,9 +37,18 @@ public class OverviewController {
 	@Autowired
 	private AirService mAirService;
 	
+
 	@RequestMapping(value="/overview/maps", method = RequestMethod.GET)
-	public ModelAndView getMaps(ModelAndView mModelAndView, ModelMap mModelMap){
+	public ModelAndView getMaps(ModelAndView mModelAndView){
 		mModelAndView = new ModelAndView("maps");
+		List<GatewayModel> gatewayModel = mGatewayService.getAll();
+		mModelAndView.addObject("gateway", gatewayModel);
+		List<String> address = new ArrayList<>();
+		for (GatewayModel gateway : gatewayModel) {
+			System.out.println("hai");
+			address.add(gateway.getAddress());
+		}
+		mModelAndView.addObject("address", address);
 		return mModelAndView;
 	}
 	
@@ -64,7 +75,7 @@ public class OverviewController {
 	}
 	
 	@RequestMapping(value="/overview/airstandard", method = RequestMethod.GET)
-	public ModelAndView getAirStandard(ModelAndView mModelAndView, ModelMap mModelMap){
+	public ModelAndView getAirStandard(ModelAndView mModelAndView){
 		mModelAndView = new ModelAndView("airstandard");
 		return mModelAndView;
 	}
