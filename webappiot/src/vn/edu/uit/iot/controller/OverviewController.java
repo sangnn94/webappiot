@@ -55,7 +55,7 @@ public class OverviewController {
 	@RequestMapping(value = "/overview/chart", method = RequestMethod.GET)
 	public ModelAndView getChart(ModelAndView mModelAndView, ModelMap mModelMap) {
 		mModelAndView = new ModelAndView("chart");
-		List<RecordModel> listRecord = mRecordService.getAll();
+		List<RecordModel> listRecord = mRecordService.getLastest();
 		String coData = HandleData.getJson(Const.CO, listRecord);
 		mModelAndView.addObject("CO", coData);
 		String so2Data = HandleData.getJson(Const.SO2, listRecord);
@@ -70,6 +70,8 @@ public class OverviewController {
 		mModelAndView.addObject("PM10", pm10Data);
 		String pm25Data = HandleData.getJson(Const.PM25, listRecord);
 		mModelAndView.addObject("PM25", pm25Data);
+		String noData = HandleData.getJson(Const.NO2, listRecord);
+		mModelAndView.addObject("NO", noData);
 		
 		return mModelAndView;
 	}
@@ -98,63 +100,78 @@ public class OverviewController {
 					case Const.CO:
 						record.setValue(HandleData.randomData(10000, 40000));
 						if (record.getValue() > 30000)
-							record.setEvaluation("HIGH");
+							record.setEvaluation("Danger");
+						else if (record.getValue() < 30000 && record.getValue() > 27000)
+							record.setEvaluation("Warning");
 						else
-							record.setEvaluation("");
+							record.setEvaluation("Normal");
 						break;
 					case Const.SO2:
-						record.setValue(HandleData.randomData(100, 500));
+						record.setValue(HandleData.randomData(100, 400));
 						if (record.getValue() > 350)
-							record.setEvaluation("HIGH");
+							record.setEvaluation("Danger");
+						else if (record.getValue() < 350 && record.getValue() > 315)
+							record.setEvaluation("Warning");
 						else
-							record.setEvaluation("");
+							record.setEvaluation("Normal");
 						break;
 					case Const.NO2:
-						record.setValue(HandleData.randomData(50, 300));
+						record.setValue(HandleData.randomData(100, 300));
 						if (record.getValue() > 200)
-							record.setEvaluation("HIGH");
+							record.setEvaluation("Danger");
+						else if (record.getValue() < 200 && record.getValue() > 180)
+							record.setEvaluation("Warning");
 						else
-							record.setEvaluation("");
+							record.setEvaluation("Normal");
 						break;
 					case Const.O3:
 						record.setValue(HandleData.randomData(100, 300));
 						if (record.getValue() > 200)
-							record.setEvaluation("HIGH");
+							record.setEvaluation("Danger");
+						else if (record.getValue() < 200 && record.getValue() > 180)
+							record.setEvaluation("Warning");
 						else
-							record.setEvaluation("");
+							record.setEvaluation("Normal");
 						break;
 					case Const.Pb:
 						record.setValue(HandleData.randomData(1, 4));
-						if (record.getValue() > 300)
-							record.setEvaluation("HIGH");
+						if (record.getValue() > 1.5)
+							record.setEvaluation("Danger");
+						else if (record.getValue() < 1.5 && record.getValue() > 1.35)
+							record.setEvaluation("Warning");
 						else
-							record.setEvaluation("");
+							record.setEvaluation("Normal");
 						break;
 					case Const.PM10:
 						record.setValue(HandleData.randomData(50, 200));
-						if (record.getValue() > 300)
-							record.setEvaluation("HIGH");
+						if (record.getValue() > 150)
+							record.setEvaluation("Danger");
+						else if (record.getValue() < 150 && record.getValue() > 135)
+							record.setEvaluation("Warning");
 						else
-							record.setEvaluation("");
+							record.setEvaluation("Normal");
 						break;
 					case Const.PM25:
-						record.setValue(HandleData.randomData(10, 100));
-						if (record.getValue() > 300)
-							record.setEvaluation("HIGH");
+						record.setValue(HandleData.randomData(10, 70));
+						if (record.getValue() > 50)
+							record.setEvaluation("Danger");
+						else if (record.getValue() < 50 && record.getValue() > 45)
+							record.setEvaluation("Warning");
 						else
-							record.setEvaluation("");
+							record.setEvaluation("Normal");
 						break;
 					case Const.TSP:
-						record.setValue(HandleData.randomData(100, 400));
-						if (record.getValue() > 300)
-							record.setEvaluation("HIGH");
+						record.setValue(HandleData.randomData(100, 300));
+						if (record.getValue() > 200)
+							record.setEvaluation("Danger");
+						else if (record.getValue() < 200 && record.getValue() > 180)
+							record.setEvaluation("Warning");
 						else
-							record.setEvaluation("");
+							record.setEvaluation("Normal");
 						break;
 					}
 					record.setTimeStandard(Const.TIME_STANDARD_ONE_HOUR);
 					mRecordService.insert(record);
-
 			}
 		}
 		return mModelAndView;

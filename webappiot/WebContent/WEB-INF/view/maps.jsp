@@ -64,8 +64,6 @@
 			infowindow.open(map, marker);
 		}
 		
-		
-		
 	}
 	
 </script>

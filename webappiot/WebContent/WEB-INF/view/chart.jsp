@@ -54,8 +54,6 @@
 			<div class="panel panel-default">
 				<div class="panel-body">
 						<div id="so2Chart" style="height: 300px; width: 100%;"></div>
-						<script type="text/javascript">test("hsabda");</script>
-						<h1 id="hai"></h1>
 				</div>
 			</div>
 		</div>
@@ -69,6 +67,19 @@
 			<div class="panel panel-default">
 				<div class="panel-body">
 						<div id="o3Chart" style="height: 300px; width: 100%;"></div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<!-- /.row -->
+		<!-- /.row -->
+
+	<div class="row">
+		<div class="col-lg-12">
+			<div class="panel panel-default">
+				<div class="panel-body">
+						<div id="noChart" style="height: 300px; width: 100%;"></div>
 				</div>
 			</div>
 		</div>
@@ -164,6 +175,10 @@
 		if(air == 7){
 			data = ${PM25};
 		}
+		
+		if(air == 8){
+			data = ${NO};
+		}
 	
 		return data;
 	}
@@ -187,6 +202,11 @@
 		}, {
 			type : "spline",
 			showInLegend : true,
+			name : "NO",
+			dataPoints : getData(7)
+		}, {
+			type : "spline",
+			showInLegend : true,
 			name : "Pb",
 			dataPoints : getData(4)
 		}, {
@@ -205,6 +225,7 @@
 			name : "PM10",
 			dataPoints : getData(7)
 		}];
+		
 		return dataLine;
 	}
 </script>
@@ -363,6 +384,23 @@
 				dataPoints : getData(7)
 			} ]
 		});
+		
+		var noChart = new CanvasJS.Chart("noChart", {
+			title : {
+				text : "NO"
+			},
+			axisX : {
+				//interval : 10
+			},
+			axisY : {
+				title : "μg/m3",
+			},
+			dataPointWidth : 40,
+			data : [ {
+				type : "column",
+				dataPoints : getData(8)
+			} ]
+		});
 		lineChart.render();
 		coChart.render();
 		so2Chart.render();
@@ -371,6 +409,7 @@
 		tslChart.render();
 		pm25Chart.render();
 		pm10Chart.render();
+		noChart.render();
 		
 	})
 	

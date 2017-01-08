@@ -75,8 +75,10 @@ public class ManageController {
 			System.out.println(gateway.getAddress());
 			UserModel user = getCurrentUser();
 			gateway.setUser(user);
+			gateway.setLatitude((float) 10.825895);
+			gateway.setLongitude((float) 106.628147);
 			gatewayService.insert(gateway);
-			mModelAndView.setViewName("managedevice");
+			mModelAndView.setViewName("redirect:/manage-device/");
 		}
 		return mModelAndView;
 	}
