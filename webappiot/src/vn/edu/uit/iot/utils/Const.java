@@ -57,4 +57,10 @@ public class Const {
 		public static final long ONE_DAY = 86400000;
 		
 	}
+	
+	public static class Evaluation{
+		public static final String DANGER = "Danger";
+		public static final String WARNING = "Warning";
+		public static final String NORMAL = "Normal";
+	}
 }

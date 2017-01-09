@@ -152,30 +152,48 @@ public class DataController {
 	
 	private void inserNewRecord(List<DataModel> listData,Date date, LocationModel location, int time){
 		float valueCO = 0,valueSo2 = 0,valueO3 = 0,valuePb = 0,valueNo2 = 0,valueTsp = 0,valuePm10 = 0,valuePm25 = 0;
+		int countCO = 0,countTsp = 0,countSo2 = 0,countO3 = 0,countPb = 0,countNo = 0,countPm10 = 0,countPm25 = 0;
 		for(int i=0 ; i<listData.size(); i++){
 			Set<ValueModel> values = listData.get(i).getValue();
 			
 			for(ValueModel value : values){
-				if(value.getAir().getId()==Const.CO)
-					valueCO += (value.getValue()/listData.size());
-				if(value.getAir().getId()==Const.SO2)
-					valueSo2 += (value.getValue()/listData.size());
-				if(value.getAir().getId()==Const.O3)
-					valueO3 += (value.getValue()/listData.size());
-				if(value.getAir().getId()==Const.Pb)
-					valuePb += (value.getValue()/listData.size());
-				if(value.getAir().getId()==Const.PM10)
-					valuePm10 += (value.getValue()/listData.size());
-				if(value.getAir().getId()==Const.PM25)
-					valuePm25 += (value.getValue()/listData.size());
-				if(value.getAir().getId()==Const.TSP)
-					valueTsp += (value.getValue()/listData.size());
-				if(value.getAir().getId()==Const.NO2)
-					valueNo2 += (value.getValue()/listData.size());
+				if(value.getAir().getId()==Const.CO){
+					valueCO += value.getValue();
+					countCO++;
+				}
+				if(value.getAir().getId()==Const.SO2){
+					valueSo2 += value.getValue();
+					countSo2++;
+				}
+				if(value.getAir().getId()==Const.O3){
+					valueO3 += value.getValue();
+					countO3++;
+				}
+				if(value.getAir().getId()==Const.Pb){
+					valuePb += value.getValue();
+					countPb++;
+				}
+				if(value.getAir().getId()==Const.PM10){
+					valuePm10 += value.getValue();
+					countPm10++;
+				}
+				if(value.getAir().getId()==Const.PM25){
+					valuePm25 += value.getValue();
+					countPm25++;
+				}
+				if(value.getAir().getId()==Const.TSP){
+					valueTsp += value.getValue();
+					countTsp++;
+				}
+				if(value.getAir().getId()==Const.NO2){
+					valueNo2 += value.getValue();
+					countNo++;
+				}
 			}
 		}
 		
 		if(valueCO!=0){
+			valueCO = valueCO/countCO;
 			RecordModel record = new RecordModel();
 			record.setDate(date);
 			record.setAir(airService.getData(Const.CO));
@@ -185,21 +203,22 @@ public class DataController {
 			switch(time){
 			case Const.TIME_STANDARD_ONE_HOUR:
 				if(valueCO>=30000)
-					record.setEvaluation("HIGH");
+					record.setEvaluation(Const.Evaluation.DANGER);
+				else if(valueCO<30000 && valueCO > 27000)
+					record.setEvaluation(Const.Evaluation.WARNING);
 				else
-					record.setEvaluation("");
+					record.setEvaluation(Const.Evaluation.NORMAL);
 				break;
 			case Const.TIME_STANDARD_EIGHT_HOUR:
 				if(valueCO>=10000)
-					record.setEvaluation("HIGH");
+					record.setEvaluation(Const.Evaluation.DANGER);
+				else if(valueCO<10000 && valueCO > 9000)
+					record.setEvaluation(Const.Evaluation.WARNING);
 				else
-					record.setEvaluation("");
+					record.setEvaluation(Const.Evaluation.NORMAL);
 				break;
-			case Const.TIME_STANDARD_ONE_DAY:
-				record.setEvaluation("");
-				break;
-			case Const.TIME_STANDARD_ONE_YEAR:
-				record.setEvaluation("");
+			default:
+				record.setEvaluation("NA");
 				break;
 			}
 			recordService.insert(record);
@@ -207,6 +226,7 @@ public class DataController {
 		}
 		
 		if(valueSo2!=0){
+			valueSo2 = valueSo2/countSo2;
 			RecordModel record = new RecordModel();
 			record.setDate(date);
 			record.setAir(airService.getData(Const.SO2));
@@ -215,22 +235,22 @@ public class DataController {
 			record.setTimeStandard(time);
 			switch(time){
 			case Const.TIME_STANDARD_ONE_HOUR:
-				if(valueCO>=350)
-					record.setEvaluation("HIGH");
+				if(valueSo2>=350)
+					record.setEvaluation(Const.Evaluation.DANGER );
+				else if(valueSo2<350 && valueSo2 > 315)
+					record.setEvaluation(Const.Evaluation.WARNING);
 				else
-					record.setEvaluation("");
-				break;
-			case Const.TIME_STANDARD_EIGHT_HOUR:
-				record.setEvaluation("");
+					record.setEvaluation(Const.Evaluation.NORMAL);
 				break;
 			case Const.TIME_STANDARD_ONE_DAY:
-				if(valueCO>=125)
-				record.setEvaluation("HIGH");
+				if(valueSo2>=125)
+					record.setEvaluation(Const.Evaluation.DANGER);
+				else if(valueSo2<125 && valueSo2 > 113)
+					record.setEvaluation(Const.Evaluation.WARNING);
 				else
-					record.setEvaluation("");
-				break;
-			case Const.TIME_STANDARD_ONE_YEAR:
-				record.setEvaluation("");
+					record.setEvaluation(Const.Evaluation.NORMAL);
+			default:
+				record.setEvaluation("NA");
 				break;
 			}
 			recordService.insert(record);
@@ -238,6 +258,7 @@ public class DataController {
 		}
 		
 		if(valueO3!=0){
+			valueO3 = valueO3/countO3;
 			RecordModel record = new RecordModel();
 			record.setDate(date);
 			record.setAir(airService.getData(Const.O3));
@@ -246,27 +267,29 @@ public class DataController {
 			record.setTimeStandard(time);
 			switch(time){
 			case Const.TIME_STANDARD_ONE_HOUR:
-				if(valueCO>=200)
-					record.setEvaluation("HIGH");
+				if(valueO3>=200)
+					record.setEvaluation(Const.Evaluation.DANGER);
+				else if(valueO3<200 && valueO3 > 180)
+					record.setEvaluation(Const.Evaluation.WARNING);
 				else
-					record.setEvaluation("");
+					record.setEvaluation(Const.Evaluation.NORMAL);
 				break;
 			case Const.TIME_STANDARD_EIGHT_HOUR:
 				if(valueCO>=120)
-					record.setEvaluation("HIGH");
+					record.setEvaluation(Const.Evaluation.DANGER);
+				else if(valueO3<120 && valueO3 > 113)
+					record.setEvaluation(Const.Evaluation.WARNING);
 				else
-					record.setEvaluation("");
+					record.setEvaluation(Const.Evaluation.NORMAL);
 				break;
-			case Const.TIME_STANDARD_ONE_DAY:
-				record.setEvaluation("");
-				break;
-			case Const.TIME_STANDARD_ONE_YEAR:
-				record.setEvaluation("");
+			default:
+				record.setEvaluation("NA");
 				break;
 			}
 			recordService.insert(record);
 		}
 		if(valuePb!=0){
+			valuePb = valuePb/countPb;
 			RecordModel record = new RecordModel();
 			record.setDate(date);
 			record.setAir(airService.getData(Const.Pb));
@@ -274,29 +297,31 @@ public class DataController {
 			record.setLocation(location);
 			record.setTimeStandard(time);
 			switch(time){
-			case Const.TIME_STANDARD_ONE_HOUR:
-				record.setEvaluation("");
-				break;
-			case Const.TIME_STANDARD_EIGHT_HOUR:
-				record.setEvaluation("");
-				break;
 			case Const.TIME_STANDARD_ONE_DAY:
-				if(valueCO>=1.5)
-					record.setEvaluation("HIGH");
+				if(valuePb>=1.5)
+					record.setEvaluation(Const.Evaluation.DANGER);
+				else if(valuePb<1.5 && valuePb > 1.35)
+					record.setEvaluation(Const.Evaluation.WARNING);
 				else
-					record.setEvaluation("");
+					record.setEvaluation(Const.Evaluation.NORMAL);
 				break;
 			case Const.TIME_STANDARD_ONE_YEAR:
-				if(valueCO>=0.5)
-					record.setEvaluation("HIGH");
+				if(valuePb>=0.5)
+					record.setEvaluation(Const.Evaluation.DANGER);
+				else if(valuePb<0.5 && valuePb > 0.45)
+					record.setEvaluation(Const.Evaluation.WARNING);
 				else
-					record.setEvaluation("");
+					record.setEvaluation(Const.Evaluation.NORMAL);
+				break;
+			default:
+				record.setEvaluation("NA");
 				break;
 			}
 			recordService.insert(record);
 		}
 		
 		if(valueNo2!=0){
+			valueNo2 = valueNo2/countNo;
 			RecordModel record = new RecordModel();
 			record.setDate(date);
 			record.setAir(airService.getData(Const.NO2));
@@ -305,30 +330,37 @@ public class DataController {
 			record.setTimeStandard(time);
 			switch(time){
 			case Const.TIME_STANDARD_ONE_HOUR:
-				if(valueCO>=200)
-					record.setEvaluation("HIGH");
+				if(valueNo2>=200)
+					record.setEvaluation(Const.Evaluation.DANGER);
+				else if(valueNo2<200 && valueNo2 > 180)
+					record.setEvaluation(Const.Evaluation.WARNING);
 				else
-					record.setEvaluation("");
-				break;
-			case Const.TIME_STANDARD_EIGHT_HOUR:
-				record.setEvaluation("");
+					record.setEvaluation(Const.Evaluation.NORMAL);
 				break;
 			case Const.TIME_STANDARD_ONE_DAY:
-				if(valueCO>=100)
-					record.setEvaluation("HIGH");
+				if(valueNo2>=100)
+					record.setEvaluation(Const.Evaluation.DANGER);
+				else if(valueNo2<100 && valueNo2 > 90)
+					record.setEvaluation(Const.Evaluation.WARNING);
 				else
-					record.setEvaluation("");
+					record.setEvaluation(Const.Evaluation.NORMAL);
 				break;
 			case Const.TIME_STANDARD_ONE_YEAR:
-				if(valueCO>=40)
-					record.setEvaluation("HIGH");
+				if(valueNo2>=40)
+					record.setEvaluation(Const.Evaluation.DANGER);
+				else if(valueNo2<40 && valueNo2 > 36)
+					record.setEvaluation(Const.Evaluation.WARNING);
 				else
-					record.setEvaluation("");
+					record.setEvaluation(Const.Evaluation.NORMAL);
+				break;
+			default:
+				record.setEvaluation("NA");
 				break;
 			}
 			recordService.insert(record);
 		}
 		if(valueTsp!=0){
+			valueTsp = valueTsp/countTsp;
 			RecordModel record = new RecordModel();
 			record.setDate(date);
 			record.setAir(airService.getData(Const.TSP));
@@ -337,31 +369,38 @@ public class DataController {
 			record.setTimeStandard(time);
 			switch(time){
 			case Const.TIME_STANDARD_ONE_HOUR:
-				if(valueCO>=300)
-					record.setEvaluation("HIGH");
+				if(valueTsp>=300)
+					record.setEvaluation(Const.Evaluation.DANGER);
+				else if(valueTsp<300 && valueTsp > 270)
+					record.setEvaluation(Const.Evaluation.WARNING);
 				else
-					record.setEvaluation("");
+					record.setEvaluation(Const.Evaluation.NORMAL);
 				break;
 			case Const.TIME_STANDARD_EIGHT_HOUR:
-				if(valueCO>=200)
-					record.setEvaluation("HIGH");
+				if(valueTsp>=200)
+					record.setEvaluation(Const.Evaluation.DANGER);
+				else if(valueTsp<200 && valueTsp > 180)
+					record.setEvaluation(Const.Evaluation.WARNING);
 				else
-					record.setEvaluation("");
-				break;
-			case Const.TIME_STANDARD_ONE_DAY:
-				record.setEvaluation("");
+					record.setEvaluation(Const.Evaluation.NORMAL);
 				break;
 			case Const.TIME_STANDARD_ONE_YEAR:
-				if(valueCO>=100)
-					record.setEvaluation("HIGH");
+				if(valueTsp>=100)
+					record.setEvaluation(Const.Evaluation.DANGER);
+				else if(valueTsp<100 && valueTsp > 90)
+					record.setEvaluation(Const.Evaluation.WARNING);
 				else
-					record.setEvaluation("");
+					record.setEvaluation(Const.Evaluation.NORMAL);
+				break;
+			default:
+				record.setEvaluation("NA");
 				break;
 			}
 			recordService.insert(record);
 		}
 		
 		if(valuePm10!=0){
+			valuePm10 = valuePm10/countPm10;
 			RecordModel record = new RecordModel();
 			record.setDate(date);
 			record.setAir(airService.getData(Const.PM10));
@@ -369,28 +408,30 @@ public class DataController {
 			record.setLocation(location);
 			record.setTimeStandard(time);
 			switch(time){
-			case Const.TIME_STANDARD_ONE_HOUR:
-				record.setEvaluation("");
-				break;
-			case Const.TIME_STANDARD_EIGHT_HOUR:
-				record.setEvaluation("");
-				break;
 			case Const.TIME_STANDARD_ONE_DAY:
-				if(valueCO>=150)
-					record.setEvaluation("HIGH");
+				if(valuePm10>=150)
+					record.setEvaluation(Const.Evaluation.DANGER);
+				else if(valuePm10<150 && valuePm10 > 135)
+					record.setEvaluation(Const.Evaluation.WARNING);
 				else
-					record.setEvaluation("");
+					record.setEvaluation(Const.Evaluation.NORMAL);
 				break;
 			case Const.TIME_STANDARD_ONE_YEAR:
-				if(valueCO>=50)
-					record.setEvaluation("HIGH");
+				if(valuePm10>=50)
+					record.setEvaluation(Const.Evaluation.DANGER);
+				else if(valuePm10<50 && valuePm10 > 45)
+					record.setEvaluation(Const.Evaluation.WARNING);
 				else
-					record.setEvaluation("");
+					record.setEvaluation(Const.Evaluation.NORMAL);
+				break;
+			default:
+				record.setEvaluation("NA");
 				break;
 			}
 			recordService.insert(record);
 		}
 		if(valuePm25!=0){
+			valuePm25 = valuePm25/countPm25;
 			RecordModel record = new RecordModel();
 			record.setDate(date);
 			record.setAir(airService.getData(Const.PM25));
@@ -398,23 +439,25 @@ public class DataController {
 			record.setLocation(location);
 			record.setTimeStandard(time);
 			switch(time){
-			case Const.TIME_STANDARD_ONE_HOUR:
-				record.setEvaluation("");
-				break;
-			case Const.TIME_STANDARD_EIGHT_HOUR:
-				record.setEvaluation("");
-				break;
+			
 			case Const.TIME_STANDARD_ONE_DAY:
-				if(valueCO>=50)
-					record.setEvaluation("HIGH");
+				if(valuePm25>=50)
+					record.setEvaluation(Const.Evaluation.DANGER);
+				else if(valuePm25<50 && valuePm25 > 45)
+					record.setEvaluation(Const.Evaluation.WARNING);
 				else
-					record.setEvaluation("");
+					record.setEvaluation(Const.Evaluation.NORMAL);
 				break;
 			case Const.TIME_STANDARD_ONE_YEAR:
-				if(valueCO>=25)
-					record.setEvaluation("HIGH");
+				if(valuePm25>=25)
+					record.setEvaluation(Const.Evaluation.DANGER);
+				else if(valuePm25<50 && valuePm25 > 45)
+					record.setEvaluation(Const.Evaluation.WARNING);
 				else
-					record.setEvaluation("");
+					record.setEvaluation(Const.Evaluation.NORMAL);
+				break;
+			default:
+				record.setEvaluation("NA");
 				break;
 			}
 			recordService.insert(record);
