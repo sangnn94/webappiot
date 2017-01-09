@@ -1,5 +1,6 @@
 package vn.edu.uit.iot.dao;
 
+import java.sql.Date;
 import java.util.List;
 
 import vn.edu.uit.iot.model.RecordModel;
@@ -17,4 +18,5 @@ public interface RecordDAO {
 	public List<RecordModel> getAll();
 	
 	public List<RecordModel> getLastest();
+	
 }

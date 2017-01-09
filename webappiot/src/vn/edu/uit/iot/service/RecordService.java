@@ -18,4 +18,5 @@ public interface RecordService {
 
 	public List<RecordModel> getLastest();
 	
+	
 }

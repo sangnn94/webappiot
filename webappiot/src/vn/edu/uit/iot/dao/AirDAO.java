@@ -16,6 +16,7 @@ public interface AirDAO {
 		public AirModel getData(int id);
 
 		public List<AirModel> getAll();
+		
 
 
 }

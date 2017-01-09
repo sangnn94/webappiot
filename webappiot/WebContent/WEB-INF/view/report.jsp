@@ -15,6 +15,7 @@
 			</ol>
 		</div>
 	</div>
+	<!-- row -->
 	<div class="row">
 		<div class="col-lg-12">
 			<form class="form-inline" action="">
@@ -28,6 +29,39 @@
 				<button type="submit" class="btn btn-info" style="margin-left: 5px">View
 					Report</button>
 			</form>
+		</div>
+	</div>
+	
+	<!-- row -->
+	<div class="row">
+		<div class="col-lg-12">
+				<div class="panel-heading">
+					<h3 > </h3>
+				</div>
+				<div >
+					<div class="table-responsive">
+						<table class="table table-bordered table-hover table-striped">
+							<thead>
+								<tr>
+									<th>Location</th>
+									<th>Date</th>
+									<th>SO2</th>
+									<th>CO</th>
+									<th>NO2</th>
+									<th>O3</th>
+									<th>TSP</th>
+									<th>PM10</th>
+									<th>PM2.5</th>
+									<th>Pb</th>
+									
+								</tr>
+							</thead>
+							<tbody>
+								
+							</tbody>
+						</table>
+					</div>
+				</div>
 		</div>
 	</div>
 </div>
