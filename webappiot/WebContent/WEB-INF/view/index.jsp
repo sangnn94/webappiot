@@ -111,7 +111,7 @@
 									<tr id="${location.locationId }">
 										<td>${location.locationName }</td>
 										<jstl:forEach items="${airs }" var="air">
-											<td id="${air.id}${location.locationId}"></td>
+											<td id="${air.id}${location.locationId}">N/A</td>
 										</jstl:forEach>
 										<jstl:forEach items="${records }" var="record">
 											<script>onLoad(${record.location.locationId}, ${record.air.id}, ${record.value})</script>
