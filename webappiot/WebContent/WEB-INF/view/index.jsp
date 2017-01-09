@@ -1,3 +1,4 @@
+
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="jstl" uri="http://java.sun.com/jsp/jstl/core"%>
@@ -7,7 +8,7 @@
 	<!-- Page Heading -->
 	<div class="row">
 		<div class="col-lg-12">
-			
+
 			<h1 class="page-header">Statistics Overview</h1>
 
 			<ol class="breadcrumb">
@@ -15,8 +16,6 @@
 					href="${pageContext.request.contextPath}/">WebAppIoT</a></li>
 				<li class="active"><i class="fa fa-edit"></i> Statistics
 					Overview</li>
-				<a href="${pageContext.request.contextPath}/overview/airstandard"
-					style="float: right">Air Standard</a>
 
 			</ol>
 		</div>
@@ -92,25 +91,32 @@
 							<thead>
 								<tr>
 									<th>Air Quality(μg/m3)</th>
-
-									<th>SO2</th>
-									<th>CO</th>
-									<th>NO2</th>
-									<th>O3</th>
-									<th>TSP</th>
-									<th>PM10</th>
-									<th>PM2.5</th>
-									<th>Pb</th>
-									<th>Lastest update</th>
+									<jstl:forEach items="${airs }" var="air">
+										<th>${air.name }</th>
+									</jstl:forEach>
 								</tr>
 							</thead>
 							<tbody>
-								<jstl:forEach items="${records }" var="record">
+								<jstl:forEach items="${locations }" var="location">
 									<tr>
-										<td>${record.location.locationName }</td>
-										<td>${record.air.name }:${record.value }</td>
+										<td>${location.locationName }</td>
+										<jstl:forEach items="${records }" var="record">
+											<jstl:choose>
+												<jstl:when
+													test="${record.location.locationId eq location.locationId}">
+													<jstl:if test="${record.value eq 0 }">
+														<td>N/A</td>
+													</jstl:if>
+													<jstl:if test="${record.value ne 0 }">
+														<td>${record.value}</td>
+													</jstl:if>
+												</jstl:when>
+											</jstl:choose>
+										</jstl:forEach>
 									</tr>
+
 								</jstl:forEach>
+
 							</tbody>
 						</table>
 					</div>

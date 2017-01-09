@@ -84,7 +84,7 @@ public class OverviewController {
 	
 	@RequestMapping(value="/random-data", method=RequestMethod.POST )
 	public ModelAndView radomData(ModelAndView mModelAndView){
-		mModelAndView.setViewName("index");
+		mModelAndView.setViewName("redirect:/");
 		List<LocationModel> listLocation = mLocationService.getAll();
 		List<AirModel> listAir = mAirService.getAll();
 		

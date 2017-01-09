@@ -67,8 +67,9 @@ public class RecordDAOImpl implements RecordDAO {
 		Session ss = this.mSession.getCurrentSession();
 		Transaction ts = ss.beginTransaction();
 		List<RecordModel> records = ss
-				.createQuery("from RecordModel where (location.locationId,date) in"
-						+ "(select location.locationId, max(date) as date from RecordModel group by location.locationId)")
+				.createQuery("from RecordModel where (location.locationId, air.id, date) in"
+						+ "(select location.locationId, air.id, max(date) "
+						+ "from RecordModel group by air.id, location.locationId) order by location.locationId, air.id")
 				.list();
 		ts.commit();
 		return records;
