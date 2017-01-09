@@ -34,16 +34,21 @@ public class SidebarController {
 
 	@Autowired
 	private NodeService mNodeService;
-	
+
 	@Autowired
 	private GatewayService mGatewayService;
-	
+
 	@Autowired
 	private UserService userService;
-	
+
 	@Autowired
 	private RecordService mRecordService;
-	
+
+	@Autowired
+	private AirService mAirService;
+	@Autowired
+	private LocationService mLocationService;
+
 	@Autowired
 	private AuthenticationFacadeInterface authenticationFacade;
 
@@ -53,38 +58,41 @@ public class SidebarController {
 		UserModel user = userService.get(username);
 		return user;
 	}
-	
+
 	@RequestMapping(value="/" , method= RequestMethod.GET)
 	public ModelAndView getHome(ModelAndView modelAndView){
 		logger.info("Showing index page....");
-		modelAndView.setViewName("index");		
+		modelAndView.setViewName("index");	
+		List<AirModel> airs = mAirService.getAll();
+		List<LocationModel> locations = mLocationService.getAll();
 		List<RecordModel> records = mRecordService.getLastest();
+		System.out.println(records);
 		modelAndView.getModel().put("records", records);
+		modelAndView.getModel().put("airs", airs);
+		modelAndView.getModel().put("locations", locations);
 		return modelAndView;
 	}
-	
-	//Display list device 
-	@RequestMapping(value="/manage-device" , method= RequestMethod.GET)
-	public ModelAndView getManageDevice(ModelAndView mModelAndView){
+
+	// Display list device
+	@RequestMapping(value = "/manage-device", method = RequestMethod.GET)
+	public ModelAndView getManageDevice(ModelAndView mModelAndView) {
 		mModelAndView.setViewName("managedevice");
 		UserModel user = getCurrentUser();
-		Set<GatewayModel> gateways  = user.getGateways();
-		mModelAndView.getModel().put("gateways" , gateways);
+		Set<GatewayModel> gateways = user.getGateways();
+		mModelAndView.getModel().put("gateways", gateways);
 		return mModelAndView;
 	}
-	
-	@RequestMapping(value="/about" , method= RequestMethod.GET)
-	public ModelAndView getAbout(ModelAndView mModelAndView){
+
+	@RequestMapping(value = "/about", method = RequestMethod.GET)
+	public ModelAndView getAbout(ModelAndView mModelAndView) {
 		mModelAndView = new ModelAndView("about");
 		return mModelAndView;
 	}
-	
-	@RequestMapping(value="/report" , method= RequestMethod.GET)
-	public ModelAndView getReport(ModelAndView mModelAndView){
+
+	@RequestMapping(value = "/report", method = RequestMethod.GET)
+	public ModelAndView getReport(ModelAndView mModelAndView) {
 		mModelAndView = new ModelAndView("report");
 		return mModelAndView;
 	}
-	
-	
 
 }

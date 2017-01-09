@@ -58,7 +58,7 @@ public class AirDAOimpl implements AirDAO {
 	public List<AirModel> getAll() {
 		Session ss = mSession.getCurrentSession();
 		Transaction ts = ss.beginTransaction();
-		List<AirModel> arrData = ss.createQuery("from AirModel").list();
+		List<AirModel> arrData = ss.createQuery("from AirModel order by id").list();
 		ts.commit();
 		return arrData;
 	}

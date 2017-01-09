@@ -46,6 +46,8 @@ void setup() {
     ;
   }
   clearGsmSerialBuffer();
+  
+  
   char inChar2;
   int j = 0;
   while(!gsmSerial.available()){
@@ -67,7 +69,7 @@ void setup() {
   Serial.println("init http");
   gsmSerial.write("AT+HTTPINIT\r\n");
   delay(3000);
-  Serial.println("set URL");
+  /*Serial.println("set URL");
   gsmSerial.write("AT+HTTPPARA=URL,http://apps.iot.uit.edu.vn/gps\r\n");
   delay(3000);
   Serial.println("set content ");
@@ -84,20 +86,18 @@ void setup() {
   gsmSerial.write("\"}\r\n"); 
   delay(3000);
   Serial.println("post gps locaton");
-  gsmSerial.write("AT+HTTPACTION=1\r\n");
+  gsmSerial.write("AT+HTTPACTION=1\r\n");*/
   zigbeeSerial.listen();
   while(!zigbeeSerial.isListening()){
     ;
   }
+  Serial.println("post gps completed");
 
 }
 
 void loop() {
   configure();
-  if(gsmSerial.available()){ 
-  //Serial.write(gsmSerial.read());
-  }
-  delay(5000);
+  delay(1000);
 }
 
 
@@ -122,7 +122,7 @@ void configure(){
      while(!zigbeeSerial.available()){
         ;
      }
-    
+     Serial.println("config");
     while(zigbeeSerial.available()){
         data =  zigbeeSerial.read();
         if(data==' '){
@@ -145,13 +145,6 @@ void configure(){
     gsmSerial.write("AT+HTTPDATA=2048,5000\r\n");
     Serial.println("input data");
     delay(3000); 
-    /*nodeData = zigbeeSerial.readString();
-    Serial.println("CO = " + nodeData + " ppm");
-    gsmSerial.write("{\"id\": \"ATD+GSN0932484056\", \"nodeID\": \"2\", \"value\": \"");
-    while(zigbeeSerial.available()){
-      gsmSerial.write(zigbeeSerial.read());
-    }
-    gsmSerial.write("\", \"date\":\"date test\"}\r\n");*/
     gsmSerial.write(zigbeeData);
     delay(3000);
     Serial.println("post ");

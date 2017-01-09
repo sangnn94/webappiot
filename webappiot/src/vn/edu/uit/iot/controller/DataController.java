@@ -5,6 +5,8 @@ import java.util.Date;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
+
+import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -43,10 +45,13 @@ public class DataController {
 	
 	@Autowired
 	private LocationService locationService;
-
+	
+	private static Logger logger = Logger.getLogger(AuthenticateController.class);
+	
 	@RequestMapping(value = "/data", method = RequestMethod.POST)
 	@ResponseBody
 	public ResponseEntity<Void> postData(@RequestBody DataJson data) {
+		logger.info(data);
 		String id = data.getId();
 		NodeModel node = nodeService.get(id);
 		if (node == null) {

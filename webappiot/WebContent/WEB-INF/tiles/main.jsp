@@ -54,12 +54,11 @@
 			</div>
 			<!-- 	Top Menu Items -->
 			<ul class="nav navbar-right top-nav">
-				<li>
-					<sf:form   method="post"
+				<li><sf:form method="post"
 						action="${pageContext.request.contextPath}/random-data">
-						<button style="float: center; margin: 10px" type="submit" class="btn btn-primary">Random Data</button>
-						</sf:form>
-				</li>
+						<button style="float: center; margin: 10px" type="submit"
+							class="btn btn-primary">Random Data</button>
+					</sf:form></li>
 				<sec:authentication var="currentUser" property="principal" />
 				<sec:authorize access="isAuthenticated()">
 					<li class="dropdown"><a href="#" class="dropdown-toggle"
@@ -74,9 +73,8 @@
 							<li class="divider"></li>
 							<li><a href="javascript:$('#logoutForm').submit();"><i
 									class="fa fa-fw fa-power-off"></i> Log Out</a></li>
-							
-						</ul>
-					</li>
+
+						</ul></li>
 				</sec:authorize>
 			</ul>
 
@@ -91,8 +89,10 @@
 							class="fa fa-fw fa fa fa fa-cogs"></i> Manage User</a></li>
 					<li><a href="${pageContext.request.contextPath}/report"><i
 							class="fa fa-fw fa fa-list-alt"></i> Report</a></li>
-					
-					
+					<li><a
+						href="${pageContext.request.contextPath}/overview/airstandard"><i
+							class="fa fa-fw fa fa-list-alt"></i> Air Standard</a></li>
+
 				</ul>
 			</div>
 			<!-- content -->
