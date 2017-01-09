@@ -54,8 +54,6 @@
 			<div class="panel panel-default">
 				<div class="panel-body">
 						<div id="so2Chart" style="height: 300px; width: 100%;"></div>
-						<script type="text/javascript">test("hsabda");</script>
-						<h1 id="hai"></h1>
 				</div>
 			</div>
 		</div>
@@ -69,6 +67,19 @@
 			<div class="panel panel-default">
 				<div class="panel-body">
 						<div id="o3Chart" style="height: 300px; width: 100%;"></div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<!-- /.row -->
+		<!-- /.row -->
+
+	<div class="row">
+		<div class="col-lg-12">
+			<div class="panel panel-default">
+				<div class="panel-body">
+						<div id="noChart" style="height: 300px; width: 100%;"></div>
 				</div>
 			</div>
 		</div>
@@ -164,6 +175,10 @@
 		if(air == 7){
 			data = ${PM25};
 		}
+		
+		if(air == 8){
+			data = ${NO};
+		}
 	
 		return data;
 	}
@@ -187,6 +202,11 @@
 		}, {
 			type : "spline",
 			showInLegend : true,
+			name : "NO",
+			dataPoints : getData(7)
+		}, {
+			type : "spline",
+			showInLegend : true,
 			name : "Pb",
 			dataPoints : getData(4)
 		}, {
@@ -205,6 +225,7 @@
 			name : "PM10",
 			dataPoints : getData(7)
 		}];
+		
 		return dataLine;
 	}
 </script>
@@ -251,7 +272,7 @@
 					},
 					data : getDataLinechart()
 				});
-		var co = new CanvasJS.Chart("coChart", {
+		var coChart = new CanvasJS.Chart("coChart", {
 			title : {
 				text : "Carbon Monoxide (CO)"
 			},
@@ -267,7 +288,7 @@
 				dataPoints : getData(1)
 			} ]
 		});
-		var so2 = new CanvasJS.Chart("so2Chart", {
+		var so2Chart = new CanvasJS.Chart("so2Chart", {
 			title : {
 				text : "SO2"
 			},
@@ -283,7 +304,7 @@
 				dataPoints : getData(2)
 			} ]
 		});
-		var o3 = new CanvasJS.Chart("o3Chart", {
+		var o3Chart = new CanvasJS.Chart("o3Chart", {
 			title : {
 				text : "O3"
 			},
@@ -299,7 +320,7 @@
 				dataPoints : getData(3)
 			} ]
 		});
-		var pb = new CanvasJS.Chart("pbChart", {
+		var pbChart = new CanvasJS.Chart("pbChart", {
 			title : {
 				text : "Pb"
 			},
@@ -315,7 +336,7 @@
 				dataPoints : getData(4)
 			} ]
 		});
-		var tsl = new CanvasJS.Chart("tslChart", {
+		var tslChart = new CanvasJS.Chart("tslChart", {
 			title : {
 				text : "TSP"
 			},
@@ -331,7 +352,7 @@
 				dataPoints : getData(5)
 			} ]
 		});
-		var pm10 = new CanvasJS.Chart("pm10Chart", {
+		var pm10Chart = new CanvasJS.Chart("pm10Chart", {
 			title : {
 				text : "PM10"
 			},
@@ -347,7 +368,7 @@
 				dataPoints : getData(6)
 			} ]
 		});
-		var pm25 = new CanvasJS.Chart("pm25Chart", {
+		var pm25Chart = new CanvasJS.Chart("pm25Chart", {
 			title : {
 				text : "PM2.5"
 			},
@@ -363,14 +384,32 @@
 				dataPoints : getData(7)
 			} ]
 		});
+		
+		var noChart = new CanvasJS.Chart("noChart", {
+			title : {
+				text : "NO"
+			},
+			axisX : {
+				//interval : 10
+			},
+			axisY : {
+				title : "μg/m3",
+			},
+			dataPointWidth : 40,
+			data : [ {
+				type : "column",
+				dataPoints : getData(8)
+			} ]
+		});
 		lineChart.render();
-		co.render();
-		so2.render();
-		o3.render();
-		pb.render();
-		tsl.render();
-		pm25.render();
-		pm10.render();
+		coChart.render();
+		so2Chart.render();
+		o3Chart.render();
+		pbChart.render();
+		tslChart.render();
+		pm25Chart.render();
+		pm10Chart.render();
+		noChart.render();
 		
 	})
 	

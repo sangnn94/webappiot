@@ -32,7 +32,7 @@ public class GatewayModel {
 	private float latitude;
 
 	@NotBlank
-	@Column(name = "ADDRESS")
+	@Column(name = "ADDRESS",length = 500)
 	private String address;
 
 	@ManyToOne

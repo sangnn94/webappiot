@@ -6,19 +6,16 @@ import javax.validation.Valid;
 
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.context.request.NativeWebRequest;
 import org.springframework.web.servlet.ModelAndView;
 
-import vn.edu.uit.iot.authentication.AuthenticationFacadeInterface;
 import vn.edu.uit.iot.model.UserModel;
 import vn.edu.uit.iot.service.UserService;
-import vn.edu.uit.iot.service.UserServiceImpl;
+
 
 @Controller
 public class AuthenticateController {

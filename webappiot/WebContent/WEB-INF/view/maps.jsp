@@ -19,7 +19,6 @@
 			</ol>
 		</div>
 	</div>
-
 	<div class="row">
 		<div class="col-lg-12">
 			<div class="panel-default">
@@ -30,46 +29,43 @@
 </div>
 
 <script>
+	var markerLat, markerLong;
+	markerLat = [
+			<c:forEach items="${gateway}" var="gw">
+		        <c:out value="${gw.latitude}"/>,
+		    </c:forEach>
+		];
+	
+	markerLong = [
+			<c:forEach items="${gateway}" var="gw">
+		        <c:out value="${gw.longitude}"/>,
+		    </c:forEach>
+		];
+	
 	var map;
-	var latlag = {
-		lat : 10.858410,
-		lng : 106.765727
-	}
-
-	var latlag1 = {
-		lat : 10.870035,
-		lng : 106.803403
-	}
-	var latlag2 = {
-		lat : 10.862628,
-		lng : 106.795534
-	}
-
-	function initMap() {
+	var infowindow;
+	var infowindow ;
+	function initMap() { 
+		var latlngInit = {lat: 10.870285, lng: 106.802771};
 		map = new google.maps.Map(document.getElementById('map'), {
-			center : latlag2,
-			zoom : 14
+			center : latlngInit,
+			zoom : 12
 		});
-
-		var marker = new google.maps.Marker({
-			position : latlag,
-			map : map,
-			title : 'Hello World!'
-		});
-
-		var marker1 = new google.maps.Marker({
-			position : latlag1,
-			map : map,
-			title : 'Hello World!'
-		});
-
-		var marker1 = new google.maps.Marker({
-			position : latlag2,
-			map : map,
-			title : 'Hello World!'
-		});
-
+		var marker,i;
+		for(i = 0; i<markerLong.length ; i++){
+			infowindow = new google.maps.InfoWindow({
+		          content: "<h5>Gateway Device</5>"
+		    });
+			marker = new google.maps.Marker({
+				position : new google.maps.LatLng(markerLat[i], markerLong[i]),
+				map : map,
+				animation: google.maps.Animation.DROP
+			});
+			infowindow.open(map, marker);
+		}
+		
 	}
+	
 </script>
 <script
 	src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA5YyzziI_WwblVhMJkdkiMm9_GYMJ11o4&callback=initMap"
