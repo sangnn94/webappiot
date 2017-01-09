@@ -34,7 +34,7 @@ public class AuthenticateController {
 	 */
 	@RequestMapping(value = "/login")
 	public ModelAndView showLogin(ModelAndView modelAndView) {
-		logger.info("Showing login page....");
+		logger.info("LOGIN PAGE...");
 		modelAndView.setViewName("login");
 		return modelAndView;
 	}
@@ -46,6 +46,7 @@ public class AuthenticateController {
 	 */
 	@RequestMapping(value = "/register", method = RequestMethod.GET)
 	public ModelAndView showNewAccount(ModelAndView modelAndView, @ModelAttribute("user") UserModel user) {
+		logger.info("REGISTER PAGE...");
 		modelAndView.setViewName("register");
 		return modelAndView;
 	}

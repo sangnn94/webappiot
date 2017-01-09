@@ -1,5 +1,6 @@
 package vn.edu.uit.iot.controller;
 
+import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -15,12 +16,15 @@ import vn.edu.uit.iot.service.GatewayService;
 
 @Controller
 public class GatewayController {
+	private static Logger logger = Logger.getLogger(AuthenticateController.class);
+
 	@Autowired
 	private GatewayService gatewayService;
 
 	@RequestMapping(value = "/gps", method = RequestMethod.POST)
 	@ResponseBody
 	public ResponseEntity<Void> postGps(@RequestBody GpsJson gps) {
+		logger.info(gps);
 		String id = gps.getId();
 		GatewayModel gateway = gatewayService.get(id);
 		if(gateway == null){
