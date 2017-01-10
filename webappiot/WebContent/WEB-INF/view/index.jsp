@@ -102,7 +102,6 @@
 								<tr>
 									<th>Air Quality(μg/m3)</th>
 									<jstl:forEach items="${airs }" var="air">
-										<th >${air.name }</th>
 										<th id="${air.id }">${air.name }</th>
 									</jstl:forEach>
 								</tr>
@@ -115,18 +114,6 @@
 											<td id="${air.id}${location.locationId}">N/A</td>
 										</jstl:forEach>
 										<jstl:forEach items="${records }" var="record">
-											<jstl:choose>
-												<jstl:when
-													test="${record.location.locationId eq location.locationId}">
-													<jstl:if test="${record.value eq 0 }">
-														<td>N/A</td>
-													</jstl:if>
-													<jstl:if test="${record.value ne 0 }">
-														<td>${record.value}</td>
-													</jstl:if>
-													
-												</jstl:when>
-											</jstl:choose>
 											<script>onLoad(${record.location.locationId}, ${record.air.id}, ${record.value})</script>
 										</jstl:forEach>
 									</tr>
@@ -140,7 +127,6 @@
 		</div>
 	</div>
 </div>
-
 
 <!-- /.container-fluid -->
 
