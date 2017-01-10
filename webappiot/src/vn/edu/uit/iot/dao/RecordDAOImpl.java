@@ -88,7 +88,7 @@ public class RecordDAOImpl implements RecordDAO {
 		List<RecordModel> records = ss.createQuery("from RecordModel where date between '" 
 				+fromDate+
 				"' and '"
-				+toDate).list();
+				+toDate+"'").list();
 		ts.commit();
 		return records;
 	}

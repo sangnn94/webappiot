@@ -3,16 +3,9 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="jstl" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="sf" uri="http://www.springframework.org/tags/form"%>
-<script>
-	function onLoad(locationid, airid, value) {
-		var id = airid.toString() + locationid.toString();
-		var cell = document.getElementById(id);
-		cell.innerHTML = value;
-	}
-	$(document).ready()
-</script>
-<jstl:set var="airs" value="${airs }"></jstl:set>
-<jstl:set var="location" value="${airs }"></jstl:set>
+
+<script src='<jstl:url value="/resources/js/table.js" />'></script>
+
 <div class="container-fluid">
 	<!-- Page Heading -->
 	<div class="row">
@@ -111,10 +104,10 @@
 									<tr id="${location.locationId }">
 										<td>${location.locationName }</td>
 										<jstl:forEach items="${airs }" var="air">
-											<td id="${air.id}${location.locationId}">N/A</td>
+											<td id="${location.locationId}${air.id}">N/A</td>
 										</jstl:forEach>
 										<jstl:forEach items="${records }" var="record">
-											<script>onLoad(${record.location.locationId}, ${record.air.id}, ${record.value})</script>
+											<script>onLoad( ${record.location.locationId}, ${record.air.id},${record.value} )</script>
 										</jstl:forEach>
 									</tr>
 								</jstl:forEach>
