@@ -1,5 +1,7 @@
 package vn.edu.uit.iot.dao;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 import org.hibernate.SessionFactory;
@@ -71,6 +73,22 @@ public class RecordDAOImpl implements RecordDAO {
 						+ "(select location.locationId, air.id, max(date) "
 						+ "from RecordModel group by air.id, location.locationId) order by location.locationId, air.id")
 				.list();
+		ts.commit();
+		return records;
+	}
+
+	@SuppressWarnings("unchecked")
+	@Override
+	public List<RecordModel> getForDay(Date startDate, Date endDate) {
+		SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+		String fromDate = format.format(startDate);
+		String toDate= format.format(endDate);
+		Session ss = this.mSession.getCurrentSession();
+		Transaction ts = ss.beginTransaction();
+		List<RecordModel> records = ss.createQuery("from RecordModel where date between '" 
+				+fromDate+
+				"' and '"
+				+toDate).list();
 		ts.commit();
 		return records;
 	}

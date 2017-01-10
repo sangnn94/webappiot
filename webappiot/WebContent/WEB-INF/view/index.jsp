@@ -92,7 +92,7 @@
 								<tr>
 									<th>Air Quality(μg/m3)</th>
 									<jstl:forEach items="${airs }" var="air">
-										<th>${air.name }</th>
+										<th >${air.name }</th>
 									</jstl:forEach>
 								</tr>
 							</thead>
@@ -110,6 +110,7 @@
 													<jstl:if test="${record.value ne 0 }">
 														<td>${record.value}</td>
 													</jstl:if>
+													
 												</jstl:when>
 											</jstl:choose>
 										</jstl:forEach>
@@ -128,6 +129,7 @@
 
 
 </div>
+
 
 <!-- /.container-fluid -->
 

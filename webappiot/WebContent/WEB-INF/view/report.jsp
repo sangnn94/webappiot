@@ -18,12 +18,12 @@
 	<!-- row -->
 	<div class="row">
 		<div class="col-lg-12">
-			<form class="form-inline" action="">
+			<form class="form-inline" action="${pageContext.request.contextPath}/report" method="post">
 				<div class="form-group">
-					<label>From &nbsp; </label><input class="form-control" type="date" />
+					<label>From &nbsp; </label><input name="from" class="form-control" type="date" />
 				</div>
 				<div class="form-group">
-					<label> &nbsp; To &nbsp; </label><input class="form-control"
+					<label> &nbsp; To &nbsp; </label><input name = "to" class="form-control"
 						type="date" />
 				</div>
 				<button type="submit" class="btn btn-info" style="margin-left: 5px">View
@@ -53,7 +53,6 @@
 									<th>PM10</th>
 									<th>PM2.5</th>
 									<th>Pb</th>
-									
 								</tr>
 							</thead>
 							<tbody>

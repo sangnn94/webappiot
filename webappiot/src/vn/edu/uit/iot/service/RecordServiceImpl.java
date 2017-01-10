@@ -1,5 +1,6 @@
 package vn.edu.uit.iot.service;
 
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -45,8 +46,12 @@ public class RecordServiceImpl implements RecordService {
 
 	@Override
 	public List<RecordModel> getLastest() {
-		// TODO Auto-generated method stub
 		return recordDao.getLastest();
+	}
+
+	@Override
+	public List<RecordModel> getForDate(Date fromDate, Date toDate) {	
+		return recordDao.getForDay(fromDate, toDate);
 	}
 
 }

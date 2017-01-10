@@ -1,15 +1,20 @@
 package vn.edu.uit.iot.controller;
 
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 import java.util.Set;
 
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import vn.edu.uit.iot.authentication.AuthenticationFacadeInterface;
@@ -94,5 +99,14 @@ public class SidebarController {
 		mModelAndView = new ModelAndView("report");
 		return mModelAndView;
 	}
-
+	
+	@RequestMapping(value="/report", method=RequestMethod.POST )
+	public ModelAndView viewRecort(ModelAndView mModelAndView, @DateTimeFormat(pattern="yyyy-MM-dd") @RequestParam("from") Date fromDate, @DateTimeFormat(pattern="yyyy-MM-dd")@RequestParam("to") Date toDate) {
+		mModelAndView.setViewName("redirect:/report");
+		System.out.println(fromDate.toString());
+		System.out.println(toDate.toString());
+		return mModelAndView;
+	}
+	
+	
 }
