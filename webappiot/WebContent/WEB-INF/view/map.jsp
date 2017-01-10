@@ -4,11 +4,6 @@
 
 <div class="container-fluid">
 
-	<!-- Page Heading -->
-	<!-- Page Heading -->
-
-
-	<!-- /.row -->
 	<div class="row">
 		<div class="col-lg-12">
 			<h1 class="page-header">Gateway Location</h1>

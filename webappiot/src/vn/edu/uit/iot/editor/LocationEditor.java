@@ -13,7 +13,7 @@ public class LocationEditor extends PropertyEditorSupport {
 	}
 	@Override
 	public void setAsText(String text) throws IllegalArgumentException {
-		LocationModel location = locationService.getLocation(Integer.parseInt(text));
+		LocationModel location = locationService.get(Integer.parseInt(text));
 		setValue(location);
 	}
 	

@@ -23,9 +23,6 @@
 		</div>
 	</div>
 
-	<!-- /.row -->
-	<!-- /.row -->
-
 	<div class="row">
 
 		<div class="col-lg-6 col-md-6">
@@ -39,7 +36,7 @@
 							<div>
 								<h3>Chart</h3>
 							</div>
-							<div>Description</div>
+							<div>View records chart</div>
 						</div>
 					</div>
 				</div>
@@ -61,13 +58,13 @@
 						</div>
 						<div class="col-xs-9 text-right">
 							<div>
-								<h3>Maps</h3>
+								<h3>Map</h3>
 							</div>
-							<div>Description</div>
+							<div>View gateways on map</div>
 						</div>
 					</div>
 				</div>
-				<a href="${pageContext.request.contextPath}/overview/maps">
+				<a href="${pageContext.request.contextPath}/map">
 					<div class="panel-footer">
 						<span class="pull-left">View</span> <span class="pull-right"><i
 							class="fa fa-arrow-circle-right"></i></span>
@@ -107,7 +104,7 @@
 											<td id="${location.locationId}${air.id}">N/A</td>
 										</jstl:forEach>
 										<jstl:forEach items="${records }" var="record">
-											<script>onLoad( ${record.location.locationId}, ${record.air.id},${record.value} )</script>
+											<script>onLoad(${record.location.locationId }, ${record.air.id }, ${record.value })</script>
 										</jstl:forEach>
 									</tr>
 								</jstl:forEach>

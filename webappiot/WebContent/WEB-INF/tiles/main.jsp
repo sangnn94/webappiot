@@ -36,9 +36,6 @@
 <script src='<c:url value="/resources/js/jquery.js" />'></script>
 </head>
 <body>
-	<%
-		request.setCharacterEncoding("UTF-8");
-	%>
 	<div id="wrapper">
 		<!-- Navigation -->
 		<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
@@ -92,7 +89,6 @@
 					<li><a
 						href="${pageContext.request.contextPath}/overview/airstandard"><i
 							class="fa fa-fw fa fa-list-alt"></i> Air Standard</a></li>
-
 				</ul>
 			</div>
 			<!-- content -->

@@ -38,9 +38,9 @@ public class OverviewController {
 	private AirService mAirService;
 	
 
-	@RequestMapping(value="/overview/maps", method = RequestMethod.GET)
+	@RequestMapping(value="/map", method = RequestMethod.GET)
 	public ModelAndView getMaps(ModelAndView mModelAndView){
-		mModelAndView = new ModelAndView("maps");
+		mModelAndView = new ModelAndView("map");
 		List<GatewayModel> gatewayModel = mGatewayService.getAll();
 		mModelAndView.addObject("gateway", gatewayModel);
 		List<String> address = new ArrayList<>();

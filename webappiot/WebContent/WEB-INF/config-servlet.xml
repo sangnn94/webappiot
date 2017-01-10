@@ -107,9 +107,15 @@
 			access="isAuthenticated()" />
 		<security:intercept-url pattern="/manage-device/**"
 			access="isAuthenticated()" />
+		<security:intercept-url pattern="/new-node"
+			access="isAuthenticated()" />
+		<security:intercept-url pattern="/new-gateway"
+			access="isAuthenticated()" />
 		<security:intercept-url pattern="/report/**"
 			access="isAuthenticated()" />
 		<security:intercept-url pattern="/overview/**"
+			access="isAuthenticated()" />
+		<security:intercept-url pattern="/map"
 			access="isAuthenticated()" />
 		<security:intercept-url pattern="/about"
 			access="isAuthenticated()" />

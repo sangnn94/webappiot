@@ -18,14 +18,17 @@
 	<definition name="manageuser" extends="main">
 		<put-attribute name="content" value="/WEB-INF/view/manageuser.jsp"></put-attribute>
 	</definition>
-	<definition name="maps" extends="main">
-		<put-attribute name="content" value="/WEB-INF/view/maps.jsp"></put-attribute>
+	<definition name="map" extends="main">
+		<put-attribute name="content" value="/WEB-INF/view/map.jsp"></put-attribute>
 	</definition>
 	<definition name="chart" extends="main">
 		<put-attribute name="content" value="/WEB-INF/view/chart.jsp"></put-attribute>
 	</definition>
 	<definition name="newgateway" extends="main">
 		<put-attribute name="content" value="/WEB-INF/view/newgateway.jsp"></put-attribute>
+	</definition>
+	<definition name="newnode" extends="main">
+		<put-attribute name="content" value="/WEB-INF/view/newnode.jsp"></put-attribute>
 	</definition>
 	<definition name="report" extends="main">
 		<put-attribute name="content" value="/WEB-INF/view/report.jsp"></put-attribute>
@@ -48,5 +51,4 @@
 	<definition name="accessdenied" extends="authenticate">
 		<put-attribute name="content" value="/WEB-INF/view/accessdenied.jsp"></put-attribute>
 	</definition>
-
 </tiles-definitions>

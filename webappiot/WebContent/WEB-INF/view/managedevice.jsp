@@ -1,8 +1,8 @@
+
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
- <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
-
+<%@ taglib prefix="jstl" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <div class="container-fluid">
 	<!-- Page Heading -->
 	<div class="row">
@@ -14,8 +14,8 @@
 				<li class="active"><i class="fa fa-edit"></i> Manage Device</li>
 				<div class="navbar-right" style="margin-right: 20px">
 					<b><a style="margin-right: 20px"
-						href="${pageContext.request.contextPath}/manage-device/add-device">Add
-							Gateway</a></b>
+						href="${pageContext.request.contextPath}/new-gateway">Add
+							Gateway</a> </b>
 				</div>
 			</ol>
 
@@ -41,25 +41,21 @@
 							</tr>
 						</thead>
 						<tbody>
-							<c:forEach items="${gateways}" var="gateway">
+							<jstl:forEach items="${gateways.values()}" var="gateway">
 								<tr>
-									<td>${gateway.id}</td>
+									<td>${gateway.id }</td>
 									<td>${gateway.user.username }</td>
 									<td>${gateway.location.locationName}</td>
 									<td>${gateway.address}</td>
 									<td>${fn:length(gateway.nodes)}</td>
-									<td><a
-										href="${pageContext.request.contextPath}/manage-device/">View
+									<td><a href="${pageContext.request.contextPath}/map">View
 											<i class="fa fa-arrow-circle-right"></i>
 									</a></td>
-									<td><a
-										href="${pageContext.request.contextPath}/manage-device/add-device"
-										class="fa fa-plus-circle"></a> <b>|</b> <a
-										href="${pageContext.request.contextPath}/manage-device/add-device"
+									<td><a href="${pageContext.request.contextPath}/new-node"
+										class="fa fa-plus-circle"></a> <b>|</b> <a href="#"
 										class="fa fa-trash"></a></td>
 								</tr>
-							</c:forEach>
-
+							</jstl:forEach>
 						</tbody>
 					</table>
 				</div>
@@ -84,26 +80,22 @@
 							</tr>
 						</thead>
 						<tbody>
-							<c:forEach items="${gateways}" var="gateway">
-								<c:forEach items="${gateway.nodes }" var="node" >
+							<jstl:forEach items="${gateways.values()}" var="gateway">
+								<jstl:forEach items="${gateway.nodes.values() }" var="node">
 									<tr>
 										<td>${node.id}</td>
 										<td>${node.gateway.id}</td>
 										<td>${node.gateway.user.username}</td>
 										<td>${node.gateway.location.locationName}</td>
 										<td>${node.address}</td>
-										<td><a
-											href="${pageContext.request.contextPath}/manage-device/">View
-												<i class="fa fa-arrow-circle-right"></i>
+										<td><a href="#">View <i
+												class="fa fa-arrow-circle-right"></i>
 										</a></td>
-										<td><a
-											href="${pageContext.request.contextPath}/manage-device/add-device"
-											class="fa fa-gear"></a> <b>|</b> <a
-											href="${pageContext.request.contextPath}/manage-device/add-device"
-											class="fa fa-trash"></a></td>
+										<td><a href="#" class="fa fa-gear"></a> <b>|</b> <a
+											href="#" class="fa fa-trash"></a></td>
 									</tr>
-								</c:forEach>
-							</c:forEach>
+								</jstl:forEach>
+							</jstl:forEach>
 						</tbody>
 					</table>
 				</div>

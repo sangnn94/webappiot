@@ -11,12 +11,12 @@ import vn.edu.uit.iot.model.LocationModel;
 
 @Service
 public class LocationServiceImpl implements LocationService {
-	
+
 	@Autowired
 	private LocationDAO locationDao;
 
 	@Transactional
-	public LocationModel getLocation(int id) {
+	public LocationModel get(int id) {
 		return this.locationDao.getLocation(id);
 	}
 

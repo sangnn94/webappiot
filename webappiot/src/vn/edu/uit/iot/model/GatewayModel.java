@@ -1,13 +1,16 @@
 package vn.edu.uit.iot.model;
 
+import java.util.Map;
 import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.MapKey;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Transient;
@@ -32,7 +35,7 @@ public class GatewayModel {
 	private float latitude;
 
 	@NotBlank
-	@Column(name = "ADDRESS",length = 500)
+	@Column(name = "ADDRESS", length = 500)
 	private String address;
 
 	@ManyToOne
@@ -43,8 +46,9 @@ public class GatewayModel {
 	@JoinColumn(name = "USER_ID", nullable = false)
 	private UserModel user;
 
-	@OneToMany(mappedBy = "gateway", fetch = FetchType.EAGER)
-	private Set<NodeModel> nodes;
+	@OneToMany(mappedBy = "gateway", fetch = FetchType.EAGER, cascade = { CascadeType.ALL })
+	@MapKey
+	private Map<String, NodeModel> nodes;
 
 	public GatewayModel() {
 	}
@@ -89,11 +93,11 @@ public class GatewayModel {
 		this.location = location;
 	}
 
-	public Set<NodeModel> getNodes() {
+	public Map<String, NodeModel> getNodes() {
 		return nodes;
 	}
 
-	public void setNodes(Set<NodeModel> nodes) {
+	public void setNodes(Map<String, NodeModel> nodes) {
 		this.nodes = nodes;
 	}
 

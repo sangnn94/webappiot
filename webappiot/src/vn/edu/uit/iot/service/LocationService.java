@@ -6,7 +6,7 @@ import vn.edu.uit.iot.model.LocationModel;
 
 public interface LocationService {
 	
-	public LocationModel getLocation(int id);
+	public LocationModel get(int id);
 	
 	public List<LocationModel> getAll();
 }

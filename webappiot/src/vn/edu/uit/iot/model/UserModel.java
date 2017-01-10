@@ -1,18 +1,21 @@
 package vn.edu.uit.iot.model;
 
-import java.util.Set;
+import java.util.Map;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.MapKey;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Transient;
 import javax.validation.constraints.Size;
 
+import org.hibernate.annotations.Cascade;
 import org.hibernate.validator.constraints.Email;
 import org.hibernate.validator.constraints.NotBlank;
 
@@ -53,8 +56,9 @@ public class UserModel {
 	@Column(name = "ENABLED")
 	private boolean enabled = true;
 
-	@OneToMany(mappedBy = "user", fetch=FetchType.EAGER)
-	private Set<GatewayModel> gateways;
+	@OneToMany(mappedBy = "user", fetch = FetchType.EAGER, cascade = { CascadeType.ALL })
+	@MapKey
+	private Map<String, GatewayModel> gateways;
 
 	public UserModel() {
 		// TODO Auto-generated constructor stub
@@ -99,11 +103,11 @@ public class UserModel {
 		this.matchingPassword = matchingPassword;
 	}
 
-	public Set<GatewayModel> getGateways() {
+	public Map<String, GatewayModel> getGateways() {
 		return gateways;
 	}
 
-	public void setGateways(Set<GatewayModel> gateways) {
+	public void setGateways(Map<String, GatewayModel> gateways) {
 		this.gateways = gateways;
 	}
 

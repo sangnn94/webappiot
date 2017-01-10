@@ -5,7 +5,7 @@
 <%
 	request.setCharacterEncoding("UTF-8");
 %>
-<c:url var="newGateway" value="/manage-device/add-device"></c:url>
+<c:url var="newGatewayUrl" value="/new-gateway"></c:url>
 <div class="container-fluid">
 
 	<!-- Page Heading -->
@@ -26,7 +26,7 @@
 	<div class="row">
 		<div class="col-lg-6">
 
-			<sf:form method="post" action="${newGateway}"
+			<sf:form method="post" action="${newGatewayUrl }"
 				modelAttribute="gateway">
 				<div>
 					<label>Location</label>
@@ -47,7 +47,6 @@
 					<sf:errors path="address"></sf:errors>
 				</div>
 				<button type="submit" class="btn btn-default">Submit</button>
-				<!--<button type="reset" class="btn btn-default">Cancel</button> chi co do security hoac url no moi chuyen qua login thoi con cai cho location la du lieu co sai thi no bao sai du lieu chu lam gi ma chuyen vo login dc-->
 			</sf:form>
 
 		</div>
