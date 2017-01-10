@@ -3,7 +3,16 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="jstl" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="sf" uri="http://www.springframework.org/tags/form"%>
-
+<script>
+	function onLoad(locationid, airid, value) {
+		var id = airid.toString() + locationid.toString();
+		var cell = document.getElementById(id);
+		cell.innerHTML = value;
+	}
+	$(document).ready()
+</script>
+<jstl:set var="airs" value="${airs }"></jstl:set>
+<jstl:set var="location" value="${airs }"></jstl:set>
 <div class="container-fluid">
 	<!-- Page Heading -->
 	<div class="row">
@@ -87,19 +96,24 @@
 				</div>
 				<div class="panel-body">
 					<div class="table-responsive">
-						<table class="table table-bordered table-hover table-striped">
+						<table class="table table-bordered table-hover table-striped"
+							id="table">
 							<thead>
 								<tr>
 									<th>Air Quality(μg/m3)</th>
 									<jstl:forEach items="${airs }" var="air">
 										<th >${air.name }</th>
+										<th id="${air.id }">${air.name }</th>
 									</jstl:forEach>
 								</tr>
 							</thead>
 							<tbody>
 								<jstl:forEach items="${locations }" var="location">
-									<tr>
+									<tr id="${location.locationId }">
 										<td>${location.locationName }</td>
+										<jstl:forEach items="${airs }" var="air">
+											<td id="${air.id}${location.locationId}">N/A</td>
+										</jstl:forEach>
 										<jstl:forEach items="${records }" var="record">
 											<jstl:choose>
 												<jstl:when
@@ -113,9 +127,9 @@
 													
 												</jstl:when>
 											</jstl:choose>
+											<script>onLoad(${record.location.locationId}, ${record.air.id}, ${record.value})</script>
 										</jstl:forEach>
 									</tr>
-
 								</jstl:forEach>
 
 							</tbody>
@@ -125,9 +139,6 @@
 			</div>
 		</div>
 	</div>
-	<!-- /.row -->
-
-
 </div>
 
 
