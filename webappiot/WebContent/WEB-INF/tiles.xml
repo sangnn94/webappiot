@@ -18,8 +18,8 @@
 	<definition name="manageuser" extends="main">
 		<put-attribute name="content" value="/WEB-INF/view/manageuser.jsp"></put-attribute>
 	</definition>
-	<definition name="map" extends="main">
-		<put-attribute name="content" value="/WEB-INF/view/map.jsp"></put-attribute>
+	<definition name="maps" extends="main">
+		<put-attribute name="content" value="/WEB-INF/view/maps.jsp"></put-attribute>
 	</definition>
 	<definition name="chart" extends="main">
 		<put-attribute name="content" value="/WEB-INF/view/chart.jsp"></put-attribute>

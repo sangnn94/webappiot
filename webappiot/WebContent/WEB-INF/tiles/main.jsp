@@ -51,11 +51,7 @@
 			</div>
 			<!-- 	Top Menu Items -->
 			<ul class="nav navbar-right top-nav">
-				<li><sf:form method="post"
-						action="${pageContext.request.contextPath}/random-data">
-						<button style="float: center; margin: 10px" type="submit"
-							class="btn btn-primary">Random Data</button>
-					</sf:form></li>
+
 				<sec:authentication var="currentUser" property="principal" />
 				<sec:authorize access="isAuthenticated()">
 					<li class="dropdown"><a href="#" class="dropdown-toggle"
@@ -78,17 +74,26 @@
 			<!-- Sidebar Menu Items - These collapse to the responsive navigation menu on small screens -->
 			<div class="collapse navbar-collapse navbar-ex1-collapse">
 				<ul class="nav navbar-nav side-nav">
-					<li><a href="${pageContext.request.contextPath}/"><i
-							class="fa fa-fw fa-dashboard"></i> Overview</a></li>
+					<li><a href="javascript:;" data-toggle="collapse"
+						data-target="#demo"><i class="fa fa-fw fa-th-list"></i>
+							Overview <i class="fa fa-fw fa-caret-down"></i></a>
+						<ul id="demo" class="collapse">
+							<li><a href="${pageContext.request.contextPath}/chart"><i
+									class="fa fa-fw fa-bar-chart"></i>Chart</a></li>
+							<li><a href="${pageContext.request.contextPath}/maps"><i
+									class="fa fa-fw fa-map-marker"></i>Maps</a></li>
+						</ul></li>
 					<li><a href="${pageContext.request.contextPath}/manage-device"><i
-							class="fa fa-fw fa 	fa fa-cubes"></i> Manage Device</a></li>
+							class="fa fa-fw fa-wrench"></i> Manage Device</a></li>
 					<li><a href="${pageContext.request.contextPath}/manage-user"><i
-							class="fa fa-fw fa fa fa fa-cogs"></i> Manage User</a></li>
+							class="fa fa-fw fa-user"></i> Manage User</a></li>
 					<li><a href="${pageContext.request.contextPath}/report"><i
-							class="fa fa-fw fa fa-list-alt"></i> Report</a></li>
+							class="fa fa-fw fa-file-text-o"></i> Report</a></li>
 					<li><a
 						href="${pageContext.request.contextPath}/overview/airstandard"><i
-							class="fa fa-fw fa fa-list-alt"></i> Air Standard</a></li>
+							class="fa fa-fw fa-sort-amount-asc"></i> Air Standard</a></li>
+					<li><a href="${pageContext.request.contextPath}/random-data"><i
+							class="fa fa-fw fa-refresh"></i> Simulation Data</a></li>
 				</ul>
 			</div>
 			<!-- content -->

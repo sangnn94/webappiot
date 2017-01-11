@@ -40,7 +40,7 @@
 						</div>
 					</div>
 				</div>
-				<a href="${pageContext.request.contextPath}/overview/chart">
+				<a href="${pageContext.request.contextPath}/chart">
 					<div class="panel-footer">
 						<span class="pull-left">View</span> <span class="pull-right"><i
 							class="fa fa-arrow-circle-right"></i></span>
@@ -58,13 +58,13 @@
 						</div>
 						<div class="col-xs-9 text-right">
 							<div>
-								<h3>Map</h3>
+								<h3>Maps</h3>
 							</div>
-							<div>View gateways on map</div>
+							<div>View gateways on maps</div>
 						</div>
 					</div>
 				</div>
-				<a href="${pageContext.request.contextPath}/map">
+				<a href="${pageContext.request.contextPath}/maps">
 					<div class="panel-footer">
 						<span class="pull-left">View</span> <span class="pull-right"><i
 							class="fa fa-arrow-circle-right"></i></span>
@@ -104,11 +104,10 @@
 											<td id="${location.locationId}${air.id}">N/A</td>
 										</jstl:forEach>
 										<jstl:forEach items="${records }" var="record">
-											<script>onLoad(${record.location.locationId }, ${record.air.id }, ${record.value })</script>
+											<script>onLoad(${record.location.locationId }, ${record.air.id }, ${record.value }, '${record.evaluation}')</script>
 										</jstl:forEach>
 									</tr>
 								</jstl:forEach>
-
 							</tbody>
 						</table>
 					</div>

@@ -115,7 +115,9 @@
 			access="isAuthenticated()" />
 		<security:intercept-url pattern="/overview/**"
 			access="isAuthenticated()" />
-		<security:intercept-url pattern="/map"
+		<security:intercept-url pattern="/chart"
+			access="isAuthenticated()" />
+		<security:intercept-url pattern="/maps"
 			access="isAuthenticated()" />
 		<security:intercept-url pattern="/about"
 			access="isAuthenticated()" />
