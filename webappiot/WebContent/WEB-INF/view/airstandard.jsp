@@ -29,58 +29,58 @@
 						<table class="table table-bordered table-hover table-striped">
 							<thead>
 								<tr>
-									<th>Air</th>
-									<th>One Year</th>
-									<th>24 hours</th>
-									<th>8 hours</th>
-									<th>1 hour</th>
-									<th>10 minutes</th>
+									<th class="info">Air</th>
+									<th class="info">One Year</th>
+									<th class="info">24 hours</th>
+									<th class="info">8 hours</th>
+									<th class="info">1 hour</th>
+									<th class="info">10 minutes</th>
 								</tr>
 							</thead>
 							<tbody>
 								<tr>
-									<td>PM2.5</td>
-									<td>10 μg/m3</td>
-									<td>25 μg/m3</td>
+									<td class="info">PM2.5</td>
+									<td class="danger">10 μg/m3</td>
+									<td class="danger">25 μg/m3</td>
 									<td>-</td>
 									<td>-</td>
 									<td>-</td>
 								</tr>
 								
 								<tr>
-									<td>PM10</td>
-									<td>20 μg/m3</td>
-									<td>50 μg/m3</td>
+									<td class="info">PM10</td>
+									<td class="danger">20 μg/m3</td>
+									<td class="danger">50 μg/m3</td>
 									<td>-</td>
 									<td>-</td>
 									<td>-</td>
 								</tr>
 								
 								<tr>
-									<td>Ozone</td>
+									<td class="info">Ozone</td>
 									<td>-</td>
 									<td>-</td>
-									<td>100 μg/m3</td>
+									<td class="danger">100 μg/m3</td>
 									<td>-</td>
 									<td>-</td>
 								</tr>
 								
 								<tr>
-									<td>NO2</td>
-									<td>40 μg/m3</td>
+									<td class="info">NO2</td>
+									<td class="danger">40 μg/m3</td>
 									<td>-</td>
 									<td>-</td>
-									<td>200 μg/m3</td>
+									<td class="danger">200 μg/m3</td>
 									<td>-</td>
 								</tr>
 								
 								<tr>
-									<td>SO2</td>
+									<td class="info">SO2</td>
 									<td>-</td>
-									<td>20 μg/m3</td>
+									<td class="danger">20 μg/m3</td>
 									<td>-</td>
 									<td>-</td>
-									<td>500 μg/m3</td>
+									<td class="danger">500 μg/m3</td>
 								</tr>
 								
 
@@ -105,84 +105,84 @@
 						<table class="table table-bordered table-hover table-striped">
 							<thead>
 								<tr>
-									<th>Air</th>
-									<th>1 hour</th>
-									<th>8 hours</th>
-									<th>24 hours</th>
-									<th>One Year</th>
+									<th class="info">Air</th>
+									<th class="info">1 hour</th>
+									<th class="info">8 hours</th>
+									<th class="info">24 hours</th>
+									<th class="info">One Year</th>
 														
 								</tr>
 							</thead>
 							<tbody>
 								<tr>
-									<td>CO</td>
-									<td>30000 μg/m3</td>
-									<td>10000 μg/m3</td>
+									<td class="info">CO</td>
+									<td class="danger">30000 μg/m3</td>
+									<td class="danger">10000 μg/m3</td>
 									<td>-</td>
 									<td>-</td>
 									
 								</tr>
 								
 								<tr>
-									<td>SO2</td>
-									<td>350 μg/m3</td>
+									<td class="info">SO2</td>
+									<td class="danger">350 μg/m3</td>
 									<td>-</td>
-									<td>125 μg/m3</td>
-									<td>50 μg/m3</td>
+									<td class="danger">125 μg/m3</td>
+									<td class="danger">50 μg/m3</td>
 									
 								</tr>
 								
 								<tr>
-									<td>Ozone</td>
-									<td>200 μg/m3</td>
-									<td>120 μg/m3</td>
+									<td class="info">Ozone</td>
+									<td class="danger">200 μg/m3</td>
+									<td class="danger">120 μg/m3</td>
 									<td>-</td>
 									<td>-</td>
 									
 								</tr>
 								<tr>
-									<td>NO2</td>
-									<td>200 μg/m3</td>
+									<td class="info">NO2</td>
+									<td class="danger">200 μg/m3</td>
 									<td>-</td>
-									<td>100 μg/m3</td>
-									<td>40 μg/m3</td>
+									<td class="danger">100 μg/m3</td>
+									<td class="danger">40 μg/m3</td>
 								
 								</tr>
 								
 								<tr>
-									<td>Pb</td>
+									<td class="info">Pb</td>
 									<td>-</td>
 									<td>-</td>
-									<td>1.5 μg/m3</td>
-									<td>0.5 μg/m3</td>
+									<td class="danger">1.5 μg/m3</td>
+									<td class="danger">0.5 μg/m3</td>
 									
 								</tr>
 								
 								
 								
 								<tr>
-									<td>TSP</td>
-									<td>300 μg/m3</td>
-									<td>200 μg/m3</td>
+									<td class="info">TSP</td>
+									<td class="danger">300 μg/m3</td>
+									<td class="danger">200 μg/m3</td>
 									<td>-</td>
-									<td>100 μg/m3</td>
+									<td class="danger">100 μg/m3</td>
 								</tr>
 								
 								<tr>
-									<td>PM10</td>
+									<td class="info">PM10</td>
 									<td>-</td>
 									<td>-</td>
-									<td>150 μg/m3</td>
-									<td>50 μg/m3</td>
+									<td class="danger">150 μg/m3</td>
+									<td class="danger">50 μg/m3</td>
 								</tr>
 								
 								<tr>
-									<td>PM25</td>
+									<td class="info">PM25</td>
 									
 									<td>-</td>
 									<td>-</td>
-									<td>50 μg/m3</td>
-									<td>25 μg/m3</td>
+									<td class="danger">50 μg/m3</td>
+									<td class="danger">25 μg/m3</td>
 								</tr>
 								
 

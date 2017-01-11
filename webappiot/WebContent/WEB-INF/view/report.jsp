@@ -7,12 +7,11 @@
 	$(document).ready(function() {
 		  $("#btnExport").click(function(e) {
 		    e.preventDefault();
-	
 		    //getting data from our table
 		    var data_type = 'data:application/vnd.ms-excel';
 		    var table_div = document.getElementById('divTBRecord');
 		    var table_html = table_div.outerHTML.replace(/ /g, '%20');
-	
+		    table_html = "<p>Report<p><br/>" + table_html;
 		    var ep = document.createElement('a');
 		    ep.href = data_type + ', ' + table_html;
 		    ep.download = 'Report.xls';
@@ -21,17 +20,7 @@
 		});
 </script>
 
-<STYLE TYPE="text/css">
-	.colorBlue
-	{
-	background-color:#FFF8EE;
-	}
-	.colorWhite
-	{
-	background-color:#FFFFFF;
-	color:white;
-	}
-</STYLE>
+
 
 
 <div class="container-fluid">
@@ -43,7 +32,8 @@
 			<ol class="breadcrumb">
 				<li><i class="fa fa-dashboard"></i> <a
 					href="${pageContext.request.contextPath}/">WebAppIoT</a></li>
-				<li class="active"><i class="fa fa-edit"></i> Report</li>			
+				<li class="active"><i class="fa fa-edit"></i> Report</li>	
+				<a id="btnExport"  style="float: right;"><strong>Export report</strong></a>		
 			</ol>
 			
 		</div>
@@ -61,7 +51,7 @@
 								type="date" />
 						</div>
 						<button type="submit" class="btn btn-info" style="margin-left: 5px">View</button>
-						<button id="btnExport" type="button" class="btn btn-info" style="margin-left: 5px">Export</button>
+						
 					</form>
 					
 				</div>
