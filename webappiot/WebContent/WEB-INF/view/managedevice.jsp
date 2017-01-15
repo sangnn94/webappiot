@@ -1,8 +1,9 @@
-
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 <%@ taglib prefix="jstl" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
+
 <div class="container-fluid">
 	<!-- Page Heading -->
 	<div class="row">
@@ -36,7 +37,6 @@
 								<th>Area</th>
 								<th>Address</th>
 								<th>Child Number</th>
-								<th>View Maps</th>
 								<th>Manage</th>
 							</tr>
 						</thead>
@@ -48,9 +48,6 @@
 									<td>${gateway.location.locationName}</td>
 									<td>${gateway.address}</td>
 									<td>${fn:length(gateway.nodes)}</td>
-									<td><a href="${pageContext.request.contextPath}/map">View
-											<i class="fa fa-arrow-circle-right"></i>
-									</a></td>
 									<td><a href="${pageContext.request.contextPath}/new-node"
 										class="fa fa-plus-circle"></a> <b>|</b> <a href="#"
 										class="fa fa-trash"></a></td>
@@ -75,7 +72,6 @@
 								<th>Device Manager</th>
 								<th>Area</th>
 								<th>Address</th>
-								<th>View Maps</th>
 								<th>Manage</th>
 							</tr>
 						</thead>
@@ -88,9 +84,6 @@
 										<td>${node.gateway.user.username}</td>
 										<td>${node.gateway.location.locationName}</td>
 										<td>${node.address}</td>
-										<td><a href="#">View <i
-												class="fa fa-arrow-circle-right"></i>
-										</a></td>
 										<td><a href="#" class="fa fa-gear"></a> <b>|</b> <a
 											href="#" class="fa fa-trash"></a></td>
 									</tr>
